@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120132.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120345.png">
 <meta property="og:image" content="http://yoursite.com/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120518.png">
-<meta property="og:updated_time" content="2019-09-18T16:38:07.516Z">
+<meta property="og:updated_time" content="2019-09-18T16:44:39.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tarjan求有向图的强连通分量">
 <meta name="twitter:description" content="tarjan求有向图的强连通分量tarjan到底是念“塔进”还是“塔扬”。好像大多数人都念“塔进”，但是英语好像是念“塔扬”。胡扯结束。。。 这个tarjan算法求的是有向图中的强连通分量，并将他们合并。 强连通分量（如果会可以直接看tarjan部分）那什么是强连通分量呢？强连通嘛，就是图中任意两点能相互到达。那强连通分量就是一个图中的强连通子图。 环是最简单的强连通分量：  那你如果从1出发，只">
@@ -450,10 +450,10 @@
 <p>（6-&gt;1的箭头画反了，应该时1-&gt;6）</p>
 <ol>
 <li>从结点1开始：dfn[1] = low[1] = 1; 结点1进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918114703.png" alt="TIM截图20190918114703" style="zoom: 50%;"></li>
-<li>1-&gt;6：dfn[6] = low[6] = 2; 结点6进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918114957.png" alt="TIM截图20190918114957" style="zoom: 50%;">结点6没有出边，无法dfs，发现dfn[6]==low[6]，栈顶元素出栈，栈顶元素正好时结点6，无需继续出栈，则结点6自己为一个单独的强联通分量。</li>
+<li>1-&gt;6：dfn[6] = low[6] = 2; 结点6进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918114957.png" alt="TIM截图20190918114957" style="zoom:50%;">结点6没有出边，无法dfs，发现dfn[6]==low[6]，栈顶元素出栈，栈顶元素正好时结点6，无需继续出栈，则结点6自己为一个单独的强联通分量。</li>
 <li>1-&gt;2：dfn[2] = low[2] = 3；结点2进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918115433.png" alt="TIM截图20190918115433" style="zoom: 50%;">结点2有出边且为访问，开始dfs。</li>
 <li>2-&gt;5：dfn[5] = low[5] = 4；结点5进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120132.png" alt="TIM截图20190918120132" style="zoom: 50%;">结点5有出边且未访问，继续dfs</li>
-<li>5-&gt;4：dfn[4] = low[4] = 5；结点4进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120345.png" alt="TIM截图20190918120345" style="zoom: 50%;">结点4有未访问的出边，继续dfs</li>
+<li>5-&gt;4：dfn[4] = low[4] = 5；结点4进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120345.png" alt="TIM截图20190918120345" style="zoom:50%;">结点4有未访问的出边，继续dfs</li>
 <li>4-&gt;3：dfn[3] = low[3] = 6；结点3进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120518.png" alt="TIM截图20190918120518" style="zoom: 50%;">结点3有出边，但结点2已经访问过了，且结点2在栈里面，所以3可以回溯到结点2，可知dfn[2]=3, low[3]=6;  所以low[3] = dfn[2] = 3;</li>
 <li>此时dfn[3]!=low[3]，所以不出栈。</li>
 <li>当dfs回溯到5-&gt;4的时候，发现(low[4]=5) &gt; (low[3]=3)，所以low[4] = 3;    依此类推low[5]=3;且直到dfs回溯到结点2的时候才会进行出栈操作，因为2时强连通分量的根节点。</li>
