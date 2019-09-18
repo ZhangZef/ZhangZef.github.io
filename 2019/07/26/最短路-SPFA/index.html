@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/07/26/最短路-SPFA/TIM截图20190726174245.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/26/最短路-SPFA/TIM截图20190727121644.png">
-<meta property="og:updated_time" content="2019-08-11T09:13:44.000Z">
+<meta property="og:updated_time" content="2019-09-18T16:40:00.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最短路--SPFA">
 <meta name="twitter:description" content="最短路–SPFASPFA是个很神奇的算法，他在一般情况下时间会跑的很快，肯定有人想用SPFA来代替dijkstra，但是有一种特殊的数据专门来卡SPFA，只能让dijkstra过，SPFA过不去，那就是网格图，我稍后会讲为什么网格图可以卡掉SPFA。 但是为什么SPFA跑不过dijkstra，大家还要用SPFA？因为dijkstra只能计算不带负环的图，当图中出现负环，dijkstra就会一直卡在">
@@ -403,7 +403,7 @@
         <h1 id="最短路–SPFA"><a href="#最短路–SPFA" class="headerlink" title="最短路–SPFA"></a>最短路–SPFA</h1><p>SPFA是个很神奇的算法，他在一般情况下时间会跑的很快，肯定有人想用SPFA来代替dijkstra，但是有一种特殊的数据专门来卡SPFA，只能让dijkstra过，SPFA过不去，那就是网格图，我稍后会讲为什么网格图可以卡掉SPFA。</p>
 <p>但是为什么SPFA跑不过dijkstra，大家还要用SPFA？因为dijkstra只能计算不带负环的图，当图中出现负环，dijkstra就会一直卡在负环里出不来了。如果不太懂可以看一看我的上一篇博客：<a href="https://zhangzef.com/2019/07/25/%E6%9C%80%E7%9F%AD%E8%B7%AF--Dijkstra/#more" target="_blank" rel="noopener">Dijkstra</a> </p>
 <p>当图中存在可到达的负环，则该图一定不存在最短路，因为负环可以一直当做最短路来松弛其他边，那么最短路就能无限小，所以不存在最短路。</p>
-<p><img src="/2019/07/26/最短路-SPFA/TIM截图20190726174245.png" alt="TIM截图20190726174245"></p>
+<p><img src="/2019/07/26/最短路-SPFA/TIM截图20190726174245.png" alt="TIM截图20190726174245" style="zoom:50%;"></p>
 <p>SPFA也是用来求<strong>单源</strong>最短路，它当然也不能在存在可达负环的时候计算最短路，但是他有一个神奇的功能：<strong>判断图中是否存在可达负环</strong>。</p>
 <h2 id="Bellman-Ford"><a href="#Bellman-Ford" class="headerlink" title="Bellman-Ford"></a><strong>Bellman-Ford</strong></h2><p>SPFA是Bellman-Ford的队列优化，在一般情况下比Bellman-Ford快很多。这里介绍Bellman-Ford是希望可以更好地理解SPFA，因为两者本质区别不大。</p>
 <h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>算法总共跑n-1轮就能确定所有点的最短路。总共有n个点，x1, x2, x3, x4…xn，其中x1为源点，第一轮一定可以确定离源点最近的点的最短路，即x2的最短路。依次类推，如果图中不存在负环，则一定能在n-1轮推出所有点的最短路。</p>
@@ -428,7 +428,7 @@
 </ol>
 <h2 id="如何卡SPFA"><a href="#如何卡SPFA" class="headerlink" title="如何卡SPFA"></a>如何卡SPFA</h2><p>因为SPFA没回更新的时候用的是一条边去更新，被更新过的点入队。</p>
 <p>比如说我们有一条链</p>
-<p><img src="/2019/07/26/最短路-SPFA/TIM截图20190727121644.png" alt="TIM截图20190727121644"></p>
+<p><img src="/2019/07/26/最短路-SPFA/TIM截图20190727121644.png" alt="TIM截图20190727121644" style="zoom:50%;"></p>
 <p>当我们用边0-1去更新后面所有边之后，如果边0-1又被更新，则后面的所有边都要被依次再更新一遍。</p>
 <p>这样SPFA的时间复杂度就会变得非常高</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
@@ -648,7 +648,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -927,16 +927,16 @@
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
+    var guest = 'nick,mail';
     guest = guest.split(',').filter(item=>{
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
         el: '#comments' ,
         verify: false,
-        notify: false,
-        appId: 'CXr7noV7CvVCPfY9qhTguCw9-gzGzoHsz',
-        appKey: 'aLRh20M7hnQRlaQ45YH29R0I',
+        notify: true,
+        appId: 'UPlH6yUjgdS1CGGsUFCp2qM4-MdYXbMMI',
+        appKey: '4013OqEag6wTniSbNmy8BN9V',
         placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
         avatar:'mm',
         guest_info:guest,

@@ -90,7 +90,7 @@
 <meta property="og:description" content="差分约束差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/08/01/差分约束/TIM截图20190801164055-1564649436098.png">
-<meta property="og:updated_time" content="2019-08-11T09:05:38.000Z">
+<meta property="og:updated_time" content="2019-09-18T16:39:24.951Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="差分约束">
 <meta name="twitter:description" content="差分约束差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$">
@@ -411,7 +411,7 @@
 </ol>
 <p>因为要满足所有等式的关系，所以取其中最大的3.$x_1-x_5 \leq 8$  因为8一定小于9和10嘛，如果$x_1-x_5$小于等于8了，那他们一定小于等于9和10。</p>
 <h2 id="最短路问题"><a href="#最短路问题" class="headerlink" title="最短路问题"></a>最短路问题</h2><p>观察可发现 $x_i-x_j \leq b_k$ 可转换为：$x_i \leq b_k+x_j$ 。与求最短路公式中的dis[j]&lt;dis[i]+w[i, j]非常相似，那差分约束问题是不是也可以转化成最短路问题来求解呢？肯定是可以的！先来看个例子：</p>
-<p><img src="/2019/08/01/差分约束/TIM截图20190801164055-1564649436098.png" alt="TIM截图20190801164055"></p>
+<p><img src="/2019/08/01/差分约束/TIM截图20190801164055-1564649436098.png" alt="TIM截图20190801164055" style="zoom:50%;"></p>
 <p>仔细观察图中可发现总共有三条路径：</p>
 <ol>
 <li>5 -&gt; 1                      长度为10</li>
@@ -553,6 +553,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/09/02/tarjan求有向图的强连通分量/" rel="prev" title="tarjan求有向图的强连通分量">
+                tarjan求有向图的强连通分量 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -671,7 +675,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -950,16 +954,16 @@
   
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
+    var guest = 'nick,mail';
     guest = guest.split(',').filter(item=>{
       return GUEST.indexOf(item)>-1;
     });
     new Valine({
         el: '#comments' ,
         verify: false,
-        notify: false,
-        appId: 'CXr7noV7CvVCPfY9qhTguCw9-gzGzoHsz',
-        appKey: 'aLRh20M7hnQRlaQ45YH29R0I',
+        notify: true,
+        appId: 'UPlH6yUjgdS1CGGsUFCp2qM4-MdYXbMMI',
+        appKey: '4013OqEag6wTniSbNmy8BN9V',
         placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
         avatar:'mm',
         guest_info:guest,
