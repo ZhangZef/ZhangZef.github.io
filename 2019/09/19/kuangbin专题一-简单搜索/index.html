@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ACM,图论,图的存储,">
+  <meta name="keywords" content="搜索,ACM,">
 
 
 
@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="图的边存储–链式前向星链式前向星是在看差分约束的题的时候偶然间看到的，一开始没太重视它，感觉好像没怎么听说过。还要定义结构体，而且需要辅助数组，感觉挺麻烦的。还不如直接用STL的vector+pair定义的邻接表好用。但是后来发现大家写SPFA的时候都用的链式前向星，感觉还是写个博客学习一下吧，以前都没听说过，太菜了。。。 边存储结构存的都是有向边！！！ 优缺点优点 适用范围广，基本上所有图论的题">
-<meta name="keywords" content="ACM,图论,图的存储">
+<meta name="description" content="kuangbin专题一–简单搜索tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁 题目列表  POJ 1321 棋盘问题==AC: 2018-07-17 23:54:31==  POJ 2251 Dungeon Master==AC: 2019-09-19 18:32:04==  POJ 3278 Catch That Cow  POJ 3279 Fliptile">
+<meta name="keywords" content="搜索,ACM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图的边存储--链式前向星">
-<meta property="og:url" content="http://yoursite.com/2019/07/31/图的边存储-链式前向星/index.html">
+<meta property="og:title" content="kuangbin专题一--简单搜索">
+<meta property="og:url" content="http://yoursite.com/2019/09/19/kuangbin专题一-简单搜索/index.html">
 <meta property="og:site_name" content="__int64-Saturday">
-<meta property="og:description" content="图的边存储–链式前向星链式前向星是在看差分约束的题的时候偶然间看到的，一开始没太重视它，感觉好像没怎么听说过。还要定义结构体，而且需要辅助数组，感觉挺麻烦的。还不如直接用STL的vector+pair定义的邻接表好用。但是后来发现大家写SPFA的时候都用的链式前向星，感觉还是写个博客学习一下吧，以前都没听说过，太菜了。。。 边存储结构存的都是有向边！！！ 优缺点优点 适用范围广，基本上所有图论的题">
+<meta property="og:description" content="kuangbin专题一–简单搜索tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁 题目列表  POJ 1321 棋盘问题==AC: 2018-07-17 23:54:31==  POJ 2251 Dungeon Master==AC: 2019-09-19 18:32:04==  POJ 3278 Catch That Cow  POJ 3279 Fliptile">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/07/31/图的边存储-链式前向星/TIM截图20190731195256.png">
-<meta property="og:updated_time" content="2019-09-18T16:39:36.353Z">
+<meta property="og:updated_time" content="2019-09-19T15:15:29.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="图的边存储--链式前向星">
-<meta name="twitter:description" content="图的边存储–链式前向星链式前向星是在看差分约束的题的时候偶然间看到的，一开始没太重视它，感觉好像没怎么听说过。还要定义结构体，而且需要辅助数组，感觉挺麻烦的。还不如直接用STL的vector+pair定义的邻接表好用。但是后来发现大家写SPFA的时候都用的链式前向星，感觉还是写个博客学习一下吧，以前都没听说过，太菜了。。。 边存储结构存的都是有向边！！！ 优缺点优点 适用范围广，基本上所有图论的题">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/31/图的边存储-链式前向星/TIM截图20190731195256.png">
+<meta name="twitter:title" content="kuangbin专题一--简单搜索">
+<meta name="twitter:description" content="kuangbin专题一–简单搜索tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁 题目列表  POJ 1321 棋盘问题==AC: 2018-07-17 23:54:31==  POJ 2251 Dungeon Master==AC: 2019-09-19 18:32:04==  POJ 3278 Catch That Cow  POJ 3279 Fliptile">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/31/图的边存储-链式前向星/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/19/kuangbin专题一-简单搜索/">
 
 
 
 
 
-  <title>图的边存储--链式前向星 | __int64-Saturday</title>
+  <title>kuangbin专题一--简单搜索 | __int64-Saturday</title>
   
 
 
@@ -289,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/31/图的边存储-链式前向星/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/kuangbin专题一-简单搜索/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张泽">
@@ -306,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">图的边存储--链式前向星</h1>
+          <h1 class="post-title" itemprop="name headline">kuangbin专题一--简单搜索</h1>
         
 
         <div class="post-meta">
@@ -318,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-31T19:01:36+08:00">
-                2019-07-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T22:28:56+08:00">
+                2019-09-19
               </time>
             
 
@@ -341,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/刷题/" itemprop="url" rel="index">
+                    <span itemprop="name">刷题</span>
                   </a>
                 </span>
 
@@ -359,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/31/图的边存储-链式前向星/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/31/图的边存储-链式前向星/" itemprop="commentCount"></span>
+                <a href="/2019/09/19/kuangbin专题一-简单搜索/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/19/kuangbin专题一-简单搜索/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -368,7 +366,7 @@
 
           
           
-             <span id="/2019/07/31/图的边存储-链式前向星/" class="leancloud_visitors" data-flag-title="图的边存储--链式前向星">
+             <span id="/2019/09/19/kuangbin专题一-简单搜索/" class="leancloud_visitors" data-flag-title="kuangbin专题一--简单搜索">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -399,119 +397,29 @@
       
 
       
-        <h1 id="图的边存储–链式前向星"><a href="#图的边存储–链式前向星" class="headerlink" title="图的边存储–链式前向星"></a>图的边存储–链式前向星</h1><p>链式前向星是在看差分约束的题的时候偶然间看到的，一开始没太重视它，感觉好像没怎么听说过。还要定义结构体，而且需要辅助数组，感觉挺麻烦的。还不如直接用STL的vector+pair定义的邻接表好用。但是后来发现大家写SPFA的时候都用的链式前向星，感觉还是写个博客学习一下吧，以前都没听说过，太菜了。。。</p>
-<p>边存储结构存的都是有向边！！！</p>
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>适用范围广，基本上所有图论的题都能用链式前向星来存储。</li>
-<li>存储效率高，像邻接表一样不会存储不存在的边</li>
-<li>可以用来替代邻接表，用vector实现邻接表好像容易爆内存(看别人说的)好像也确实，vector在容量不够时会重新开辟一个两倍于原来大小的数组。</li>
+        <h1 id="kuangbin专题一–简单搜索"><a href="#kuangbin专题一–简单搜索" class="headerlink" title="kuangbin专题一–简单搜索"></a>kuangbin专题一–简单搜索</h1><p>tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁</p>
+<h2 id="题目列表"><a href="#题目列表" class="headerlink" title="题目列表"></a>题目列表</h2><ul>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://vjudge.net/problem/POJ-1321" target="_blank" rel="noopener"><strong>POJ 1321</strong></a> 棋盘问题==AC: 2018-07-17 23:54:31==</li>
+<li style="list-style: none"><input type="checkbox" checked> <a href="https://vjudge.net/problem/POJ-2251" target="_blank" rel="noopener"><strong>POJ 2251</strong></a> Dungeon Master==AC: 2019-09-19 18:32:04==</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/POJ-3278" target="_blank" rel="noopener"><strong>POJ 3278</strong></a> Catch That Cow</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/POJ-3279" target="_blank" rel="noopener"><strong>POJ 3279</strong></a> Fliptile</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/POJ-1426" target="_blank" rel="noopener"><strong>POJ 1426</strong></a> Find The Multiple</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/POJ-3126" target="_blank" rel="noopener"><strong>POJ 3126</strong></a> Prime Path</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/POJ-3087" target="_blank" rel="noopener"><strong>POJ 3087</strong></a> Shuffle’m Up</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/POJ-3414" target="_blank" rel="noopener"><strong>POJ 3414</strong></a> Pots</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/FZU-2150" target="_blank" rel="noopener"><strong>FZU 2150</strong></a> Fire Game</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/UVA-11624" target="_blank" rel="noopener"><strong>UVA 11624</strong></a> Fire!</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/POJ-3984" target="_blank" rel="noopener"><strong>POJ 3984</strong></a> 迷宫问题</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/HDU-1241" target="_blank" rel="noopener"><strong>HDU 1241</strong></a> Oil Deposits</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/HDU-1495" target="_blank" rel="noopener"><strong>HDU 1495</strong></a> 非常可乐</li>
+<li style="list-style: none"><input type="checkbox"> <a href="https://vjudge.net/problem/HDU-2612" target="_blank" rel="noopener"><strong>HDU 2612</strong></a> Find a way</li>
 </ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>邻接表的缺点它都有，<ul>
-<li>无法判断重边(必须遍历查找)</li>
-<li>无法操作某个特定的边(必须遍历查找)</li>
-</ul>
-</li>
-<li>相对于邻接矩阵来说不容易实现和理解</li>
-</ul>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">     <span class="keyword">int</span> net;<span class="comment">//1.</span></span><br><span class="line">     <span class="keyword">int</span> to;</span><br><span class="line">     <span class="keyword">int</span> w;</span><br><span class="line">&#125;edge[maxn];</span><br><span class="line"><span class="keyword">int</span> head[maxn], cnt=<span class="number">0</span>;<span class="comment">//2.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_dege</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[cnt].to = v;</span><br><span class="line">    edge[cnt].net = head[u];<span class="comment">//3.</span></span><br><span class="line">    edge[cnt].w = w;</span><br><span class="line">    head[u] = cnt++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[u]; i!=<span class="number">-1</span>; i=edge[i].net)<span class="comment">//4.</span></span><br></pre></td></tr></table></figure>
-<p>注释：</p>
-<ol>
-<li>net是next，有时候定义next可能会和系统关键字重复，所以定义为net。net指向当前边的出发结点的下一条边在edge数组中的下标。SPFA是一个bfs的过程，进行广搜时会先遍历某个顶点的所有出边，net即指向当前结点的下一条出边。to即当前边的尾结点。w即权重。</li>
-<li>head[u]即存储u结点的第一个出边在edge数组中的下标。cnt即记录当前存储到edge数组的第几位了，用来设置数组下标。</li>
-<li>链式前向星是反着存储的，即先输入的边存在后面，有些类似于栈，后进先出。当a的第一条出边存入edge数组中，net等于head[u]，即-1。(所有head初始化为-1，-1表示没有边存入)之后head[u]被赋值为cnt，即刚输入的那条边在edge数组中的下标。当a的第二条边存入edge数组时，net等于head[u]，此时head[u]存的是上一次存储以u为出边的边在edge数组中的下标。每次head[u]存储的都是上一个u的边，所以遍历的时候是先遍历最后输入u的边。</li>
-<li>链式前向星遍历结点u所有出边的方法，当等于-1时表示没有下一条边了，遍历结束。</li>
-</ol>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><img src="/2019/07/31/图的边存储-链式前向星/TIM截图20190731195256.png" alt="TIM截图20190731195256" style="zoom:50%;"></p>
-<p>输入顺序为：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">u = 0</th>
-<th style="text-align:left">v = 1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">u = 1</td>
-<td style="text-align:left">v = 3</td>
-</tr>
-<tr>
-<td style="text-align:left">u = 0</td>
-<td style="text-align:left">v = 2</td>
-</tr>
-<tr>
-<td style="text-align:left">u = 2</td>
-<td style="text-align:left">v = 3</td>
-</tr>
-<tr>
-<td style="text-align:left">u = 1</td>
-<td style="text-align:left">v = 2</td>
-</tr>
-<tr>
-<td style="text-align:left">u = 3</td>
-<td style="text-align:left">v = 4</td>
-</tr>
-<tr>
-<td style="text-align:left">u = 4</td>
-<td style="text-align:left">v = 2</td>
-</tr>
-</tbody>
-</table>
-<p>手动模拟一下</p>
-<table>
-<thead>
-<tr>
-<th>edge[0].to = 1</th>
-<th>edge[0].net = -1</th>
-<th>head[0] = 0</th>
-<th>cnt = 0</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>edge[1].to = 3</td>
-<td>edge[1].net = -1</td>
-<td>head[1] = 0</td>
-<td>cnt = 1</td>
-</tr>
-<tr>
-<td>edge[2].to = 2</td>
-<td>edge[2].net = 0</td>
-<td>head[0] = 2</td>
-<td>cnt = 2</td>
-</tr>
-<tr>
-<td>edge[3].to = 3</td>
-<td>edge[3].net = -1</td>
-<td>head[2] = 0</td>
-<td>cnt = 3</td>
-</tr>
-<tr>
-<td>edge[4].to = 2</td>
-<td>edge[4].net = 0</td>
-<td>head[1] = 4</td>
-<td>cnt = 4</td>
-</tr>
-<tr>
-<td>edge[5].to = 4</td>
-<td>edge[5].net = -1</td>
-<td>head[3] = 5</td>
-<td>cnt = 5</td>
-</tr>
-<tr>
-<td>edge[6].to = 2</td>
-<td>edge[6].net = -1</td>
-<td>head[4] = 6</td>
-<td>cnt = 6</td>
-</tr>
-</tbody>
-</table>
-<p>上图中0的出边有两条，在edge数组中的存储位置分别为0、2，最后head[0] = 2；当遍历以0为起点的边时，先从edge[2]开始遍历，可发现edge[2].net = 0;即以0为起点的最后一条边。可看出，遍历和输入顺序是相反的，但是并不影响结果。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://blog.csdn.net/acdreamers/article/details/16902023(" target="_blank" rel="noopener">不知道为什么404了</a></li>
-<li><a href="https://jzqt.github.io/2015/07/21/ACM%E5%9B%BE%E8%AE%BA%E4%B9%8B%E5%AD%98%E5%9B%BE%E6%96%B9%E5%BC%8F/#%E9%93%BE%E5%BC%8F%E5%89%8D%E5%90%91%E6%98%9F" target="_blank" rel="noopener">ACM图论之存图方式</a></li>
-</ol>
+<h2 id="POJ1321-棋盘问题"><a href="#POJ1321-棋盘问题" class="headerlink" title="POJ1321  棋盘问题"></a><a href="https://vjudge.net/problem/POJ-1321" target="_blank" rel="noopener">POJ1321  棋盘问题</a></h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>就是在棋盘上放棋子，放的时候不能同行同列，和八皇后问题类似，只不过空白的地方不能放。这是我去年暑假acm训练时写的，现在已经忘了当时咋写的了，看着自己WA了好多发，太菜了。。。dfs时记得复原。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>dfs吧，没什么可说的，八皇后模板题。好烦啊，POJ不能用万能头文件。。。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">//#include &lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, ans;</span><br><span class="line"><span class="keyword">char</span> pan[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(cnt == m)</span><br><span class="line">    &#123;</span><br><span class="line">        ans++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(l&gt;=n)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">            <span class="keyword">if</span>(pan[l][i]==<span class="string">'#'</span> &amp;&amp; !vis[i])</span><br><span class="line">            &#123;</span><br><span class="line">                cnt++;</span><br><span class="line">                vis[i]=<span class="number">1</span>;</span><br><span class="line">                dfs(l+<span class="number">1</span>);</span><br><span class="line">                vis[i]=<span class="number">0</span>;</span><br><span class="line">                cnt--;</span><br><span class="line">            &#125;</span><br><span class="line">            dfs(l+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//ios::sync_with_stdio(0), cin.tie(0);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt;n &gt;&gt;m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">-1</span> &amp;&amp; m==<span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n; j++)</span><br><span class="line">                <span class="built_in">cin</span> &gt;&gt;pan[i][j];</span><br><span class="line"></span><br><span class="line">        ans = cnt = <span class="number">0</span>;</span><br><span class="line">        dfs(<span class="number">0</span>);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt;ans &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="POJ2251-Dungeon-Master"><a href="#POJ2251-Dungeon-Master" class="headerlink" title="POJ2251  Dungeon Master"></a><a href="https://vjudge.net/problem/POJ-2251" target="_blank" rel="noopener">POJ2251  Dungeon Master</a></h2><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>一个3D迷宫，总共六个方向，上下左右前后。有的地方不能走有的能走，给出起点终点，问你能不能走到终点，如果能的话应该是求用时最短的吧（题目中没说，一开始用dfsWA了，后来看别人都用bfs才发现是不是要求最短路）。没移动一次要花费一分钟。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>bfs，一开始用bfs一直内存超限，快给我郁闷死了。。。要把走过的点用#堵上，防止多余的结点入队列。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">31</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y, z, step;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">node <span class="title">make_node</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z, <span class="keyword">int</span> step)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    node a;</span><br><span class="line">    a.x = x, a.y = y, a.z = z, a.step=step;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> l, r, c;</span><br><span class="line">    <span class="keyword">char</span> mp[maxn][maxn][maxn];</span><br><span class="line">    <span class="keyword">int</span> dx[<span class="number">6</span>]= &#123;<span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> dy[<span class="number">6</span>]= &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> dz[<span class="number">6</span>]= &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt;l &gt;&gt;r &gt;&gt;c &amp;&amp; l+r+c)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x, y, z;</span><br><span class="line">        <span class="built_in">queue</span>&lt;node&gt; q;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;l; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;r; j++)</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;c; k++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">cin</span> &gt;&gt;mp[i][j][k];</span><br><span class="line">                    <span class="keyword">if</span>(mp[i][j][k]==<span class="string">'S'</span>)</span><br><span class="line">                        q.push(make_node(i, j, k, <span class="number">0</span>));</span><br><span class="line">                    <span class="keyword">if</span>(mp[i][j][k]==<span class="string">'E'</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        x = i;</span><br><span class="line">                        y = j;</span><br><span class="line">                        z = k;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            getchar();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            node a = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(a.x==x &amp;&amp; a.y==y &amp;&amp; a.z==z)</span><br><span class="line">            &#123;</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt;<span class="string">"Escaped in "</span>&lt;&lt;a.step &lt;&lt;<span class="string">" minute(s)."</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(mp[a.x+dx[i]][a.y+dy[i]][a.z+dz[i]]!=<span class="string">'#'</span>)</span><br><span class="line">                    <span class="keyword">if</span>(a.x+dx[i]&gt;=<span class="number">0</span> &amp;&amp; a.x+dx[i]&lt;l &amp;&amp; a.y+dy[i]&gt;=<span class="number">0</span> &amp;&amp; a.y+dy[i]&lt;r &amp;&amp; a.z+dz[i]&gt;=<span class="number">0</span> &amp;&amp; a.z+dz[i]&lt;c)</span><br><span class="line">                    &#123;</span><br><span class="line">                        q.push(make_node(a.x+dx[i], a.y+dy[i], a.z+dz[i], a.step+<span class="number">1</span>));</span><br><span class="line">                        mp[a.x+dx[i]][a.y+dy[i]][a.z+dz[i]] = <span class="string">'#'</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(flag)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt;<span class="string">"Trapped!"</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -561,7 +469,7 @@
   </li>
   <li class="post-copyright-link">
 	<strong>本文链接：</strong>
-	<a href="https://zhangzef.com/ 2019/07/31/图的边存储-链式前向星/" title="图的边存储--链式前向星">https://zhangzef.com/2019/07/31/图的边存储-链式前向星/</a>
+	<a href="https://zhangzef.com/ 2019/09/19/kuangbin专题一-简单搜索/" title="kuangbin专题一--简单搜索">https://zhangzef.com/2019/09/19/kuangbin专题一-简单搜索/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -576,11 +484,9 @@
       
         <div class="post-tags">
           
+            <a href="/tags/搜索/" rel="tag"># 搜索</a>
+          
             <a href="/tags/ACM/" rel="tag"># ACM</a>
-          
-            <a href="/tags/图论/" rel="tag"># 图论</a>
-          
-            <a href="/tags/图的存储/" rel="tag"># 图的存储</a>
           
         </div>
       
@@ -593,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/30/最短路-Floyd/" rel="next" title="最短路--Floyd">
-                <i class="fa fa-chevron-left"></i> 最短路--Floyd
+              <a href="/2019/09/02/tarjan求有向图的强连通分量/" rel="next" title="tarjan求有向图的强连通分量">
+                <i class="fa fa-chevron-left"></i> tarjan求有向图的强连通分量
               </a>
             
           </div>
@@ -602,10 +508,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/01/差分约束/" rel="prev" title="差分约束">
-                差分约束 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -803,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图的边存储–链式前向星"><span class="nav-number">1.</span> <span class="nav-text">图的边存储–链式前向星</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">1.1.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">1.2.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例"><span class="nav-number">1.3.</span> <span class="nav-text">举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#kuangbin专题一–简单搜索"><span class="nav-number">1.</span> <span class="nav-text">kuangbin专题一–简单搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目列表"><span class="nav-number">1.1.</span> <span class="nav-text">题目列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ1321-棋盘问题"><span class="nav-number">1.2.</span> <span class="nav-text">POJ1321  棋盘问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.2.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ2251-Dungeon-Master"><span class="nav-number">1.3.</span> <span class="nav-text">POJ2251  Dungeon Master</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[kuangbin专题一--简单搜索]]></title>
+    <url>%2F2019%2F09%2F19%2Fkuangbin%E4%B8%93%E9%A2%98%E4%B8%80-%E7%AE%80%E5%8D%95%E6%90%9C%E7%B4%A2%2F</url>
+    <content type="text"><![CDATA[kuangbin专题一–简单搜索tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁 题目列表 POJ 1321 棋盘问题==AC: 2018-07-17 23:54:31== POJ 2251 Dungeon Master==AC: 2019-09-19 18:32:04== POJ 3278 Catch That Cow POJ 3279 Fliptile POJ 1426 Find The Multiple POJ 3126 Prime Path POJ 3087 Shuffle’m Up POJ 3414 Pots FZU 2150 Fire Game UVA 11624 Fire! POJ 3984 迷宫问题 HDU 1241 Oil Deposits HDU 1495 非常可乐 HDU 2612 Find a way POJ1321 棋盘问题题意就是在棋盘上放棋子，放的时候不能同行同列，和八皇后问题类似，只不过空白的地方不能放。这是我去年暑假acm训练时写的，现在已经忘了当时咋写的了，看着自己WA了好多发，太菜了。。。dfs时记得复原。 题解dfs吧，没什么可说的，八皇后模板题。好烦啊，POJ不能用万能头文件。。。 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &lt;iostream&gt;//#include &lt;bits/stdc++.h&gt;#include &lt;string.h&gt;typedef long long ll;const int INF = 1 &lt;&lt; 30;const int maxn = 1e5;using namespace std;int n, m, ans;char pan[10][10];bool vis[10];int cnt;void dfs(int l)&#123; if(cnt == m) &#123; ans++; return; &#125; else if(l&gt;=n) return; else &#123; for(int i=0; i&lt;n; i++) if(pan[l][i]=='#' &amp;&amp; !vis[i]) &#123; cnt++; vis[i]=1; dfs(l+1); vis[i]=0; cnt--; &#125; dfs(l+1); &#125; return;&#125;int main()&#123; //ios::sync_with_stdio(0), cin.tie(0); while(cin &gt;&gt;n &gt;&gt;m) &#123; if(n==-1 &amp;&amp; m==-1) break; memset(vis, 0, sizeof(vis)); for(int i=0; i&lt;n; i++) for(int j=0; j&lt;n; j++) cin &gt;&gt;pan[i][j]; ans = cnt = 0; dfs(0); cout &lt;&lt;ans &lt;&lt;endl; &#125; return 0;&#125; POJ2251 Dungeon Master题意一个3D迷宫，总共六个方向，上下左右前后。有的地方不能走有的能走，给出起点终点，问你能不能走到终点，如果能的话应该是求用时最短的吧（题目中没说，一开始用dfsWA了，后来看别人都用bfs才发现是不是要求最短路）。没移动一次要花费一分钟。 题解bfs，一开始用bfs一直内存超限，快给我郁闷死了。。。要把走过的点用#堵上，防止多余的结点入队列。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283#include &lt;iostream&gt;#include &lt;stdio.h&gt;#include &lt;queue&gt;#include &lt;string.h&gt;using namespace std;const int maxn = 31;struct node&#123; int x, y, z, step;&#125;;node make_node(int x, int y, int z, int step)&#123; node a; a.x = x, a.y = y, a.z = z, a.step=step; return a;&#125;int main()&#123; int l, r, c; char mp[maxn][maxn][maxn]; int dx[6]= &#123;1, -1, 0, 0, 0, 0&#125;; int dy[6]= &#123;0, 0, 1, -1, 0, 0&#125;; int dz[6]= &#123;0, 0, 0, 0, 1, -1&#125;; while (cin &gt;&gt;l &gt;&gt;r &gt;&gt;c &amp;&amp; l+r+c) &#123; int x, y, z; queue&lt;node&gt; q; for(int i=0; i&lt;l; i++) &#123; for(int j=0; j&lt;r; j++) for(int k=0; k&lt;c; k++) &#123; cin &gt;&gt;mp[i][j][k]; if(mp[i][j][k]=='S') q.push(make_node(i, j, k, 0)); if(mp[i][j][k]=='E') &#123; x = i; y = j; z = k; &#125; &#125; getchar(); &#125; bool flag = false; while(!q.empty()) &#123; node a = q.front(); q.pop(); if(a.x==x &amp;&amp; a.y==y &amp;&amp; a.z==z) &#123; flag = true; cout &lt;&lt;"Escaped in "&lt;&lt;a.step &lt;&lt;" minute(s)." &lt;&lt;endl; break; &#125; for (int i = 0; i &lt; 6; ++i) &#123; if(mp[a.x+dx[i]][a.y+dy[i]][a.z+dz[i]]!='#') if(a.x+dx[i]&gt;=0 &amp;&amp; a.x+dx[i]&lt;l &amp;&amp; a.y+dy[i]&gt;=0 &amp;&amp; a.y+dy[i]&lt;r &amp;&amp; a.z+dz[i]&gt;=0 &amp;&amp; a.z+dz[i]&lt;c) &#123; q.push(make_node(a.x+dx[i], a.y+dy[i], a.z+dz[i], a.step+1)); mp[a.x+dx[i]][a.y+dy[i]][a.z+dz[i]] = '#'; &#125; &#125; &#125; if(flag) continue; else cout &lt;&lt;"Trapped!" &lt;&lt;endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>刷题</category>
+      </categories>
+      <tags>
+        <tag>搜索</tag>
+        <tag>ACM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[tarjan求有向图的强连通分量]]></title>
     <url>%2F2019%2F09%2F02%2Ftarjan%E6%B1%82%E6%9C%89%E5%90%91%E5%9B%BE%E7%9A%84%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F%2F</url>
     <content type="text"><![CDATA[tarjan求有向图的强连通分量tarjan到底是念“塔进”还是“塔扬”。好像大多数人都念“塔进”，但是英语好像是念“塔扬”。胡扯结束。。。 这个tarjan算法求的是有向图中的强连通分量，并将他们合并。 强连通分量（如果会可以直接看tarjan部分）那什么是强连通分量呢？强连通嘛，就是图中任意两点能相互到达。那强连通分量就是一个图中的强连通子图。 环是最简单的强连通分量： 那你如果从1出发，只要转一圈就能经过所有点。 强连通分量不等于环，还有一些复杂的强连通分量，例如完全图： 很明显能看出从图中一点出发，可到达其他任意一个点。 tarjan算法先上时间复杂度：O(N+M) （其中N和M分别为点数和边数） tarjan算法是通过对图的dfs来找出其中的强连通分量，并分类。（需掌握dfs的思想并且能熟练运用） dfn数组和low数组讲解这里给出tarjan算法中两个重要数组的定义： ​ dfn[u]：表示当前结点i在dfs算法中第几个被访问的的点。 ​ low[u]：表示当前结点i能回溯到的最小dfs序结点，dfs序即dfn[u]的值。 （6-&gt;1的箭头画反了，应该时1-&gt;6） 当从结点1开始dfs时，假设优先向下访问：dfn[1] = 1; dfn[6] = 2;因为第一个访问的时结点1，所以它的dfs序是1，第二个访问的是结点6，所以它的dfs序时2。访问完结点6发现没有路了，则开始访问结点1的下一条出边。 开始访问结点2，刚刚访问的结点6是第二个访问的结点，所以结点2是第三个访问的结点，即它的dfs序为3：dfn[2] = 3; dfn[5] = 4; dfn[4] = 5; dfn[3] = 6;我们顺着结点2依次访问下去，发现只有一条路，畅通无阻。 当访问到结点三的时候我们发现结点3有一条通向结点2的路，则此时我们称结点3回溯到结点2。我们还发现dfn[2]&lt;dfn[3]，即结点2在dfs中比结点3先被访问。此时我们在dfs回溯的过程中令：low[3] = dfn[2]; low[4] = dfn[2]; low[5] = dfn[2];即令回溯路上的所有点的low数组都赋值为结点2的dfs序。 由此我们经历了一遍tarjan的简化步骤，我们能发现low数组的取值为： 12345low[u] = min( dfn[u],//1. dfn[v],//2. low[v]//3.) low数组初始化时为当前结点的dfs序，即low[u] = dfn[u]; 这里的v是边（u, v）中的v，和上图中边（3, 2）类似。当发现能回溯到的结点dfs序小于自身dfs序时更新low的值 这里的（u, v）和上图中的（4, 3）类似。dfs回溯过程中时发现前面结点的low值小于自身的low值时，更新自身low值 从图中可看出2， 5， 4， 3四个结点为一个环，环是最简单的强连通分量，所以2， 5， 4， 3为一个强连通分量。而单独一个结点我们也将他看成一个强连通分量，因此图中有三个强连通分量：（1）（6）（2，4，5，3） 从中我们观察出1， 6， 2的dfn值和low值相同，所以当dfn[u]==low[u]时，它就是一个强连通分量在dfs树中的起始节点 tarjan算法伪代码讲解12345678910111213141516tarjan(u)&#123; DFN[u]=Low[u]=++Index//1. Stack.push(u)//2. for each (u, v) in E//3. if (v is not visted)//4. tarjan(v)//dfs Low[u] = min(Low[u], Low[v]) else if (v in S)//5. Low[u] = min(Low[u], DFN[v]) if (DFN[u] == Low[u])//6. repeat v = S.pop//7. print v until (u== v)&#125; 为结点u初始化dfn和low的值为dfs时的访问顺序，index为全局变量 将结点u压入栈中 遍历结点u的每一条边 如果没访问过 如果v在栈中 上面讲过，当dfn[u]==low[u]时，该节点为强连通分量根结点 将栈顶元素出栈，直到栈顶元素为u时，u出栈，则此次出栈的一系列元素为一个强连通分量 （6-&gt;1的箭头画反了，应该时1-&gt;6） 从结点1开始：dfn[1] = low[1] = 1; 结点1进栈 1-&gt;6：dfn[6] = low[6] = 2; 结点6进栈结点6没有出边，无法dfs，发现dfn[6]==low[6]，栈顶元素出栈，栈顶元素正好时结点6，无需继续出栈，则结点6自己为一个单独的强联通分量。 1-&gt;2：dfn[2] = low[2] = 3；结点2进栈结点2有出边且为访问，开始dfs。 2-&gt;5：dfn[5] = low[5] = 4；结点5进栈结点5有出边且未访问，继续dfs 5-&gt;4：dfn[4] = low[4] = 5；结点4进栈结点4有未访问的出边，继续dfs 4-&gt;3：dfn[3] = low[3] = 6；结点3进栈结点3有出边，但结点2已经访问过了，且结点2在栈里面，所以3可以回溯到结点2，可知dfn[2]=3, low[3]=6; 所以low[3] = dfn[2] = 3; 此时dfn[3]!=low[3]，所以不出栈。 当dfs回溯到5-&gt;4的时候，发现(low[4]=5) &gt; (low[3]=3)，所以low[4] = 3; 依此类推low[5]=3;且直到dfs回溯到结点2的时候才会进行出栈操作，因为2时强连通分量的根节点。 不难看出，依次出栈的时3、4、5、2，这四个结点为一个强连通分量 最后dfs回溯到最开始的入口，结点1出栈 由此的强连通分量有3个，分别是：（1）、（6）、（3，4，5，2） tarjan算法模板链式前向星模板1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859struct Edge&#123; int net; int to; int w;&#125;edge[maxn];int head[maxn], cnt=0;//1.void add_dege(int u, int v, int w)&#123; edge[cnt].to = v; edge[cnt].net = head[u]; edge[cnt].w = w; head[u] = cnt++;&#125;int dfn[maxn], low[maxn], belong[maxn];//2.int index=0, Bcnt;//3.bool instack[maxn];stack&lt;int&gt; s;void tarjan(int u)&#123; dfn[u] = low[u] = ++index; s.push(u);instack[u] = true; for(int i=head[u]; i!=-1; i=edge[i].net) &#123; int v = edge[i].to; if(!dfn[v]) &#123; tarjan(v); low[u] = min(low[v], low[u]); &#125; else if(instack[v] &amp;&amp; dfn[v]&lt;low[u]) low[u] = dfn[v]; &#125; if(dfn[u]==low[u]) &#123; Bcnt++;int v; do &#123; v = s.top(); s.pop(); belong[v] = Bcnt; instack[v] = false; &#125;while(v!=u); &#125;&#125;void solve()&#123; Bcnt = index = 0; memset(dfn, 0, sizeof dfn); while(!s.empty())s.pop(); for(int i=0; i&lt;n; i++)//4. if(!dfn[i])//5. tarjan(i);&#125; head[u]记得初始化，初始化为-1。 belong数组值相同的结点属于同一个强连通分量。 Bcnt用于划分强连通分量 要从每个结点都进行一次tarjan，否则有些不可达结点就无法划分强联通分量，n为结点数 dfn数组初始化为0，当dfn[u]的值不为0的时候则说明被访问过了 邻接矩阵模板12345678910111213141516171819202122232425262728293031323334353637383940414243444546int mp[maxn][maxn];//1.int dfn[maxn], low[maxn], belong[maxn];int index=0, Bcnt;bool instack[maxn];stack&lt;int&gt; s;void tarjan(int u)&#123; dfn[u] = low[u] = ++index; s.push(u);instack[u] = true; for(int v=0; v&lt;n; v++)//2. &#123; if(mp[u][v]==-1) continue; if(!dfn[v]) &#123; tarjan(v); low[u] = min(low[v], low[u]); &#125; else if(instack[v] &amp;&amp; dfn[v]&lt;low[u]) low[u] = dfn[v]; &#125; if(dfn[u]==low[u]) &#123; Bcnt++; int v; do &#123; v = s.top(); s.pop(); belong[v] = Bcnt; instack[v] = false; &#125;while(v!=u); &#125;&#125;void solve()&#123; Bcnt = index = 0; memset(dfn, 0, sizeof dfn); while(!s.empty())s.pop(); for(int i=0; i&lt;n; i++) if(!dfn[i]) tarjan(i);&#125; 邻接矩阵，当值为-1时表示不连通 n为结点数 邻接表模板1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253vector&lt;pair&lt;int, int&gt; &gt; G[maxn];//1.int dfn[maxn], low[maxn], belong[maxn];int index=0, Bcnt;bool instack[maxn];stack&lt;int&gt; s;void add_eage(int u, int v, int w)&#123; G[u].push_back(make_pair(w, v)); //G[v].push_back(make_pair(w, u));&#125;void tarjan(int u)&#123; dfn[u] = low[u] = ++index; s.push(u);instack[u] = true; for(int i=0; i&lt;G[u].size(); i++) &#123; int v = G[u][i].second; if(!dfn[v]) &#123; tarjan(v); low[u] = min(low[v], low[u]); &#125; else if(instack[v] &amp;&amp; dfn[v]&lt;low[u]) low[u] = dfn[v]; &#125; if(dfn[u]==low[u]) &#123; Bcnt++; int v; do &#123; v = s.top(); s.pop(); belong[v] = Bcnt; instack[v] = false; &#125;while(v!=u); &#125;&#125;void solve()&#123; for(int i=0; i&lt;n; i++)//2. G[i].clear(); Bcnt = index = 0; memset(dfn, 0, sizeof dfn); while(!s.empty())s.pop(); for(int i=0; i&lt;n; i++) if(!dfn[i]) tarjan(i);&#125; 用vector和pair实现邻接表，pair的first为路径权重，pair的second为另一端结点 初始化邻接表 例题HDU1269题意：给你一个图，让你判断这个图是不是一整个强连通分量 题解：没什么可说的，tarjan模板题。需要注意的是有的能给的图只有点没有边，所以结束条件需要时m和n同时为0时才行。代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 1e5+10;struct Edge&#123; int to, net;&#125;edge[maxn];int head[maxn], cnt=0;int dfn[maxn], low[maxn], index, Bcnt, n, m, belong[maxn];bool instack[maxn];stack&lt;int&gt; s;void addedge(int u, int v)&#123; edge[cnt].to = v; edge[cnt].net = head[u]; head[u] = cnt++;&#125;void init()&#123; cnt = index = Bcnt = 0; memset(dfn, 0, sizeof dfn); memset(low, 0, sizeof low); memset(head, -1, sizeof head); memset(instack, 0, sizeof instack); memset(belong, 0, sizeof belong); while(!s.empty())s.pop();&#125;void tarjan(int u)&#123; dfn[u] = low[u] = ++index; instack[u] = true; s.push(u); int v; for(int i = head[u]; i!=-1; i=edge[i].net) &#123; v = edge[i].to; if(!dfn[v]) &#123; tarjan(v); if(low[v]&lt;low[u]) low[u] = low[v]; &#125; else if(instack[v] &amp;&amp; dfn[v]&lt;low[u]) low[u] = dfn[v]; &#125; if(dfn[u]==low[u]) &#123; Bcnt++; do &#123; v = s.top(); s.pop(); belong[v] = Bcnt; instack[v] = false; &#125;while(u!=v); &#125;&#125;int main()&#123; while(cin &gt;&gt;n &gt;&gt;m &amp;&amp; n+m) &#123; init(); for(int i=0; i&lt;m; i++) &#123; int u, v; cin &gt;&gt;u &gt;&gt;v; addedge(u, v); &#125; for(int i=1; i&lt;=n; i++) if(!dfn[i]) tarjan(i); int flag = belong[1]; bool f = true; for(int i=1; i&lt;=n; i++) if(belong[i]!=flag) f = false; if(!f) cout &lt;&lt;"No" &lt;&lt;endl; else cout &lt;&lt;"Yes" &lt;&lt;endl; &#125; return 0;&#125; HDU1827题意：给你一些人的联系方式，但是这种联系方式时有向的，即x可以联系y不代表y可以联系到x，其实就是有向图。也给出你联系每个人的花费，如果可以让别人帮忙联系，就可以不需要花费话费。求最少需要联系多少人和花费多少话费。 题解：这道题没有那么直接，但是也能看出和强连通分量有关。这道题要求的是没有入边的强连通分量的个数，并且求出这些没有入边的强联通分量中花费最小的人。为什么是没有入边的强连通分量而不是强连通分量，因为有如入边的强联通分量可以被其他人通知到，就不需要你再亲自通知了。（一开始我理解成强连通分量的个数了(&gt;_&lt;) ）这题要用scnaf和printf，不能用cin和cout，数据量大，会超时。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113#include &lt;bits/stdc++.h&gt;using namespace std;const int maxn = 1e4+10;const int INF = 1&lt;&lt;30;struct Edge&#123; int to, net;&#125; edge[maxn];int head[maxn], cnt=0;int dfn[maxn], low[maxn], index, Bcnt, n, m, belong[maxn], fee[maxn], cost[maxn], ans;bool instack[maxn], in[maxn];//1.stack&lt;int&gt; s;void addedge(int u, int v)&#123; edge[cnt].to = v; edge[cnt].net = head[u]; head[u] = cnt++;&#125;void init()&#123; cnt = index = ans = Bcnt = 0; memset(dfn, 0, sizeof dfn); memset(low, 0, sizeof low); memset(head, -1, sizeof head); memset(instack, 0, sizeof instack); memset(belong, 0, sizeof belong); memset(in, 0, sizeof in); for(int i=0; i&lt;maxn; i++) cost[i]=INF; memset(fee, 0, sizeof fee); while(!s.empty()) s.pop();&#125;void tarjan(int u)&#123; dfn[u] = low[u] = ++index; instack[u] = true; s.push(u); int v; for(int i = head[u]; i!=-1; i=edge[i].net) &#123; v = edge[i].to; if(!dfn[v]) &#123; tarjan(v); if(low[v]&lt;low[u]) low[u] = low[v]; &#125; else if(instack[v] &amp;&amp; dfn[v]&lt;low[u]) low[u] = dfn[v]; &#125; if(dfn[u]==low[u]) &#123; Bcnt++; do &#123; v = s.top(); s.pop(); belong[v] = Bcnt; instack[v] = false; &#125; while(u!=v); &#125;&#125;int main()&#123; while(scanf("%d%d", &amp;n, &amp;m) != EOF) &#123; init(); for(int i=1; i&lt;=n; i++) scanf("%d", &amp;fee[i]); for(int i=0; i&lt;m; i++) &#123; int u, v; scanf("%d%d", &amp;u, &amp;v); addedge(u, v); &#125; for(int i=1; i&lt;=n; i++) if(!dfn[i]) tarjan(i); int cnt=Bcnt; for(int i=1; i&lt;=n; i++)//2. for(int j=head[i]; j!=-1; j=edge[j].net) if(belong[i]!=belong[edge[j].to] &amp;&amp; !in[belong[edge[j].to]]) &#123; in[belong[edge[j].to]] = true; cnt--; &#125; for(int i=1; i&lt;=n; i++)//3. if(!in[belong[i]]) cost[belong[i]] = min(cost[belong[i]], fee[i]); for(int i=1; i&lt;=Bcnt; i++) if(!in[i]) ans+=cost[i]; printf("%d %d\n", cnt, ans); &#125; return 0;&#125; in数组表示该强连通分量是否有入边，为true则有，false则没有。 这个for循环求出有入边的强连通分量，即看看每个点的入边是否和自己在同一个强连通分量中即可。cnt为没有入边的个数。 求出没有入边的强连通分量中的最小花费，cost[i]代表第i个强连通分量的花费 参考： BYVoid有向图强连通分量的tarjan算法]]></content>
@@ -8,8 +20,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>ACM</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -20,8 +32,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>ACM</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -32,8 +44,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>ACM</tag>
+        <tag>图论</tag>
         <tag>图的存储</tag>
       </tags>
   </entry>
@@ -45,8 +57,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>ACM</tag>
+        <tag>图论</tag>
         <tag>最短路</tag>
       </tags>
   </entry>
@@ -58,8 +70,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>ACM</tag>
+        <tag>图论</tag>
         <tag>最短路</tag>
       </tags>
   </entry>
@@ -71,8 +83,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>ACM</tag>
+        <tag>图论</tag>
         <tag>最短路</tag>
       </tags>
   </entry>
@@ -84,8 +96,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>图论</tag>
         <tag>ACM</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
