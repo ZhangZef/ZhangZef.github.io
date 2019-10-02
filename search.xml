@@ -4,6 +4,13 @@
     <title><![CDATA[Spring boot]]></title>
     <url>%2F2019%2F10%2F02%2FSpring-boot%2F</url>
     <content type="text"><![CDATA[一、Spring Boot0、前导内容（看了尚硅谷的视频看了几集才发现需要学前导内容，先滚去看Spring和Maven了，笔记回来再更新） 需要先掌握： Spring框架的使用经验 熟练使用Maven进行项目构建和依赖管理 熟练使用Eclipse或者IDEA 1、Spring Boot 简介 简化Spring应用开发的一个框架 整个Spring技术栈的一个大整合 JavaEE开发的一站式解决方案 2、微服务微服务：架构风格 一个应用应该是一组小型服务；可以通过HTTP的方式进行沟通 每一个功能元素最终都是一个可独立替换和独立升级的软件单元 微服务文档：英文原版 简体中文]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+        <tag>框架</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[记--20190923]]></title>

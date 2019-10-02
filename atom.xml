@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-02T09:14:25.520Z</updated>
+  <updated>2019-10-02T09:19:49.122Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/10/02/Spring-boot/"/>
     <id>http://yoursite.com/2019/10/02/Spring-boot/</id>
     <published>2019-10-02T09:12:34.000Z</published>
-    <updated>2019-10-02T09:14:25.520Z</updated>
+    <updated>2019-10-02T09:19:49.122Z</updated>
     
     <content type="html"><![CDATA[<h1 id="一、Spring-Boot"><a href="#一、Spring-Boot" class="headerlink" title="一、Spring Boot"></a>一、Spring Boot</h1><h2 id="0、前导内容"><a href="#0、前导内容" class="headerlink" title="0、前导内容"></a>0、前导内容</h2><p>（看了尚硅谷的视频看了几集才发现需要学前导内容，先滚去看Spring和Maven了，笔记回来再更新）</p><p>需要先掌握：</p><ul><li>Spring框架的使用经验</li><li>熟练使用Maven进行项目构建和依赖管理</li><li>熟练使用Eclipse或者IDEA</li></ul><h2 id="1、Spring-Boot-简介"><a href="#1、Spring-Boot-简介" class="headerlink" title="1、Spring Boot 简介"></a>1、Spring Boot 简介</h2><blockquote><p>  简化Spring应用开发的一个框架</p><p>  整个Spring技术栈的一个大整合</p><p>  JavaEE开发的一站式解决方案</p></blockquote><h2 id="2、微服务"><a href="#2、微服务" class="headerlink" title="2、微服务"></a>2、微服务</h2><p>微服务：架构风格</p><p>一个应用应该是一组小型服务；可以通过HTTP的方式进行沟通</p><p>每一个功能元素最终都是一个可独立替换和独立升级的软件单元</p><p>微服务文档：<a href="https://martinfowler.com/articles/microservices.html#microservicesAndSoa" target="_blank" rel="noopener">英文原版</a>  <a href="http://blog.cuicc.com/blog/2015/07/22/microservices/" target="_blank" rel="noopener">简体中文</a> </p>]]></content>
     
@@ -34,6 +34,12 @@
     
     </summary>
     
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
     
   </entry>
   
