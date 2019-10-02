@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/10/02/Spring--%E4%B8%80%E3%80%81Spring%E6%A6%82%E8%BF%B0%E5%8F%8ASpring%E4%B8%AD%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-10-02T13:22:59.167Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/10/02/Spring-boot/</loc>
     
     <lastmod>2019-10-02T09:19:49.122Z</lastmod>
