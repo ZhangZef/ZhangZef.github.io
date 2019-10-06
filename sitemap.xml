@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/10/04/Spring--%E4%BA%8C%E3%80%81Spring%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E5%8F%8AIOC%E7%9A%84%E6%A1%88%E4%BE%8B/</loc>
+    <loc>http://yoursite.com/2019/10/06/Maven/</loc>
     
-    <lastmod>2019-10-04T13:34:26.061Z</lastmod>
+    <lastmod>2019-10-06T10:19:50.114Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/10/02/Spring--%E4%B8%80%E3%80%81Spring%E6%A6%82%E8%BF%B0%E5%8F%8ASpring%E4%B8%AD%E5%9F%BA%E4%BA%8EXML%E7%9A%84IOC%E9%85%8D%E7%BD%AE/</loc>
     
-    <lastmod>2019-10-04T04:34:15.393Z</lastmod>
+    <lastmod>2019-10-06T10:19:45.436Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/04/Spring--%E4%BA%8C%E3%80%81Spring%E5%9F%BA%E4%BA%8E%E6%B3%A8%E8%A7%A3%E7%9A%84IOC%E5%8F%8AIOC%E7%9A%84%E6%A1%88%E4%BE%8B/</loc>
+    
+    <lastmod>2019-10-06T10:17:48.420Z</lastmod>
     
   </url>
   
