@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/10/07/《现代操作系统（第四版）》-课后习题答案-第一章/TIM截图20191008170610.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/07/《现代操作系统（第四版）》-课后习题答案-第一章/IMG_20191009_002644.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/10/07/《现代操作系统（第四版）》-课后习题答案-第一章/IMG_20191009_181417.jpg">
-<meta property="og:updated_time" content="2019-10-09T10:17:11.731Z">
+<meta property="og:updated_time" content="2019-10-14T12:56:56.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《现代操作系统（第四版）》 课后习题答案--第一章">
 <meta name="twitter:description" content="《现代操作系统（第四版）》 课后习题答案–第一章自己写的，可能会有错误，望大家指正。 第一题   操作系统的两大主要作用是什么？（Page. 1）  解：  为用户程序提供一个更好、更简单、更清晰的计算机模型。 管理cpu、主存、磁盘、打印机、键盘、鼠标、显示器、网络接口等设备。  第二题   在1.4节中描述了9中不同类型的操作系统，列举每种操作系统的应用（每种系统一种应用）。（Page. 20">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-09T18:17:11+08:00">
-                2019-10-09
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-14T20:56:56+08:00">
+                2019-10-14
               </time>
             
           </span>
@@ -691,12 +691,44 @@
 </blockquote>
 <p>解：</p>
 <ul>
-<li>link：</li>
-<li>mount：</li>
-<li>unmount：</li>
-<li>chmod：</li>
-<li>kill：</li>
+<li>link：在win32中文件将不能以另一个名字出现在其他目录中</li>
+<li>mount和unmount：在win32中不能合并两个文件系统，也就必须分清楚哪些文件是在哪个驱动器上面。</li>
+<li>chmod：在Win32中不能灵活改变文件的保护属性</li>
+<li>kill：在Win32中不能杀死失常的程序</li>
 </ul>
+<h2 id="第三十题"><a href="#第三十题" class="headerlink" title="第三十题"></a>第三十题</h2><blockquote>
+<p>  可移植的操作系统是能从一个系统体系结构到另一个体系结构的移动不需要任何修改的操作系统。请解释为什么建立一个完全可移植性的操作系统是不可行的。描述一下在设计一个髙度可移植的操作系统时你设计的两个高级层是什么样的。</p>
+</blockquote>
+<p>解：</p>
+<ol>
+<li>因为不同的硬件往往都有着自己独有的指令集，而某些硬件专用于实现一些功能，不同功能的指令集往往各不相同。即使功能相同的硬件指令集也不尽相同。</li>
+<li>应该有一个用于屏蔽硬件细节吧，类似于计算机网络中的物理层。另一个不知道。。。（什么鬼问题，我对操作系统还不了解了，上来问这种劝退问题）</li>
+</ol>
+<h2 id="第三十一题"><a href="#第三十一题" class="headerlink" title="第三十一题"></a>第三十一题</h2><blockquote>
+<p>  请解释在建立基于微内核的操作系统时策略与机制的分离带来的好处。</p>
+</blockquote>
+<p>解：</p>
+<p>让内核体积更小，将复杂的策略实现交给用户态，使内核做的事情更加专一，效率更高。</p>
+<h2 id="第三十二题"><a href="#第三十二题" class="headerlink" title="第三十二题"></a>第三十二题</h2><blockquote>
+<p>  虚拟机由于很多因素而十分流行，然而他们也有一些缺点，给出一个缺点。</p>
+</blockquote>
+<p>解：</p>
+<p>虚拟机建立在宿主操作系统之上，会给处理器和内存带来很大的开销来使虚拟机看似和宿主操作系统相同。</p>
+<h2 id="第三十三题"><a href="#第三十三题" class="headerlink" title="第三十三题"></a>第三十三题</h2><blockquote>
+<p>  下面是单位转换的练习：</p>
+<p>  a)一微年是多少秒？</p>
+<p>  b)微米常称为micron。那么gigamicron是多长？</p>
+<p>  c) 1TB存储器中有多少字节？</p>
+<p>  d)地球的质量是6000 yottagram, 换算成kilogram是多少？</p>
+</blockquote>
+<p>解：</p>
+<ul>
+<li>0.000001×365×24×3600 = 31.536s</li>
+<li>1000000000×0.000001 = 1000m</li>
+<li>2^40字节</li>
+<li>6×10^21 kg</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://blog.csdn.net/qq475703980/article/details/82534394" target="_blank" rel="noopener">《现代操作系统（中文第四版）》课后习题答案 第一章 引论</a></p>
 
       
     </div>
@@ -1015,7 +1047,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#《现代操作系统（第四版）》-课后习题答案–第一章"><span class="nav-number">1.</span> <span class="nav-text">《现代操作系统（第四版）》 课后习题答案–第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一题"><span class="nav-number">1.1.</span> <span class="nav-text">第一题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二题"><span class="nav-number">1.2.</span> <span class="nav-text">第二题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三题"><span class="nav-number">1.3.</span> <span class="nav-text">第三题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四题"><span class="nav-number">1.4.</span> <span class="nav-text">第四题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五题"><span class="nav-number">1.5.</span> <span class="nav-text">第五题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六题"><span class="nav-number">1.6.</span> <span class="nav-text">第六题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七题"><span class="nav-number">1.7.</span> <span class="nav-text">第七题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八题"><span class="nav-number">1.8.</span> <span class="nav-text">第八题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九题"><span class="nav-number">1.9.</span> <span class="nav-text">第九题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十题"><span class="nav-number">1.10.</span> <span class="nav-text">第十题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.11.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十一题"><span class="nav-number">1.12.</span> <span class="nav-text">第十一题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十二题"><span class="nav-number">1.13.</span> <span class="nav-text">第十二题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十三题"><span class="nav-number">1.14.</span> <span class="nav-text">第十三题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十四题"><span class="nav-number">1.15.</span> <span class="nav-text">第十四题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十五题"><span class="nav-number">1.16.</span> <span class="nav-text">第十五题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十六题"><span class="nav-number">1.17.</span> <span class="nav-text">第十六题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十七题"><span class="nav-number">1.18.</span> <span class="nav-text">第十七题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十八题"><span class="nav-number">1.19.</span> <span class="nav-text">第十八题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十九题"><span class="nav-number">1.20.</span> <span class="nav-text">第十九题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十题"><span class="nav-number">1.21.</span> <span class="nav-text">第二十题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十一题"><span class="nav-number">1.22.</span> <span class="nav-text">第二十一题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十二题"><span class="nav-number">1.23.</span> <span class="nav-text">第二十二题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十三题"><span class="nav-number">1.24.</span> <span class="nav-text">第二十三题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十四题"><span class="nav-number">1.25.</span> <span class="nav-text">第二十四题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十五题"><span class="nav-number">1.26.</span> <span class="nav-text">第二十五题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十六题"><span class="nav-number">1.27.</span> <span class="nav-text">第二十六题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十七题"><span class="nav-number">1.28.</span> <span class="nav-text">第二十七题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十八题"><span class="nav-number">1.29.</span> <span class="nav-text">第二十八题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十九题"><span class="nav-number">1.30.</span> <span class="nav-text">第二十九题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#《现代操作系统（第四版）》-课后习题答案–第一章"><span class="nav-number">1.</span> <span class="nav-text">《现代操作系统（第四版）》 课后习题答案–第一章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一题"><span class="nav-number">1.1.</span> <span class="nav-text">第一题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二题"><span class="nav-number">1.2.</span> <span class="nav-text">第二题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三题"><span class="nav-number">1.3.</span> <span class="nav-text">第三题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四题"><span class="nav-number">1.4.</span> <span class="nav-text">第四题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五题"><span class="nav-number">1.5.</span> <span class="nav-text">第五题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六题"><span class="nav-number">1.6.</span> <span class="nav-text">第六题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七题"><span class="nav-number">1.7.</span> <span class="nav-text">第七题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八题"><span class="nav-number">1.8.</span> <span class="nav-text">第八题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九题"><span class="nav-number">1.9.</span> <span class="nav-text">第九题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十题"><span class="nav-number">1.10.</span> <span class="nav-text">第十题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.11.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十一题"><span class="nav-number">1.12.</span> <span class="nav-text">第十一题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十二题"><span class="nav-number">1.13.</span> <span class="nav-text">第十二题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十三题"><span class="nav-number">1.14.</span> <span class="nav-text">第十三题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十四题"><span class="nav-number">1.15.</span> <span class="nav-text">第十四题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十五题"><span class="nav-number">1.16.</span> <span class="nav-text">第十五题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十六题"><span class="nav-number">1.17.</span> <span class="nav-text">第十六题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十七题"><span class="nav-number">1.18.</span> <span class="nav-text">第十七题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十八题"><span class="nav-number">1.19.</span> <span class="nav-text">第十八题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第十九题"><span class="nav-number">1.20.</span> <span class="nav-text">第十九题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十题"><span class="nav-number">1.21.</span> <span class="nav-text">第二十题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十一题"><span class="nav-number">1.22.</span> <span class="nav-text">第二十一题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十二题"><span class="nav-number">1.23.</span> <span class="nav-text">第二十二题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十三题"><span class="nav-number">1.24.</span> <span class="nav-text">第二十三题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十四题"><span class="nav-number">1.25.</span> <span class="nav-text">第二十四题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十五题"><span class="nav-number">1.26.</span> <span class="nav-text">第二十五题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十六题"><span class="nav-number">1.27.</span> <span class="nav-text">第二十六题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十七题"><span class="nav-number">1.28.</span> <span class="nav-text">第二十七题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十八题"><span class="nav-number">1.29.</span> <span class="nav-text">第二十八题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二十九题"><span class="nav-number">1.30.</span> <span class="nav-text">第二十九题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三十题"><span class="nav-number">1.31.</span> <span class="nav-text">第三十题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三十一题"><span class="nav-number">1.32.</span> <span class="nav-text">第三十一题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三十二题"><span class="nav-number">1.33.</span> <span class="nav-text">第三十二题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三十三题"><span class="nav-number">1.34.</span> <span class="nav-text">第三十三题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
