@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-14T12:56:56.867Z</updated>
+  <updated>2019-10-16T16:27:53.503Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C#杂记</title>
+    <link href="http://yoursite.com/2019/10/16/C#%E6%9D%82%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/10/16/C#杂记/</id>
+    <published>2019-10-16T15:47:08.000Z</published>
+    <updated>2019-10-16T16:27:53.503Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-杂记"><a href="#C-杂记" class="headerlink" title="C#杂记"></a>C#杂记</h1><p>写一些在学C#时不会的一些用法，在百度上搜出来的答案要不没正确的，要不是就是瞎xx说，要不就是说的不清不楚的。</p><h2 id="Wpf"><a href="#Wpf" class="headerlink" title="Wpf"></a>Wpf</h2><h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><h4 id="label标签的内容居中显示"><a href="#label标签的内容居中显示" class="headerlink" title="label标签的内容居中显示"></a>label标签的内容居中显示</h4><p>注意，是内容、内容、内容。。。如图：<img src="/2019/10/16/C#杂记/TIM截图20191016235316.png" alt="TIM截图20191016235316" style="zoom:33%;"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Label Name=&quot;alb&quot; Content=&quot;20&quot; FontSize=&quot;60&quot; Margin=&quot;10,10,-2.333,-12.333&quot; Height=&quot;163&quot; HorizontalContentAlignment=&quot;Center&quot; VerticalContentAlignment=&quot;Center&quot;/&gt;</span><br></pre></td></tr></table></figure><p>是HorizontalContentAlignment和VerticalContentAlignment两个属性，一个是水平居中，一个是垂直居中，也可以设置其他对齐方式。</p><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><h3 id="保留n位小数"><a href="#保留n位小数" class="headerlink" title="保留n位小数"></a>保留n位小数</h3><p>这里以两位小数为例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double x;</span><br><span class="line">x.ToString(&quot;0.00&quot;);</span><br></pre></td></tr></table></figure><p>如代码所示，想保留几位就在小数点后面放几个0。</p><p>或者这样：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">double a = 10.9876544;</span><br><span class="line">int b;</span><br><span class="line">b = Convert.ToInt32(a * 100);</span><br><span class="line">a = Convert.ToDouble(b);</span><br><span class="line">a /= 100;</span><br></pre></td></tr></table></figure><p>就是先将a乘100后转化乘整型，这样它的小数部分就丢弃了，之后再转化成double，再除以100。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-杂记&quot;&gt;&lt;a href=&quot;#C-杂记&quot; class=&quot;headerlink&quot; title=&quot;C#杂记&quot;&gt;&lt;/a&gt;C#杂记&lt;/h1&gt;&lt;p&gt;写一些在学C#时不会的一些用法，在百度上搜出来的答案要不没正确的，要不是就是瞎xx说，要不就是说的不清不楚的。&lt;/p&gt;
+&lt;h
+      
+    
+    </summary>
+    
+      <category term="C#" scheme="http://yoursite.com/categories/C/"/>
+    
+    
+      <category term="C#方法" scheme="http://yoursite.com/tags/C-%E6%96%B9%E6%B3%95/"/>
+    
+      <category term="Wpf" scheme="http://yoursite.com/tags/Wpf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git教程</title>
+    <link href="http://yoursite.com/2019/10/15/Git%E6%95%99%E7%A8%8B/"/>
+    <id>http://yoursite.com/2019/10/15/Git教程/</id>
+    <published>2019-10-15T14:53:37.000Z</published>
+    <updated>2019-10-15T15:56:41.516Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Git教程"><a href="#Git教程" class="headerlink" title="Git教程"></a>Git教程</h1><blockquote><p>  本教程参考<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的Git教程</a></p></blockquote><p>Git是一个分布式版本控制系统</p><h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>安装过程请自行百度👀</p><p>安装之后要在命令行中设置自己的用户名和邮箱，需要在命令行中输入如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name&quot;</span><br><span class="line">git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure><h2 id="版本库-repository"><a href="#版本库-repository" class="headerlink" title="版本库(repository)"></a>版本库(repository)</h2><p>版本库：你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p><p>创建版本库很简单，即用git打开一个空文件夹，输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init//初始化一个仓库</span><br></pre></td></tr></table></figure><p>要想将文件添加到仓库中，需要分两步</p><p>第一步先把文件放到仓库目录或子目录中，然后输入如下命令(例如文件名为：readme.txt)：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt//将readme.txt文件添加到仓库中</span><br></pre></td></tr></table></figure><p>第二步需要用git commit提交到仓库</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;wrote a readme file&quot;//将修改提交到仓库并说明</span><br></pre></td></tr></table></figure><p>其中- m “xxx”是对本次提交的说明，等同于注释，有助于别人对你提交的理解。</p><h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>查看当前仓库的状态(例如什么文件被修改了)：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure><p>若想查看哪个文件具体修改了什么，可以用如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff readme.txt//查看readme.txt文件具体修改了什么内容</span><br></pre></td></tr></table></figure><h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>版本退回有如下几个命令用于查看历史：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log//1.</span><br><span class="line">git log --pretty=oneline//2.</span><br><span class="line">git reflog//3.</span><br></pre></td></tr></table></figure><ol><li>查看详细历史提交记录(包括commit_id、作者、日期、提交注释)，确定要退回哪个版本，每个版本都有一个commit_id</li><li>可以让每个版本只输出一行，简化输出信息(只显示commit_id和提交注释)</li><li>查看历史命令</li></ol><p>版本退回命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^//1.</span><br></pre></td></tr></table></figure><ol><li>退回到当前版本的上一个版本，如果想退回上上一个版本就是… HEAD^^，前一百个版本可以用HEAD~100表示。–hard参数暂不讲解。这里的HEAD^也可以替换为想要退回版本的commit_id，由于commit_id很长，只用写前几位能区别于别的版本就行。</li></ol><blockquote><p>  例：</p><p>  ​       1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -&gt; master) append GPL</p><p>  ​       e475afc93c209a690c39c13a46716e8fa000c366 add distributed</p><p>  ​       eaadf4e385e865d25c48e7ca9c8395c3f7dfaef0 wrote a readme file</p><p>  这是我当前有的版本，我想回到add distributed版本，我可以再commit_id处填写”HEAD^”或者”e4751fc”</p></blockquote><p>带有(HEAD -&gt; master)的即为当前版本</p><p>当退回某一个版本之后再用git log就不能看到原来版本的commit_id了，此时可以用git reflog来查看历史命令，找到commit_id</p><h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p>工作区就是我们创建的仓库文件夹。工作区有一个隐藏文件夹是.git，这里是版本库。版本库里面有一个<strong>stage</strong>（或index）叫暂存区，还有一个git自动创建的<strong>master</strong>分支，以及指向master分支的指针<strong>HEAD</strong> 。</p><p>当我们git add时是把文件提交到stage中，git commit时是把stage中的所有修改一次性提交到分支中</p><p><img src="/2019/10/15/Git教程/1571154124471.png" alt="1571154124471" style="zoom:67%;"></p><p>当你commit过之后，没有对工作区的文件进行修改，那么版本库就变成这样：</p><p><img src="/2019/10/15/Git教程/1571154156433.png" alt="1571154156433" style="zoom:67%;"></p><h3 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h3><p>Git管理的是修改而非文件</p><p>当你对文件readme.txt进行如下操作时：第一次修改readme.txt-&gt;git add-&gt;第二次修改readme.txt-&gt;git commit。会发现master中的readme.txt文件是第一次修改过的而非第二此修改过的。</p><p>如果想让master中的readme.txt文件是第二次修改的：第一次修改readme.txt-&gt;git add(有没有都行)-&gt;第二次修改readme.txt-&gt;git add-&gt;git commit</p><h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>例如撤销对readme.txt文件的修改：</p><h4 id="当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时"><a href="#当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时" class="headerlink" title="当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时"></a>当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt//1.</span><br></pre></td></tr></table></figure><ol><li>把readme.txt文件在工作区的修改全部撤销</li></ol><h4 id="当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改"><a href="#当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改" class="headerlink" title="当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改"></a>当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改</h4><p>在commit之前可以先用git status查看哪个文件被修改了，撤销可用如下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD readme.txt</span><br></pre></td></tr></table></figure><h4 id="已经提交了不合适的修改到版本库时，想要撤销本次提交"><a href="#已经提交了不合适的修改到版本库时，想要撤销本次提交" class="headerlink" title="已经提交了不合适的修改到版本库时，想要撤销本次提交"></a>已经提交了不合适的修改到版本库时，想要撤销本次提交</h4><p>直接使用版本退回就好了呀</p><h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>例如删除工作区中的readme.txt文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm test.txt//删除</span><br><span class="line">git commit//提交</span><br></pre></td></tr></table></figure><p>在提交之前如果发现删错了可以用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure><h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Git教程&quot;&gt;&lt;a href=&quot;#Git教程&quot; class=&quot;headerlink&quot; title=&quot;Git教程&quot;&gt;&lt;/a&gt;Git教程&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;  本教程参考&lt;a href=&quot;https://www.liaoxuefeng.com/w
+      
+    
+    </summary>
+    
+      <category term="Git" scheme="http://yoursite.com/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+      <category term="GitHub" scheme="http://yoursite.com/tags/GitHub/"/>
+    
+      <category term="码云" scheme="http://yoursite.com/tags/%E7%A0%81%E4%BA%91/"/>
+    
+  </entry>
   
   <entry>
     <title>《现代操作系统（第四版）》 课后习题答案--第一章</title>
