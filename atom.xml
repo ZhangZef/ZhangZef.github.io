@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-16T16:27:53.503Z</updated>
+  <updated>2019-10-17T14:00:03.461Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,19 +18,18 @@
   
   <entry>
     <title>C#杂记</title>
-    <link href="http://yoursite.com/2019/10/16/C#%E6%9D%82%E8%AE%B0/"/>
-    <id>http://yoursite.com/2019/10/16/C#杂记/</id>
+    <link href="http://yoursite.com/2019/10/16/C%20Sharp%E6%9D%82%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/10/16/C Sharp杂记/</id>
     <published>2019-10-16T15:47:08.000Z</published>
-    <updated>2019-10-16T16:27:53.503Z</updated>
+    <updated>2019-10-17T14:00:03.461Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="C-杂记"><a href="#C-杂记" class="headerlink" title="C#杂记"></a>C#杂记</h1><p>写一些在学C#时不会的一些用法，在百度上搜出来的答案要不没正确的，要不是就是瞎xx说，要不就是说的不清不楚的。</p><h2 id="Wpf"><a href="#Wpf" class="headerlink" title="Wpf"></a>Wpf</h2><h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><h4 id="label标签的内容居中显示"><a href="#label标签的内容居中显示" class="headerlink" title="label标签的内容居中显示"></a>label标签的内容居中显示</h4><p>注意，是内容、内容、内容。。。如图：<img src="/2019/10/16/C#杂记/TIM截图20191016235316.png" alt="TIM截图20191016235316" style="zoom:33%;"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Label Name=&quot;alb&quot; Content=&quot;20&quot; FontSize=&quot;60&quot; Margin=&quot;10,10,-2.333,-12.333&quot; Height=&quot;163&quot; HorizontalContentAlignment=&quot;Center&quot; VerticalContentAlignment=&quot;Center&quot;/&gt;</span><br></pre></td></tr></table></figure><p>是HorizontalContentAlignment和VerticalContentAlignment两个属性，一个是水平居中，一个是垂直居中，也可以设置其他对齐方式。</p><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><h3 id="保留n位小数"><a href="#保留n位小数" class="headerlink" title="保留n位小数"></a>保留n位小数</h3><p>这里以两位小数为例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double x;</span><br><span class="line">x.ToString(&quot;0.00&quot;);</span><br></pre></td></tr></table></figure><p>如代码所示，想保留几位就在小数点后面放几个0。</p><p>或者这样：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">double a = 10.9876544;</span><br><span class="line">int b;</span><br><span class="line">b = Convert.ToInt32(a * 100);</span><br><span class="line">a = Convert.ToDouble(b);</span><br><span class="line">a /= 100;</span><br></pre></td></tr></table></figure><p>就是先将a乘100后转化乘整型，这样它的小数部分就丢弃了，之后再转化成double，再除以100。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="C-Sharp杂记"><a href="#C-Sharp杂记" class="headerlink" title="C Sharp杂记"></a>C Sharp杂记</h1><p>写一些在学C#时不会的一些用法，在百度上搜出来的答案要不没正确的，要不是就是瞎xx说，要不就是说的不清不楚的。</p><h2 id="Wpf"><a href="#Wpf" class="headerlink" title="Wpf"></a>Wpf</h2><h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><h4 id="label标签的内容居中显示"><a href="#label标签的内容居中显示" class="headerlink" title="label标签的内容居中显示"></a>label标签的内容居中显示</h4><p>注意，是内容、内容、内容。。。如图：<img src="/2019/10/16/C Sharp杂记/TIM截图20191016235316.png" alt="TIM截图20191016235316" style="zoom:33%;"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Label Name=&quot;alb&quot; Content=&quot;20&quot; FontSize=&quot;60&quot; Margin=&quot;10,10,-2.333,-12.333&quot; Height=&quot;163&quot; HorizontalContentAlignment=&quot;Center&quot; VerticalContentAlignment=&quot;Center&quot;/&gt;</span><br></pre></td></tr></table></figure><p>是HorizontalContentAlignment和VerticalContentAlignment两个属性，一个是水平居中，一个是垂直居中，也可以设置其他对齐方式。</p><h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><h3 id="保留n位小数"><a href="#保留n位小数" class="headerlink" title="保留n位小数"></a>保留n位小数</h3><p>这里以两位小数为例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double x;</span><br><span class="line">x.ToString(&quot;0.00&quot;);</span><br></pre></td></tr></table></figure><p>如代码所示，想保留几位就在小数点后面放几个0。</p><p>或者这样：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">double a = 10.9876544;</span><br><span class="line">int b;</span><br><span class="line">b = Convert.ToInt32(a * 100);</span><br><span class="line">a = Convert.ToDouble(b);</span><br><span class="line">a /= 100;</span><br></pre></td></tr></table></figure><p>就是先将a乘100后转化乘整型，这样它的小数部分就丢弃了，之后再转化成double，再除以100。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;C-杂记&quot;&gt;&lt;a href=&quot;#C-杂记&quot; class=&quot;headerlink&quot; title=&quot;C#杂记&quot;&gt;&lt;/a&gt;C#杂记&lt;/h1&gt;&lt;p&gt;写一些在学C#时不会的一些用法，在百度上搜出来的答案要不没正确的，要不是就是瞎xx说，要不就是说的不清不楚的。&lt;/p&gt;
-&lt;h
+        &lt;h1 id=&quot;C-Sharp杂记&quot;&gt;&lt;a href=&quot;#C-Sharp杂记&quot; class=&quot;headerlink&quot; title=&quot;C Sharp杂记&quot;&gt;&lt;/a&gt;C Sharp杂记&lt;/h1&gt;&lt;p&gt;写一些在学C#时不会的一些用法，在百度上搜出来的答案要不没正确的，要不是就是瞎xx说
       
     
     </summary>
