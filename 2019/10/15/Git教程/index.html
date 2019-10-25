@@ -91,7 +91,33 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/1571154124471.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/1571154156433.png">
-<meta property="og:updated_time" content="2019-10-15T15:56:41.516Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM图片20191023233056.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/1571903139993.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/1571907461557.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/0.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/0-1571917859671.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/0-1571918122818.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191024201504.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191024201742.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191024202014.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025103056.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025103326.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025103617.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/123.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025103907.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025104405.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025104558.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025105148.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025175943.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025180219.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025180416.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025181057.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025181609.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025181621-1571998714315.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/23456.png">
+<meta property="og:updated_time" content="2019-10-25T10:27:49.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git教程">
 <meta name="twitter:description" content="Git教程   本教程参考廖雪峰的Git教程  Git是一个分布式版本控制系统 Git安装安装过程请自行百度👀 安装之后要在命令行中设置自己的用户名和邮箱，需要在命令行中输入如下命令： 12git config --global user.name &amp;quot;Your Name&amp;quot;git config --global user.email &amp;quot;email@example.co">
@@ -335,8 +361,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-15T23:56:41+08:00">
-                2019-10-15
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-25T18:27:49+08:00">
+                2019-10-25
               </time>
             
           </span>
@@ -473,7 +499,123 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rm test.txt//删除</span><br><span class="line">git commit//提交</span><br></pre></td></tr></table></figure>
 <p>在提交之前如果发现删错了可以用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p>git是分布式版本控制，同一个git仓库可以分布到不同的机器上面。而拿一个机器来当作服务器，全天24小时开机，其他人久都可以从这台服务器上把仓库克隆到自己的电脑上了，并且可以把各自的提交推送到服务器仓库中，也可以从服务器仓库拉取别人的提交。</p>
+<p>现在我们不需要自己搭建服务器了，我们可以使用GitHub或者码云，但是在国内GitHub速度比较慢。。。下面先以GitHub为例讲解远程仓库。（码云的用法会在后面说到）</p>
+<ol>
+<li><p>创建SSH Key：在用户主目录下看看有没有（<strong>.ssh</strong>）目录，如果有再看看这个目录下有没有（<strong>id_rsa</strong>）和（<strong>id_rsa.pub</strong>）这两个文件，如果都有则可以直接跳到下一步。如果没有，则在用户主目录下用git bash here（Windows）或者用shell（Linux）打开，输入如下命令创建SSH Key：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>这里要把邮箱换成自己的邮箱，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。</p>
+<p>如果一切顺利的话，可以在用户主目录里找到（.<strong>ssh</strong>）目录，里面有（<strong>id_rsa</strong>）和（<strong>id_rsa.pub</strong>）两个文件，这两个就是SSH Key的秘钥对，（<strong>id_rsa</strong>）是私钥，不能泄露出去，（<strong>id_rsa.pub</strong>）是公钥，可以放心地告诉任何人。</p>
+</li>
+<li><p>​    登陆GitHub，打开“Account settings”，“SSH Keys”页面，然后，点“New SSH Key”，填上任意Title，在Key文本框里粘贴（<strong>id_rsa.pub</strong>）文件的内容，然后就可以在SSH keys界面看到你添加的密钥。<img src="/2019/10/15/Git教程/TIM图片20191023233056.png" alt="TIM图片20191023233056" style="zoom: 25%;"></p>
+</li>
+</ol>
+<p>SSH Key用于绑定将你的电脑和GitHub绑定，GitHub是开源仓库，你在上面提交的代码可以被别人看到。</p>
+<h3 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h3><p>先在GitHub创建一个仓库：</p>
+<p><img src="/2019/10/15/Git教程/1571903139993.png" alt="1571903139993" style="zoom: 25%;"></p>
+<p>（这是仓库创建好的样子）我创建了一个名叫test的仓库，刚刚创建的仓库是空的。现在GitHub告诉我们可以从这个仓库克隆出新的仓库，也可以把一个已有的仓库与之关联，然后把本地仓库的内容推送到GitHub仓库。</p>
+<p>我这里是在本地也新建了一个叫test的仓库，并且在仓库根目录创建了一个（<strong>README.md</strong>）的文件。之后根据前面讲过的命令，或者GitHub上面提示的命令将本地test仓库与GitHub上的远程仓库相关联，需要在新建的空文件夹下<strong>依次</strong>运行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;wrote a readme file&quot;	//1.</span><br><span class="line">git remote add origin https://github.com/ZhangZef/test.git	//2.</span><br><span class="line">git push -u origin master	//3.</span><br></pre></td></tr></table></figure>
+<ol>
+<li>这里双引号里面为提交注解，前面讲过</li>
+<li>这里要把网址换成自己的GitHub仓库地址，提示页面中给出了。origin就是远程仓库的名字，在git中默认这样叫，也可以改成别的，不过不推荐，修改不利于以后和别人合作或者自己忘了。</li>
+<li>git push是把当前分支master推送到远程仓库。由于远程库是空的，我们第一次推送时加上<strong>-u</strong>参数，git不但会把本地的master分支内容推送到远程新的master分支，还会把本地master分支和远程master分支关联起来，在以后的推送和拉取时可以简化命令。</li>
+<li>如果已有本地仓库可直接执行后两个命令。</li>
+</ol>
+<p>这是推送成功后的样子：</p>
+<p><img src="/2019/10/15/Git教程/1571907461557.png" alt="1571907461557" style="zoom: 25%;"></p>
+<p>以后只要本地提交过，直接运行：（<strong>git push origin master</strong>）命令就可以提交</p>
+<h3 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a>从远程仓库克隆</h3><p>将远程仓库克隆到本地可以用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ZhangZef/test.git</span><br></pre></td></tr></table></figure>
+<p>注意要把仓库地址换成自己的地址</p>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="创建于合并分支"><a href="#创建于合并分支" class="headerlink" title="创建于合并分支"></a>创建于合并分支</h3><p>在git中，master是主分支。master是指向提交的分支，而HEAD是指向当前分支的指针。</p>
+<p>一开始，master分支是一条线，git用master指向最新提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点，每次提交，master就向前移动一步。</p>
+<p><img src="/2019/10/15/Git教程/0.png" alt="0"></p>
+<p>当我们新建了一个分支dev（自己命名）的时候，git就会新建一个叫dev的指针，指向master相同的提交。再把HEAD指向dev就表示当前分支在dev：</p>
+<p><img src="/2019/10/15/Git教程/0-1571917859671.png" alt="0" style="zoom:67%;"></p>
+<p>从现在开始，你对工作区的修改和提交就是针对dev分支的了，每提交一次，dev分支就向前挪一步：</p>
+<p><img src="/2019/10/15/Git教程/1.png" alt="1" style="zoom:67%;"></p>
+<p>我们要想把dev合并到主分支master上，就是把master指针指向dev的位置就可以了：</p>
+<p><img src="/2019/10/15/Git教程/0-1571918122818.png" alt="0" style="zoom:67%;"></p>
+<p>这时候我们可以把dev分支给删去，他不会修改工作区的任何内容，只会将dev指针删掉：</p>
+<p><img src="/2019/10/15/Git教程/2.png" alt="2" style="zoom:67%;"></p>
+<p>下面来实际进行上述操作，创建并切换分支用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev	//1.</span><br><span class="line">git branch dev	//2.</span><br><span class="line">git checkout dev	//3.</span><br><span class="line">git branch	//4.</span><br></pre></td></tr></table></figure>
+<ol>
+<li>git checkout命令加上-b参数表示创建并切换，dev处可换成你起的分支名</li>
+<li>git branch + name表示创建分支</li>
+<li>切换到分支</li>
+<li>查看当前分支，名字前面带*号的表示当前HEAD指向的分支</li>
+</ol>
+<p>我们创建一个新分支dev，并转向dev分支，并在dev分支中做修改然后提交：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191024201504.png" alt="TIM截图20191024201504" style="zoom: 50%;"></p>
+<p>之后我们将dev的改变合并到master分支上，先将转向master分支，之后用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/10/15/Git教程/TIM截图20191024201742.png" alt="TIM截图20191024201742" style="zoom:50%;"></p>
+<p>注意到上面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。当然，也不是每次合并都能Fast-forward，我们后面会讲其他方式的合并。</p>
+<p>之后我们就可以将dev删除了，之后运行branch命令就看到只有master分支了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d dev</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/10/15/Git教程/TIM截图20191024202014.png" alt="TIM截图20191024202014" style="zoom:50%;"></p>
+<p>还有switch命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git switch -c dev	//1.</span><br><span class="line">git switch master	//2.</span><br></pre></td></tr></table></figure>
+<ol>
+<li>这个也是创先并转向新分支</li>
+<li>这个是转向分支，和checkout用法类似</li>
+</ol>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git branch	//1.</span><br><span class="line">git branch &lt;name&gt;	//2.</span><br><span class="line">git checkout &lt;name&gt;	//3.</span><br><span class="line">git switch &lt;name&gt;	//4.</span><br><span class="line">git checkout -b &lt;name&gt;	//5.</span><br><span class="line">git switch -c &lt;name&gt;	//6.</span><br><span class="line">git merge &lt;name&gt;	//7.</span><br><span class="line">git branch -d &lt;name&gt;	//8.</span><br></pre></td></tr></table></figure>
+<ol>
+<li>查看分支</li>
+<li>创建分支</li>
+<li>转向分支</li>
+<li>转向分支</li>
+<li>创建并转向分支</li>
+<li>创建并转向分支</li>
+<li>合并分支</li>
+<li>删除分支</li>
+</ol>
+<h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>当新建的分支和原来的分支同时向前推进，导致生成了分叉，这时候就发生了冲突，这节要来解决冲突。</p>
+<p>我们先新建一个分支dev，并在dev分支修改文件并提交，这样dev分支就比master分支超前了一个提交：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025103056.png" alt="TIM截图20191025103056" style="zoom:50%;"></p>
+<p>之后我们再切换回master分支，系统就提示我们当前分支比master分支超前了一个分支（我这里显示的超前了两个，不知道咋回事，我就提交了一次。。。）：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025103326.png" alt="TIM截图20191025103326" style="zoom:50%;"></p>
+<p>之后我们再在master修改一次并提交：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025103617.png" alt="TIM截图20191025103617" style="zoom:50%;"></p>
+<p>会发现合并的时候git会提示我们发生冲突（conflict），这时分支的状态是这样的：</p>
+<p><img src="/2019/10/15/Git教程/123.png" alt="123" style="zoom:50%;"></p>
+<p>我们可以用（<strong>git status</strong>）来查看哪些文件发生了冲突：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025103907.png" alt="TIM截图20191025103907" style="zoom:50%;"></p>
+<p>这时git提示我们README.md文件发生了冲突，要我们手动解决冲突，之后我们打开README.md文件查看：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025104405.png" alt="TIM截图20191025104405" style="zoom: 25%;"></p>
+<p>会发现两个分支中的提交分别在文件中提示出来，我们手动修改后再提交即可：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025104558.png" alt="TIM截图20191025104558" style="zoom:50%;"></p>
+<p>这是修改过的文件，我们将修改过的文件提交后可以用如下命令查看分支合并状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025105148.png" alt="TIM截图20191025105148" style="zoom:50%;"></p>
+<p>可以看到我们的分支已经合并完成，这时可以将dev分支删除。</p>
+<h4 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h4><p>git无法自动合并冲突分支，合并后必须手动解决冲突，再提交，用如下命令可以查看分支合并图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --graph</span><br></pre></td></tr></table></figure>
+<h3 id="分支管理策略"><a href="#分支管理策略" class="headerlink" title="分支管理策略"></a>分支管理策略</h3><p>在一般情况，合并分支时git会使用<strong>Fast forward</strong>模式进行合并。在这种模式下删除分支后会丢掉分支信息。</p>
+<h4 id="fast-forward"><a href="#fast-forward" class="headerlink" title="fast forward"></a>fast forward</h4><p>那么什么是fast forward模式呢？假设现在有两个分支，一个是主分支master，另一个是dev分支。</p>
+<blockquote>
+<p>  当我们在dev分支做了一个提交为“new 444444”：<img src="/2019/10/15/Git教程/TIM截图20191025175943.png" alt="TIM截图20191025175943" style="zoom: 33%;">当HEAD指向dev时我们可以看到“new 444444”这次提交，当我们将HEAD指向master时则看不到这个“new 444444”提交：<img src="/2019/10/15/Git教程/TIM截图20191025180219.png" alt="TIM截图20191025180219" style="zoom:33%;"></p>
+<p>  这次我们使用fast forward模式进行合并，合并之后的分支图如图所示：<img src="/2019/10/15/Git教程/TIM截图20191025180416.png" alt="TIM截图20191025180416" style="zoom:33%;">可以看出git将“new 444444”这次提交和master分支强行糅合到了一块儿。</p>
+</blockquote>
+<blockquote>
+<p>  接下来我们来看关闭 fast forward模式的合并是什么样子的，这次我先删除了dev分支，又创建了新的dev分支，以避免和前面的混淆，其他操作类似，这次在dev的提交换成了“new 666666”：<img src="/2019/10/15/Git教程/TIM截图20191025181057.png" alt="TIM截图20191025181057" style="zoom:33%;"></p>
+<p>  可看出这次合并之后git并没有将“new 666666”这次提交和master分支强行糅合在一起。</p>
+</blockquote>
+<p>可用两张图总结一下，第一张为fast forward合并，第二张为非fast forward合并：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025181609.png" alt="TIM截图20191025181609" style="zoom: 50%;"></p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191025181621-1571998714315.png" alt="TIM截图20191025181621" style="zoom:50%;"></p>
+<p>看到廖雪峰老师对fast forward这里讲解的不是很清楚，我对这里也有点迷，就动手实践了一下，唠叨唠叨。关闭fast forward可以避免丢失信息，对以后的代码分析很有用（看网上说的👀），不过fast forward模式确实将一部分信息给抹去了，比如上面第一个图，我们就看不出曾经有过dev的痕迹，而第二张图则可以看出原来有某个分支提交了这个功能。</p>
+<h4 id="分支策略"><a href="#分支策略" class="headerlink" title="分支策略"></a>分支策略</h4><p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
+<p>首先，<code>master</code>分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
+<p>那在哪干活呢？干活都在<code>dev</code>分支上，也就是说，<code>dev</code>分支是不稳定的，到某个时候，比如1.0版本发布时，再把<code>dev</code>分支合并到<code>master</code>上，在<code>master</code>分支发布1.0版本；</p>
+<p>你和你的小伙伴们每个人都在<code>dev</code>分支上干活，每个人都有自己的分支，时不时地往<code>dev</code>分支上合并就可以了。</p>
+<p>所以，团队合作的分支看起来就像这样：</p>
+<p><img src="/2019/10/15/Git教程/23456.png" alt="23456" style="zoom: 67%;"></p>
+<p>如图michael在他自己的分支上工作，bob在他自己的分支上工作，他们每次完成工作都把自己的分支合并到dev分支，当dev分支上的项目稳定下来，则将dev合并到master上。</p>
+
       
     </div>
     
@@ -797,7 +939,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git教程"><span class="nav-number">1.</span> <span class="nav-text">Git教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git安装"><span class="nav-number">1.1.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本库-repository"><span class="nav-number">1.2.</span> <span class="nav-text">版本库(repository)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制"><span class="nav-number">1.3.</span> <span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">1.3.1.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区和暂存区"><span class="nav-number">1.3.2.</span> <span class="nav-text">工作区和暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理修改"><span class="nav-number">1.3.3.</span> <span class="nav-text">管理修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">1.3.4.</span> <span class="nav-text">撤销修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#已经提交了不合适的修改到版本库时，想要撤销本次提交"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">已经提交了不合适的修改到版本库时，想要撤销本次提交</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">1.3.5.</span> <span class="nav-text">删除文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">1.4.</span> <span class="nav-text">远程仓库</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git教程"><span class="nav-number">1.</span> <span class="nav-text">Git教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git安装"><span class="nav-number">1.1.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本库-repository"><span class="nav-number">1.2.</span> <span class="nav-text">版本库(repository)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制"><span class="nav-number">1.3.</span> <span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">1.3.1.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区和暂存区"><span class="nav-number">1.3.2.</span> <span class="nav-text">工作区和暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理修改"><span class="nav-number">1.3.3.</span> <span class="nav-text">管理修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">1.3.4.</span> <span class="nav-text">撤销修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#已经提交了不合适的修改到版本库时，想要撤销本次提交"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">已经提交了不合适的修改到版本库时，想要撤销本次提交</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">1.3.5.</span> <span class="nav-text">删除文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">1.4.</span> <span class="nav-text">远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">1.4.1.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从远程仓库克隆"><span class="nav-number">1.4.2.</span> <span class="nav-text">从远程仓库克隆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理"><span class="nav-number">1.5.</span> <span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建于合并分支"><span class="nav-number">1.5.1.</span> <span class="nav-text">创建于合并分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决冲突"><span class="nav-number">1.5.2.</span> <span class="nav-text">解决冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结-1"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理策略"><span class="nav-number">1.5.3.</span> <span class="nav-text">分支管理策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fast-forward"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">fast forward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支策略"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">分支策略</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
