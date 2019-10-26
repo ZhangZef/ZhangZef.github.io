@@ -117,7 +117,10 @@
 <meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025181609.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191025181621-1571998714315.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/23456.png">
-<meta property="og:updated_time" content="2019-10-25T10:27:49.609Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191026002026.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191026003033.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/15/Git教程/TIM截图20191026005345.png">
+<meta property="og:updated_time" content="2019-10-26T09:19:37.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git教程">
 <meta name="twitter:description" content="Git教程   本教程参考廖雪峰的Git教程  Git是一个分布式版本控制系统 Git安装安装过程请自行百度👀 安装之后要在命令行中设置自己的用户名和邮箱，需要在命令行中输入如下命令： 12git config --global user.name &amp;quot;Your Name&amp;quot;git config --global user.email &amp;quot;email@example.co">
@@ -361,8 +364,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-25T18:27:49+08:00">
-                2019-10-25
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-26T17:19:37+08:00">
+                2019-10-26
               </time>
             
           </span>
@@ -528,7 +531,7 @@
 <h3 id="从远程仓库克隆"><a href="#从远程仓库克隆" class="headerlink" title="从远程仓库克隆"></a>从远程仓库克隆</h3><p>将远程仓库克隆到本地可以用如下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ZhangZef/test.git</span><br></pre></td></tr></table></figure>
 <p>注意要把仓库地址换成自己的地址</p>
-<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="创建于合并分支"><a href="#创建于合并分支" class="headerlink" title="创建于合并分支"></a>创建于合并分支</h3><p>在git中，master是主分支。master是指向提交的分支，而HEAD是指向当前分支的指针。</p>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><h3 id="创建并合并分支"><a href="#创建并合并分支" class="headerlink" title="创建并合并分支"></a>创建并合并分支</h3><p>在git中，master是主分支。master是指向提交的分支，而HEAD是指向当前分支的指针。</p>
 <p>一开始，master分支是一条线，git用master指向最新提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点，每次提交，master就向前移动一步。</p>
 <p><img src="/2019/10/15/Git教程/0.png" alt="0"></p>
 <p>当我们新建了一个分支dev（自己命名）的时候，git就会新建一个叫dev的指针，指向master相同的提交。再把HEAD指向dev就表示当前分支在dev：</p>
@@ -576,7 +579,7 @@
 <h3 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h3><p>当新建的分支和原来的分支同时向前推进，导致生成了分叉，这时候就发生了冲突，这节要来解决冲突。</p>
 <p>我们先新建一个分支dev，并在dev分支修改文件并提交，这样dev分支就比master分支超前了一个提交：</p>
 <p><img src="/2019/10/15/Git教程/TIM截图20191025103056.png" alt="TIM截图20191025103056" style="zoom:50%;"></p>
-<p>之后我们再切换回master分支，系统就提示我们当前分支比master分支超前了一个分支（我这里显示的超前了两个，不知道咋回事，我就提交了一次。。。）：</p>
+<p>之后我们再切换回master分支，系统就提示我们当前分支比master分支超前了一个分支（这里他显示的超前两次，是因为我的master分支修改过之后没有对远程仓库提交，它显示的‘origin/master’意思是远程仓库的master分支）：</p>
 <p><img src="/2019/10/15/Git教程/TIM截图20191025103326.png" alt="TIM截图20191025103326" style="zoom:50%;"></p>
 <p>之后我们再在master修改一次并提交：</p>
 <p><img src="/2019/10/15/Git教程/TIM截图20191025103617.png" alt="TIM截图20191025103617" style="zoom:50%;"></p>
@@ -615,6 +618,73 @@
 <p>所以，团队合作的分支看起来就像这样：</p>
 <p><img src="/2019/10/15/Git教程/23456.png" alt="23456" style="zoom: 67%;"></p>
 <p>如图michael在他自己的分支上工作，bob在他自己的分支上工作，他们每次完成工作都把自己的分支合并到dev分支，当dev分支上的项目稳定下来，则将dev合并到master上。</p>
+<h3 id="Bug分支"><a href="#Bug分支" class="headerlink" title="Bug分支"></a>Bug分支</h3><p>当你正在dev分支中做某项工作时，突然通知让你去修复master分支中的一个非常紧急bug-001，但是你手头的工作一时半会儿也做不完。这时候要先保护工作现场，就像调用函数时，系统会先保护工作现场，将各寄存器中的值压入栈中，再去调用别的函数。</p>
+<p>git也提供了一个保护工作现场的功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
+<p>可以将当前未提交的修改先存起来，以便bug修复完成后恢复现场。恢复现场的命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash list	//1.</span><br><span class="line">git stash apply	//2.</span><br><span class="line">git stash pop	//3.</span><br></pre></td></tr></table></figure>
+<ol>
+<li>这个命令用于查看当前有哪些被保存起来的工作现场，这个list其实是一个栈结构，即后进先出。</li>
+<li>第二条和第三条命令都是恢复工作现场，但是apply不会删除list中的记录，想要删除还要用（<strong>git stash drop</strong>），而pop是应用并删除。</li>
+</ol>
+<p>master分支中存在bug，那么说明dev分支中一定也存在bug。那么怎么方便快捷地修复dev上的bug呢？</p>
+<p>要先再master分支中查看那个bug分支的commit_id（例如是aadbd3d……，取前几位就行），然后转到转到dev分支使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick aadbd3e</span><br></pre></td></tr></table></figure>
+<p>这样就可以将那次bug修复直接合并到dev分支中，不过还需要手动解决冲突并提交。</p>
+<h3 id="Feature分支"><a href="#Feature分支" class="headerlink" title="Feature分支"></a>Feature分支</h3><p>当新开发功能时，肯定不能从master分支中修改。这时候要从dev分支新建一个feature分支来开发新功能，但是当你开发完新功能提交过还<strong>未合并</strong>时又被要求取消这个功能，这时候用（<strong>git branch -d + 分支名</strong>）是删除不了的，因为分支还未合并。git会提示你要用（<strong>-D</strong>）来删除（例如分支名为feature）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D feature</span><br></pre></td></tr></table></figure>
+<h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h3><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。查看远程仓库的信息（第一个是查看信息，第二个是查看详细信息，remote中文翻译是偏僻的、偏远的😁）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/10/15/Git教程/TIM截图20191026002026.png" alt="TIM截图20191026002026" style="zoom: 50%;"></p>
+<h4 id="推送分支"><a href="#推送分支" class="headerlink" title="推送分支"></a>推送分支</h4><p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上（比如说要推送master分支，origin是远程仓库的意思）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
+<ul>
+<li><strong>master</strong>分支是主分支，因此要时刻与远程同步；</li>
+<li><strong>dev</strong>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
+<li>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</li>
+<li>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</li>
+</ul>
+<h4 id="抓取分支"><a href="#抓取分支" class="headerlink" title="抓取分支"></a>抓取分支</h4><p>想要抓取分支，先要获取你的工程在GitHub上的地址，先在GitHub中打开你的工程，之后（这个按钮是将地址信息复制到粘贴板）：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191026003033.png" alt="TIM截图20191026003033" style="zoom:33%;"></p>
+<p>之后使用（<strong>git clone</strong>）命令，例如上图中的工程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ZhangZef/test.git</span><br></pre></td></tr></table></figure>
+<p>但是在GitHub上我的工程有两个分支，一个是master分支，一个是dev分支，当你clone之后使用（<strong>git branch</strong>）命令时会发现只有一个master分支，这时候想将dev分支也抓取下来要用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev origin/dev</span><br></pre></td></tr></table></figure>
+<p>后面带上（<strong>origin/dev</strong>）意思是将本地仓的dev分支和远程仓库的dev分支相关联，以后推送拉取的时候git会自动寻找远程仓库和当前推送拉取分支相关联的分支，如果远程仓库没有关联分支：</p>
+<ul>
+<li>拉取时则会<strong>拉取失败</strong></li>
+<li>而推送时没有<strong>关联分支</strong>且无<strong>同名分支</strong>则会自动在远程仓库<strong>创建新分支</strong>，但是创建的新分支并<strong>不会</strong>和本地仓库的分支相<strong>关联</strong>，还要手动将远程仓库的分支和本地分支相关联</li>
+<li>而推送时没有<strong>关联分支</strong>且有<strong>同名分支</strong>则不会发生任何事，没有推送上去，也没有创建新分支</li>
+</ul>
+<p>要想关联远程仓库和本地仓库的分支可用如下命令（例如要关联分支是dev）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure>
+<p>当然你也可以指定将本地dev和远程仓库的其他分支相关联，修改origin后面的分支名字即可，但是并<strong>不推荐</strong></p>
+<h4 id="解决推送冲突"><a href="#解决推送冲突" class="headerlink" title="解决推送冲突"></a>解决推送冲突</h4><p>当你的小伙伴向远程仓库的dev推送分支推送之后，你再向远程仓库推送时git会提示你产生冲突，并且提示你要用（<strong>git pull</strong>）命令：</p>
+<p><img src="/2019/10/15/Git教程/TIM截图20191026005345.png" alt="TIM截图20191026005345" style="zoom:50%;"></p>
+<p>此时就使用（<strong>git pull</strong>）将远程仓库的分支抓取下来，手动解决冲突再合并（拉取失败时记得关联远程仓库的分支和本地仓库分支）。</p>
+<h3 id="Rebase"><a href="#Rebase" class="headerlink" title="Rebase"></a>Rebase</h3><p>当解决冲突时，后push的人要先pull，再add…commit…push，这样分支图就会变得很杂乱。利用git的<strong>rebase</strong>（变基）操作可以将解决冲突时的分支图整理成一条直线。（不太理解rebase的操作，回来再写吧，先跳过去）</p>
+<h2 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h2><p>标签用于标记某个commit，方便使用。</p>
+<h3 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;name&gt;	//1.</span><br><span class="line">git tag &lt;name&gt; &lt;commit_id&gt;	//2.</span><br><span class="line">git tag		//3.</span><br><span class="line">git show &lt;tagname&gt;	//4.</span><br><span class="line">git tag -a &lt;tagname&gt; -m &quot;......&quot;	//5.</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建一个标签，默认指向当前HEAD指向的提交</li>
+<li>指定某一个commit创建标签，用于指定以前的提交未添加标签</li>
+<li>查看所有标签</li>
+<li>显示某个标签（标签指向的commit）的信息</li>
+<li>可以指定某个标签的注解</li>
+</ol>
+<h3 id="操作标签"><a href="#操作标签" class="headerlink" title="操作标签"></a>操作标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tagname&gt;		//1.</span><br><span class="line">git push origin &lt;tagname&gt;	//2.</span><br><span class="line">git push origin --tags		//3.</span><br><span class="line">git push origin :refs/tags/&lt;tagname&gt;	//4.</span><br></pre></td></tr></table></figure>
+<ol>
+<li>删除本地的某个标签</li>
+<li>将某个标签推送到远程仓库</li>
+<li>一次性推送全部尚未推送到远程的本地标签</li>
+<li>删除远程标签，要先删除本地的标签，再使用这个命令删除远程的标签</li>
+</ol>
+<h2 id="使用GitHub"><a href="#使用GitHub" class="headerlink" title="使用GitHub"></a>使用GitHub</h2><p>想要修改别人的文件，就要先fork到自己的仓库，然后才能进行修改提交。当你想要别人能接受你的提交，你就可以在GitHub上发起一个pull request，之后要看别人接受不接受了。</p>
+<h2 id="使用码云"><a href="#使用码云" class="headerlink" title="使用码云"></a>使用码云</h2><p>由于GitHub是国外的网站，国内用户访问时速度有时候令人抓狂。这时候你可以使用国内的git托管服务<a href="https://gitee.com/" target="_blank" rel="noopener">码云</a></p>
+<p>不过码云的免费git仓库有<strong>5人</strong>的成员上限。</p>
+<p>添加SSH Key的步骤就略过了。</p>
+<p>在码云上的git操作和GitHub类似，就不赘述了。</p>
 
       
     </div>
@@ -939,7 +1009,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git教程"><span class="nav-number">1.</span> <span class="nav-text">Git教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git安装"><span class="nav-number">1.1.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本库-repository"><span class="nav-number">1.2.</span> <span class="nav-text">版本库(repository)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制"><span class="nav-number">1.3.</span> <span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">1.3.1.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区和暂存区"><span class="nav-number">1.3.2.</span> <span class="nav-text">工作区和暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理修改"><span class="nav-number">1.3.3.</span> <span class="nav-text">管理修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">1.3.4.</span> <span class="nav-text">撤销修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#已经提交了不合适的修改到版本库时，想要撤销本次提交"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">已经提交了不合适的修改到版本库时，想要撤销本次提交</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">1.3.5.</span> <span class="nav-text">删除文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">1.4.</span> <span class="nav-text">远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">1.4.1.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从远程仓库克隆"><span class="nav-number">1.4.2.</span> <span class="nav-text">从远程仓库克隆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理"><span class="nav-number">1.5.</span> <span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建于合并分支"><span class="nav-number">1.5.1.</span> <span class="nav-text">创建于合并分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决冲突"><span class="nav-number">1.5.2.</span> <span class="nav-text">解决冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结-1"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理策略"><span class="nav-number">1.5.3.</span> <span class="nav-text">分支管理策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fast-forward"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">fast forward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支策略"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">分支策略</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git教程"><span class="nav-number">1.</span> <span class="nav-text">Git教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git安装"><span class="nav-number">1.1.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本库-repository"><span class="nav-number">1.2.</span> <span class="nav-text">版本库(repository)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制"><span class="nav-number">1.3.</span> <span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本回退"><span class="nav-number">1.3.1.</span> <span class="nav-text">版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区和暂存区"><span class="nav-number">1.3.2.</span> <span class="nav-text">工作区和暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理修改"><span class="nav-number">1.3.3.</span> <span class="nav-text">管理修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤销修改"><span class="nav-number">1.3.4.</span> <span class="nav-text">撤销修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#已经提交了不合适的修改到版本库时，想要撤销本次提交"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">已经提交了不合适的修改到版本库时，想要撤销本次提交</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">1.3.5.</span> <span class="nav-text">删除文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">1.4.</span> <span class="nav-text">远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加远程仓库"><span class="nav-number">1.4.1.</span> <span class="nav-text">添加远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从远程仓库克隆"><span class="nav-number">1.4.2.</span> <span class="nav-text">从远程仓库克隆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理"><span class="nav-number">1.5.</span> <span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建并合并分支"><span class="nav-number">1.5.1.</span> <span class="nav-text">创建并合并分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决冲突"><span class="nav-number">1.5.2.</span> <span class="nav-text">解决冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小结-1"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理策略"><span class="nav-number">1.5.3.</span> <span class="nav-text">分支管理策略</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#fast-forward"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">fast forward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支策略"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">分支策略</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bug分支"><span class="nav-number">1.5.4.</span> <span class="nav-text">Bug分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature分支"><span class="nav-number">1.5.5.</span> <span class="nav-text">Feature分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多人协作"><span class="nav-number">1.5.6.</span> <span class="nav-text">多人协作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#推送分支"><span class="nav-number">1.5.6.1.</span> <span class="nav-text">推送分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抓取分支"><span class="nav-number">1.5.6.2.</span> <span class="nav-text">抓取分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决推送冲突"><span class="nav-number">1.5.6.3.</span> <span class="nav-text">解决推送冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rebase"><span class="nav-number">1.5.7.</span> <span class="nav-text">Rebase</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签管理"><span class="nav-number">1.6.</span> <span class="nav-text">标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建标签"><span class="nav-number">1.6.1.</span> <span class="nav-text">创建标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作标签"><span class="nav-number">1.6.2.</span> <span class="nav-text">操作标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用GitHub"><span class="nav-number">1.7.</span> <span class="nav-text">使用GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用码云"><span class="nav-number">1.8.</span> <span class="nav-text">使用码云</span></a></li></ol></li></ol></div>
             
 
           </div>
