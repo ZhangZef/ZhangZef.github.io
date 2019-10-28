@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-17T14:00:03.461Z</updated>
+  <updated>2019-10-28T15:49:27.890Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring--三、Spring的AOP（面向切面编程）</title>
+    <link href="http://yoursite.com/2019/10/28/Spring--%E4%B8%89%E3%80%81Spring%E7%9A%84AOP%EF%BC%88%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%EF%BC%89/"/>
+    <id>http://yoursite.com/2019/10/28/Spring--三、Spring的AOP（面向切面编程）/</id>
+    <published>2019-10-28T15:47:51.000Z</published>
+    <updated>2019-10-28T15:49:27.890Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Spring–三、Spring的AOP（面向切面编程）"><a href="#Spring–三、Spring的AOP（面向切面编程）" class="headerlink" title="Spring–三、Spring的AOP（面向切面编程）"></a>Spring–三、Spring的AOP（面向切面编程）</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Spring–三、Spring的AOP（面向切面编程）&quot;&gt;&lt;a href=&quot;#Spring–三、Spring的AOP（面向切面编程）&quot; class=&quot;headerlink&quot; title=&quot;Spring–三、Spring的AOP（面向切面编程）&quot;&gt;&lt;/a&gt;Sprin
+      
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="Spring" scheme="http://yoursite.com/tags/Spring/"/>
+    
+      <category term="框架" scheme="http://yoursite.com/tags/%E6%A1%86%E6%9E%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>C#杂记</title>
@@ -105,9 +132,9 @@
     <link href="http://yoursite.com/2019/10/06/Maven/"/>
     <id>http://yoursite.com/2019/10/06/Maven/</id>
     <published>2019-10-06T07:54:24.000Z</published>
-    <updated>2019-10-06T10:19:50.114Z</updated>
+    <updated>2019-10-28T16:03:26.261Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><p><a href="https://pan.baidu.com/s/1h8P7aILAm9oJ2LD9ZKdGpA" target="_blank" rel="noopener">视频分享</a>     提取码：x8tf</p><h2 id="Maven的好处及概要"><a href="#Maven的好处及概要" class="headerlink" title="Maven的好处及概要"></a>Maven的好处及概要</h2><h3 id="maven的好处及核心"><a href="#maven的好处及核心" class="headerlink" title="maven的好处及核心"></a>maven的好处及核心</h3><p>普通项目通过把jar包复制进工程，而Maven则是建立一个jar包仓库，通过坐标（即公司名称+项目名称+版本号）来向仓库中寻找坐标</p><p>maven的两大核心：</p><ul><li>依赖管理：对jar包的管理过程</li><li>项目构建：项目在编码完成后，对项目进行编译、测试、打包、部署等一系列操作通过命令来实现<ul><li>通过maven命令将web项目发布到tomcat：mvn tomcat:run</li></ul></li></ul><h2 id="maven的配置及仓库"><a href="#maven的配置及仓库" class="headerlink" title="maven的配置及仓库"></a>maven的配置及仓库</h2><h3 id="maven的组成"><a href="#maven的组成" class="headerlink" title="maven的组成"></a>maven的组成</h3><p>maven文件组成： <img src="/2019/10/06/Maven/TIM截图20191006165336.png" alt="TIM截图20191006165336" style="zoom:50%;"></p><p>查询maven版本信息：cmd中键入mvn -v</p><h3 id="maven仓库类型"><a href="#maven仓库类型" class="headerlink" title="maven仓库类型"></a>maven仓库类型</h3><p><img src="/2019/10/06/Maven/TIM截图20191006171645-1570353500475.png" alt="TIM截图20191006171645" style="zoom:50%;"></p><h2 id="maven项目标准目录结构"><a href="#maven项目标准目录结构" class="headerlink" title="maven项目标准目录结构"></a>maven项目标准目录结构</h2><ul><li>src：项目源码<ul><li>main：主要代码<ul><li>java：java代码</li><li>recources：配置文件</li><li>webapp：页面素材：jsp文件、css文件等等</li></ul></li><li>test：单元测试<ul><li>java：单元测试类</li></ul></li><li>tarjet：存放编译后的文件（不属于maven标准目录结构）</li></ul></li><li>pom.xml：maven项目核心配置文件</li></ul><h2 id="maven常用的命令"><a href="#maven常用的命令" class="headerlink" title="maven常用的命令"></a>maven常用的命令</h2><h3 id="clean：清理命令"><a href="#clean：清理命令" class="headerlink" title="clean：清理命令"></a>clean：清理命令</h3><p>将已生成的.class文件清理掉（将根目录下的tarjet目录清理掉）</p><h3 id="compile：编译命令"><a href="#compile：编译命令" class="headerlink" title="compile：编译命令"></a>compile：编译命令</h3><p>将.java文件编译成.class文件</p><h3 id="test：测试命令"><a href="#test：测试命令" class="headerlink" title="test：测试命令"></a>test：测试命令</h3><p>将项目根目录下：test/java目录下的单元测试类全部执行</p><p>类名必须是XxxxTest.java</p><h3 id="package：打包命令"><a href="#package：打包命令" class="headerlink" title="package：打包命令"></a>package：打包命令</h3><p>动态打包：</p><ul><li>web project ……war包</li><li>java project ……jar包</li></ul><p>将项目打包到根目录下target目录</p><h3 id="install：安装命令"><a href="#install：安装命令" class="headerlink" title="install：安装命令"></a>install：安装命令</h3><p>解决本地多个项目公用一个jar包</p><p>将项目打包到本地仓库</p><h3 id="maven项目的生命周期"><a href="#maven项目的生命周期" class="headerlink" title="maven项目的生命周期"></a>maven项目的生命周期</h3><p>在maven项目中存在三套生命周期，每一套生命周期都是相互独立，即执行每一套生命周期中的命令时不会执行其他生命周期中的命令。在一套生命周期中，执行后面的命令，前面的命令会自动执行。</p><p>例：当执行install时命令执行顺序：compile -&gt; test -&gt; package -&gt; install</p><ul><li>CleanLifeCycle：清理生命周期<ul><li>Clean命令</li></ul></li><li>DefaultLifeCycle：默认生命周期（主要）<ul><li>compile命令</li><li>test命令</li><li>package命令</li><li>install命令</li><li>deploy命令</li></ul></li><li>SiteLifeCy：站点生命周期<ul><li>site命令</li></ul></li></ul><h2 id="maven整合struts2框架"><a href="#maven整合struts2框架" class="headerlink" title="maven整合struts2框架"></a>maven整合struts2框架</h2><ol><li>通过工具生成web.xml</li><li>添加struts2依赖</li><li>创建struts.xml</li><li>创建action类</li><li>在web.xml中配置struts2框架核心过滤器</li><li>编写action中方法</li><li>在struts.xml中配置</li></ol><h2 id="maven概念模型"><a href="#maven概念模型" class="headerlink" title="maven概念模型"></a>maven概念模型</h2><p><img src="https://img2018.cnblogs.com/blog/1320926/201906/1320926-20190618153818847-285359880.png" alt="img" style="zoom:60%;"></p><p>概念模型即两大核心：</p><ul><li>依赖管理：通过pom.xml文件完成</li><li>项目构建：通过生命周期完成</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><p><a href="https://pan.baidu.com/s/1h8P7aILAm9oJ2LD9ZKdGpA" target="_blank" rel="noopener">视频分享</a>     提取码：x8tf</p><h2 id="Maven的好处及概要"><a href="#Maven的好处及概要" class="headerlink" title="Maven的好处及概要"></a>Maven的好处及概要</h2><h3 id="maven的好处及核心"><a href="#maven的好处及核心" class="headerlink" title="maven的好处及核心"></a>maven的好处及核心</h3><p>普通项目通过把jar包复制进工程，而Maven则是建立一个jar包仓库，通过坐标（即公司名称+项目名称+版本号）来向仓库中寻找坐标</p><p>maven的两大核心：</p><ul><li>依赖管理：对jar包的管理过程</li><li>项目构建：项目在编码完成后，对项目进行编译、测试、打包、部署等一系列操作通过命令来实现<ul><li>通过maven命令将web项目发布到tomcat：mvn tomcat:run</li></ul></li></ul><h2 id="maven的配置及仓库"><a href="#maven的配置及仓库" class="headerlink" title="maven的配置及仓库"></a>maven的配置及仓库</h2><h3 id="maven的组成"><a href="#maven的组成" class="headerlink" title="maven的组成"></a>maven的组成</h3><p>maven文件组成： <img src="/2019/10/06/Maven/TIM截图20191006165336.png" alt="TIM截图20191006165336" style="zoom:50%;"></p><p>查询maven版本信息：cmd中键入mvn -v</p><h3 id="maven仓库类型"><a href="#maven仓库类型" class="headerlink" title="maven仓库类型"></a>maven仓库类型</h3><p><img src="/2019/10/06/Maven/TIM截图20191006171645-1570353500475.png" alt="TIM截图20191006171645" style="zoom:50%;"></p><h2 id="maven项目标准目录结构"><a href="#maven项目标准目录结构" class="headerlink" title="maven项目标准目录结构"></a>maven项目标准目录结构</h2><ul><li>src：项目源码<ul><li>main：主要代码<ul><li>java：java代码</li><li>recources：配置文件</li><li>webapp：页面素材：jsp文件、css文件等等</li></ul></li><li>test：单元测试<ul><li>java：单元测试类</li></ul></li><li>tarjet：存放编译后的文件（不属于maven标准目录结构）</li></ul></li><li>pom.xml：maven项目核心配置文件</li></ul><h2 id="maven常用的命令"><a href="#maven常用的命令" class="headerlink" title="maven常用的命令"></a>maven常用的命令</h2><h3 id="clean：清理命令"><a href="#clean：清理命令" class="headerlink" title="clean：清理命令"></a>clean：清理命令</h3><p>将已生成的.class文件清理掉（将根目录下的tarjet目录清理掉）</p><h3 id="compile：编译命令"><a href="#compile：编译命令" class="headerlink" title="compile：编译命令"></a>compile：编译命令</h3><p>将.java文件编译成.class文件</p><h3 id="test：测试命令"><a href="#test：测试命令" class="headerlink" title="test：测试命令"></a>test：测试命令</h3><p>将项目根目录下：test/java目录下的单元测试类全部执行</p><p>类名必须是XxxxTest.java</p><h3 id="package：打包命令"><a href="#package：打包命令" class="headerlink" title="package：打包命令"></a>package：打包命令</h3><p>动态打包：</p><ul><li>web project ……war包</li><li>java project ……jar包</li></ul><p>将项目打包到根目录下target目录</p><h3 id="install：安装命令"><a href="#install：安装命令" class="headerlink" title="install：安装命令"></a>install：安装命令</h3><p>解决本地多个项目公用一个jar包</p><p>将项目打包到本地仓库</p><h3 id="maven项目的生命周期"><a href="#maven项目的生命周期" class="headerlink" title="maven项目的生命周期"></a>maven项目的生命周期</h3><p>在maven项目中存在三套生命周期，每一套生命周期都是相互独立，即执行每一套生命周期中的命令时不会执行其他生命周期中的命令。在一套生命周期中，执行后面的命令，前面的命令会自动执行。</p><p>例：当执行install时命令执行顺序：compile -&gt; test -&gt; package -&gt; install</p><ul><li>CleanLifeCycle：清理生命周期<ul><li>Clean命令</li></ul></li><li>DefaultLifeCycle：默认生命周期（主要）<ul><li>compile命令</li><li>test命令</li><li>package命令</li><li>install命令</li><li>deploy命令</li></ul></li><li>SiteLifeCy：站点生命周期<ul><li>site命令</li></ul></li></ul><h2 id="maven整合struts2框架"><a href="#maven整合struts2框架" class="headerlink" title="maven整合struts2框架"></a>maven整合struts2框架</h2><ol><li>通过工具生成web.xml</li><li>添加struts2依赖</li><li>创建struts.xml</li><li>创建action类</li><li>在web.xml中配置struts2框架核心过滤器</li><li>编写action中方法</li><li>在struts.xml中配置</li></ol><h2 id="maven概念模型"><a href="#maven概念模型" class="headerlink" title="maven概念模型"></a>maven概念模型</h2><p><img src="/2019/10/06/Maven/1320926-20190618153818847-285359880.png" alt="img" style="zoom:60%;"></p><p>概念模型即两大核心：</p><ul><li>依赖管理：通过pom.xml文件完成</li><li>项目构建：通过生命周期完成</li></ul>]]></content>
     
     <summary type="html">
     
@@ -367,9 +394,9 @@
     
       <category term="ACM" scheme="http://yoursite.com/tags/ACM/"/>
     
-      <category term="图论" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
       <category term="图的存储" scheme="http://yoursite.com/tags/%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8/"/>
+    
+      <category term="图论" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA/"/>
     
   </entry>
   
