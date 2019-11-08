@@ -90,7 +90,7 @@
 <meta property="og:description" content="C Sharp杂记写一些在学C#时不会的一些用法，在百度上搜出来的答案要不没正确的，要不是就是瞎xx说，要不就是说的不清不楚的。 Wpflabellabel标签的内容居中显示注意，是内容、内容、内容。。。如图： 1&amp;lt;Label Name=&amp;quot;alb&amp;quot; Content=&amp;quot;20&amp;quot; FontSize=&amp;quot;60&amp;quot; Margin=&amp;quot;10">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/10/16/C%20Sharp杂记/TIM截图20191016235316.png">
-<meta property="og:updated_time" content="2019-10-17T14:00:03.461Z">
+<meta property="og:updated_time" content="2019-11-08T08:11:31.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#杂记">
 <meta name="twitter:description" content="C Sharp杂记写一些在学C#时不会的一些用法，在百度上搜出来的答案要不没正确的，要不是就是瞎xx说，要不就是说的不清不楚的。 Wpflabellabel标签的内容居中显示注意，是内容、内容、内容。。。如图： 1&amp;lt;Label Name=&amp;quot;alb&amp;quot; Content=&amp;quot;20&amp;quot; FontSize=&amp;quot;60&amp;quot; Margin=&amp;quot;10">
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-17T22:00:03+08:00">
-                2019-10-17
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-08T16:11:31+08:00">
+                2019-11-08
               </time>
             
           </span>
@@ -415,6 +415,18 @@
 <h2 id="Wpf"><a href="#Wpf" class="headerlink" title="Wpf"></a>Wpf</h2><h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><h4 id="label标签的内容居中显示"><a href="#label标签的内容居中显示" class="headerlink" title="label标签的内容居中显示"></a>label标签的内容居中显示</h4><p>注意，是内容、内容、内容。。。如图：<img src="/2019/10/16/C Sharp杂记/TIM截图20191016235316.png" alt="TIM截图20191016235316" style="zoom:33%;"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Label Name=&quot;alb&quot; Content=&quot;20&quot; FontSize=&quot;60&quot; Margin=&quot;10,10,-2.333,-12.333&quot; Height=&quot;163&quot; HorizontalContentAlignment=&quot;Center&quot; VerticalContentAlignment=&quot;Center&quot;/&gt;</span><br></pre></td></tr></table></figure>
 <p>是HorizontalContentAlignment和VerticalContentAlignment两个属性，一个是水平居中，一个是垂直居中，也可以设置其他对齐方式。</p>
+<h3 id="MessageBox"><a href="#MessageBox" class="headerlink" title="MessageBox"></a>MessageBox</h3><p>MessageBox.Show(&lt;字符串&gt; Text, &lt;字符串&gt; Title, &lt;整型&gt; nType，MessageBoxIcon);</p>
+<ul>
+<li>第一个参数是 String 类型，表示提示框里面的 <strong>内容</strong>；</li>
+<li>第二个参数是String 类型，表示提示框的 <strong>标题</strong>；</li>
+<li>第三个参数是整数类型，表示消息框的  <strong>类型</strong>  ，一般的都使用系统提供的几种类型；</li>
+<li>第四个参数是提示框的 <strong>图标</strong>，比如说警告、提示、问题等等。</li>
+</ul>
+<h2 id="File"><a href="#File" class="headerlink" title="File"></a>File</h2><p>判断文件/文件夹是否存在（参数为字符串）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">File.Exists(path);//文件</span><br><span class="line">Directory.Exists(path);//文件夹</span><br></pre></td></tr></table></figure>
+<p>浏览文件的窗体：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">OpenFileDialog dialog = new OpenFileDialog();</span><br><span class="line">dialog.ShowDialog();//</span><br></pre></td></tr></table></figure>
+<p>该方法会返回一个bool类型，当成功浏览时返回true，否则返回false。</p>
 <h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><h3 id="保留n位小数"><a href="#保留n位小数" class="headerlink" title="保留n位小数"></a>保留n位小数</h3><p>这里以两位小数为例</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double x;</span><br><span class="line">x.ToString(&quot;0.00&quot;);</span><br></pre></td></tr></table></figure>
 <p>如代码所示，想保留几位就在小数点后面放几个0。</p>
@@ -647,7 +659,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -743,7 +755,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Sharp杂记"><span class="nav-number">1.</span> <span class="nav-text">C Sharp杂记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Wpf"><span class="nav-number">1.1.</span> <span class="nav-text">Wpf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#label"><span class="nav-number">1.1.1.</span> <span class="nav-text">label</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#label标签的内容居中显示"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">label标签的内容居中显示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字"><span class="nav-number">1.2.</span> <span class="nav-text">数字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保留n位小数"><span class="nav-number">1.2.1.</span> <span class="nav-text">保留n位小数</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Sharp杂记"><span class="nav-number">1.</span> <span class="nav-text">C Sharp杂记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Wpf"><span class="nav-number">1.1.</span> <span class="nav-text">Wpf</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#label"><span class="nav-number">1.1.1.</span> <span class="nav-text">label</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#label标签的内容居中显示"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">label标签的内容居中显示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MessageBox"><span class="nav-number">1.1.2.</span> <span class="nav-text">MessageBox</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File"><span class="nav-number">1.2.</span> <span class="nav-text">File</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字"><span class="nav-number">1.3.</span> <span class="nav-text">数字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保留n位小数"><span class="nav-number">1.3.1.</span> <span class="nav-text">保留n位小数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
