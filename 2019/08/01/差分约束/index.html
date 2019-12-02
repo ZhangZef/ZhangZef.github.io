@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="差分约束差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$">
+<meta name="description" content="差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$x_1=">
 <meta name="keywords" content="ACM,图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="差分约束">
 <meta property="og:url" content="http://yoursite.com/2019/08/01/差分约束/index.html">
 <meta property="og:site_name" content="zhangzef">
-<meta property="og:description" content="差分约束差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$">
+<meta property="og:description" content="差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$x_1=">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/08/01/差分约束/TIM截图20190801164055-1564649436098.png">
-<meta property="og:updated_time" content="2019-09-18T16:39:24.951Z">
+<meta property="og:updated_time" content="2019-12-02T12:20:50.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="差分约束">
-<meta name="twitter:description" content="差分约束差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$">
+<meta name="twitter:description" content="差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$x_1=">
 <meta name="twitter:image" content="http://yoursite.com/2019/08/01/差分约束/TIM截图20190801164055-1564649436098.png">
 
 
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-19T00:39:24+08:00">
-                2019-09-19
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:20:50+08:00">
+                2019-12-02
               </time>
             
           </span>
@@ -411,7 +411,7 @@
       
 
       
-        <h1 id="差分约束"><a href="#差分约束" class="headerlink" title="差分约束"></a>差分约束</h1><p><strong>差分约束系统</strong>是求解一组特殊的不等式组的方法。</p>
+        <p><strong>差分约束系统</strong>是求解一组特殊的不等式组的方法。</p>
 <h2 id="差分约束举例"><a href="#差分约束举例" class="headerlink" title="差分约束举例"></a>差分约束举例</h2><p>差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。</p>
 <p>其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$x_1=a_1,\quad x_2=a_2,\cdots x_n=a_n$使得所有约束条件(即m个不等式)均成立，则称差分约束有解，否则无解。</p>
 <p>例如：<br>$$<br>(1)x_1-x_3 \leq 5;\quad<br>(2)x_3-x_5 \leq 4;\quad<br>$$<br>$$<br>(3)x_3-x_2 \leq 1;\quad<br>(4)x_1-x_5 \leq 10;\quad<br>(5)x_2-x_5 \leq 2;\quad<br>$$</p>
@@ -802,7 +802,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#差分约束"><span class="nav-number">1.</span> <span class="nav-text">差分约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#差分约束举例"><span class="nav-number">1.1.</span> <span class="nav-text">差分约束举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最短路问题"><span class="nav-number">1.2.</span> <span class="nav-text">最短路问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差分约束和最短路问题"><span class="nav-number">1.3.</span> <span class="nav-text">差分约束和最短路问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变化技巧"><span class="nav-number">1.4.</span> <span class="nav-text">变化技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不等式转化"><span class="nav-number">1.4.1.</span> <span class="nav-text">不等式转化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最短路与最长路和差分约束的关系"><span class="nav-number">1.4.2.</span> <span class="nav-text">最短路与最长路和差分约束的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">1.5.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.6.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#差分约束举例"><span class="nav-number">1.</span> <span class="nav-text">差分约束举例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最短路问题"><span class="nav-number">2.</span> <span class="nav-text">最短路问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差分约束和最短路问题"><span class="nav-number">3.</span> <span class="nav-text">差分约束和最短路问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变化技巧"><span class="nav-number">4.</span> <span class="nav-text">变化技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不等式转化"><span class="nav-number">4.1.</span> <span class="nav-text">不等式转化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最短路与最长路和差分约束的关系"><span class="nav-number">4.2.</span> <span class="nav-text">最短路与最长路和差分约束的关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">5.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
