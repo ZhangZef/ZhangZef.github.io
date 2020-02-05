@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[kuangbin专题四 最短路练习]]></title>
+    <url>%2F2020%2F02%2F05%2Fkuangbin%E4%B8%93%E9%A2%98%E5%9B%9B-%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%BB%83%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁 kuangbin专题合集 ACM正确入门方式——数学lover 题目列表 POJ 2387 Til the Cows Come Home AC: 2020-02-05 21:08:20 POJ 2253 Frogger POJ 1797 Heavy Transportation POJ 3268 Silver Cow Party POJ 1860 Currency Exchange POJ 3259 Wormholes POJ 1502 MPI Maelstrom POJ 3660 Cow Contest POJ 2240 Arbitrage POJ 1511 Invitation Cards POJ 3159 Candies POJ 2502 Subway POJ 1062 昂贵的聘礼 POJ 1847 Tram AC: 2018-07-22 01:13:19 LightOJ 1074 Extended Traffic HDU 4725 The Shortest Path in Nya Graph HDU 3416 Marriage Match IV HDU 4370 0 or 1 POJ 3169 Layout POJ 2387 Til the Cows Come Home题意有N个点，T条边，每条边都是双向边。让你求出从点N走到点1的最短路。。。 题解（wrtm，sb题坑死我了，写的我怀疑智商，一个dijkstra模板题WA了六发。。。）dijkstra模板题，没什么好说的，注意是双向边，如果用邻接矩阵的话要注意可能有重边，邻接表就不用管有没有重边了。最主要的是他题目中说的每条边的范围是1-100，然后我最大值就用1000了，结果一直WA，我佛了。。。最后改成了1&lt;&lt;30才过的。。。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667import java.util.*;class Edge implements Comparable&lt;Edge&gt; &#123; public int t, d; public Edge(int t, int d) &#123; this.t = t; this.d = d; &#125; public int compareTo(Edge o) &#123; if (this.d &gt; o.d) &#123; return 1; &#125; else if (this.d == o.d) &#123; return 0; &#125; else &#123; return -1; &#125; &#125;&#125;public class Main &#123; public static void main(String[] args) &#123; Scanner cin = new Scanner(System.in); int t = cin.nextInt(); int n = cin.nextInt(); int dis[] = new int[n + 10]; List[] lists = new List[n + 10]; for (int i = 0; i &lt; lists.length; i++) &#123; lists[i] = new ArrayList&lt;Edge&gt;(); &#125; for (int i = 0; i &lt; t; i++) &#123; int u = cin.nextInt(), v = cin.nextInt(), d = cin.nextInt(); lists[u - 1].add(new Edge(v - 1, d)); lists[v - 1].add(new Edge(u - 1, d)); &#125; for (int i = 0; i &lt; n; i++) &#123; dis[i] = (i == n - 1) ? 0 : (1 &lt;&lt; 30); &#125; PriorityQueue&lt;Edge&gt; pQueue = new PriorityQueue&lt;Edge&gt;(); Edge now = new Edge(n - 1, dis[n - 1]); pQueue.add(now); while (!pQueue.isEmpty()) &#123; now = pQueue.poll(); int x = now.t; for (int i = 0; i &lt; lists[x].size(); i++) &#123; Edge next = (Edge) lists[x].get(i); int y = next.t, w = next.d; if (dis[x] + w &lt; dis[y]) &#123; dis[y] = dis[x] + w; pQueue.add(new Edge(y, dis[y])); &#125; &#125; &#125; System.out.println(dis[0]); &#125;&#125;]]></content>
+      <categories>
+        <category>刷题</category>
+      </categories>
+      <tags>
+        <tag>ACM</tag>
+        <tag>最短路</tag>
+        <tag>蓝桥杯</tag>
+        <tag>dijkstra</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[吃瓜程序]]></title>
     <url>%2F2020%2F01%2F12%2F%E5%90%83%E7%93%9C%E7%A8%8B%E5%BA%8F%2F</url>
     <content type="text"><![CDATA[本文纯属娱乐，寒假了没事找事干（话说我好像也不是没事，该准备考研了）,用C#控制台实现了一下好瓜坏瓜从假设空间求对应数据集的版本空间。 概念假设空间：属性所有可能取值组成的可能的样本。 版本空间：与已知数据集一致的所有假设的子集集合。 （绿色加号代表正类样本，红色小圈代表负类样本） GB 是最大泛化正假设边界(maximally General positive hypothesis Boundary),； SB 是最大精确正假设边界(maximally Specific positive hypothesis Boundary) GB与SB之间所围成的区域就是版本空间。 西瓜问题先写出假设空间，再根据训练数据集求其版本空间 假设空间，即所有可能的组合（加上空集） 再根据训练数据集，与正类（即好瓜）不匹配的删除，与负类（即坏瓜）匹配的删除。 上代码 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130namespace ConsoleApp1&#123; struct Gua //瓜的结构体 &#123; public string Se; //色泽 public string Gen; //根蒂 public string Qiao; //敲声 public bool isEmpty; //是否为空集 public bool isHaoGua; //是否为好瓜，用于标记训练数据集 &#125; class Program &#123; static string print(Gua gua) //用于输出瓜的属性，即toString函数 &#123; if (gua.isEmpty) &#123; return &quot;∅&quot;; &#125; return &quot;色泽=&quot; + gua.Se + &quot;, 根蒂=&quot; + gua.Gen + &quot;, 敲声=&quot; + gua.Qiao; &#125; static void Main(string[] args) &#123; string[] seze = &#123; &quot;*&quot;, &quot;青绿&quot;, &quot;乌黑&quot; &#125;; //色泽 string[] gendi = &#123; &quot;*&quot;, &quot;蜷缩&quot;, &quot;硬挺&quot;, &quot;稍蜷&quot; &#125;; //根蒂 string[] qiaosheng = &#123; &quot;*&quot;, &quot;浊响&quot;, &quot;清脆&quot;, &quot;沉闷&quot; &#125;; //敲声 List&lt;Gua&gt; Space = new List&lt;Gua&gt;(); //初始为假设空间的列表 List&lt;Gua&gt; TrainData = new List&lt;Gua&gt;(); //训练数据集 Gua gua = new Gua(); //添加空集 gua.isEmpty = true; gua.isHaoGua = false; Space.Add(gua); foreach (var item in seze) //求假设空间 &#123; foreach (var item1 in gendi) &#123; foreach (var item2 in qiaosheng) &#123; Gua g = new Gua(); g.Se = item; g.Gen = item1; g.Qiao = item2; g.isEmpty = false; g.isHaoGua = false; Space.Add(g); &#125; &#125; &#125; //此处为输入训练数据集 Gua hao = new Gua(); //该数据为书中表1.1的数据1 hao.isHaoGua = true; hao.isEmpty = false; hao.Se = seze[1]; hao.Gen = gendi[1]; hao.Qiao = qiaosheng[1]; TrainData.Add(hao); Gua hao1 = new Gua(); //该数据为书中表1.1的数据2 hao1.isHaoGua = true; hao1.isEmpty = false; hao1.Se = seze[2]; hao1.Gen = gendi[1]; hao1.Qiao = qiaosheng[1]; TrainData.Add(hao1); Gua huai = new Gua(); //该数据为书中表1.1的数据3 huai.isHaoGua = false; huai.isEmpty = false; huai.Se = seze[1]; huai.Gen = gendi[2]; huai.Qiao = qiaosheng[2]; TrainData.Add(huai); Gua huai1 = new Gua(); //该数据为书中表1.1的数据4 huai1.isHaoGua = false; huai1.isEmpty = false; huai1.Se = seze[2]; huai1.Gen = gendi[3]; huai1.Qiao = qiaosheng[3]; TrainData.Add(huai1); //通过训练数据集对假设空间进行剔除，求其版本空间 foreach (var item in TrainData) &#123; for (int i = Space.Count-1; i &gt;= 0; i--) &#123; var item1 = Space[i]; if (item.isHaoGua)//如果有好瓜 &#123; if (item1.isEmpty)//如果有好瓜则不可能存在空集，删除空集 &#123; Space.Remove(item1); continue; &#125; if ((item1.Se.Equals(item.Se) || item1.Se.Equals(&quot;*&quot;)) &amp;&amp; (item1.Gen.Equals(item.Gen) || item1.Gen.Equals(&quot;*&quot;)) &amp;&amp; (item1.Qiao.Equals(item.Qiao) || item1.Qiao.Equals(&quot;*&quot;))) //和好瓜相匹配的数据不删除 &#123; continue; &#125; else &#123; Space.Remove(item1); &#125; &#125; else &#123; if ((item1.Se.Equals(item.Se) || item1.Se.Equals(&quot;*&quot;)) &amp;&amp; (item1.Gen.Equals(item.Gen) || item1.Gen.Equals(&quot;*&quot;)) &amp;&amp; (item1.Qiao.Equals(item.Qiao) || item1.Qiao.Equals(&quot;*&quot;))) //和坏瓜相匹配的数据删除 &#123; Space.Remove(item1); &#125; &#125; &#125; &#125; foreach (var item in Space) //输出 &#123; Console.WriteLine(print(item)); &#125; Console.ReadKey(); &#125; &#125;&#125;]]></content>
@@ -188,8 +202,8 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-        <tag>搜索</tag>
         <tag>蓝桥杯</tag>
+        <tag>搜索</tag>
         <tag>bfs记录最短路径</tag>
         <tag>bfs</tag>
         <tag>dfs</tag>
@@ -243,8 +257,8 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-        <tag>图论</tag>
         <tag>最短路</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -256,8 +270,8 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-        <tag>图论</tag>
         <tag>最短路</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -269,8 +283,8 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-        <tag>图论</tag>
         <tag>最短路</tag>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
