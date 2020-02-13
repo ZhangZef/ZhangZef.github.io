@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="zhangzef">
 <meta property="og:description" content="SPFA是个很神奇的算法，他在一般情况下时间会跑的很快，肯定有人想用SPFA来代替dijkstra，但是有一种特殊的数据专门来卡SPFA，只能让dijkstra过，SPFA过不去，那就是网格图，我稍后会讲为什么网格图可以卡掉SPFA。 但是为什么SPFA跑不过dijkstra，大家还要用SPFA？因为dijkstra只能计算不带负环的图，当图中出现负环，dijkstra就会一直卡在负环里出不来了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/2019/07/26/最短路-SPFA/TIM截图20190726174245.png">
-<meta property="og:image" content="/2019/07/26/最短路-SPFA/TIM截图20190727121644.png">
+<meta property="og:image" content="/26/最短路-SPFA/TIM截图20190726174245.png">
+<meta property="og:image" content="/26/最短路-SPFA/TIM截图20190727121644.png">
 <meta property="og:updated_time" content="2020-02-12T04:58:53.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最短路--SPFA">
 <meta name="twitter:description" content="SPFA是个很神奇的算法，他在一般情况下时间会跑的很快，肯定有人想用SPFA来代替dijkstra，但是有一种特殊的数据专门来卡SPFA，只能让dijkstra过，SPFA过不去，那就是网格图，我稍后会讲为什么网格图可以卡掉SPFA。 但是为什么SPFA跑不过dijkstra，大家还要用SPFA？因为dijkstra只能计算不带负环的图，当图中出现负环，dijkstra就会一直卡在负环里出不来了。">
-<meta name="twitter:image" content="/2019/07/26/最短路-SPFA/TIM截图20190726174245.png">
+<meta name="twitter:image" content="/26/最短路-SPFA/TIM截图20190726174245.png">
 
 
 
@@ -103,7 +103,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -411,16 +411,16 @@
 
       
         <p>SPFA是个很神奇的算法，他在一般情况下时间会跑的很快，肯定有人想用SPFA来代替dijkstra，但是有一种特殊的数据专门来卡SPFA，只能让dijkstra过，SPFA过不去，那就是网格图，我稍后会讲为什么网格图可以卡掉SPFA。</p>
-<p>但是为什么SPFA跑不过dijkstra，大家还要用SPFA？因为dijkstra只能计算不带负环的图，当图中出现负环，dijkstra就会一直卡在负环里出不来了。如果不太懂可以看一看我的上一篇博客：<a href="https://zhangzef.com/2019/07/25/%E6%9C%80%E7%9F%AD%E8%B7%AF--Dijkstra/#more" target="_blank" rel="noopener">Dijkstra</a> </p>
+<p>但是为什么SPFA跑不过dijkstra，大家还要用SPFA？因为dijkstra只能计算不带负环的图，当图中出现负环，dijkstra就会一直卡在负环里出不来了。如果不太懂可以看一看我的上一篇博客：<a href="https://zhangzef.com/2019/07/25/%E6%9C%80%E7%9F%AD%E8%B7%AF--Dijkstra/#more">Dijkstra</a> </p>
 <p>当图中存在可到达的负环，则该图一定不存在最短路，因为负环可以一直当做最短路来松弛其他边，那么最短路就能无限小，所以不存在最短路。</p>
-<p><img src="/2019/07/26/最短路-SPFA/TIM截图20190726174245.png" alt="TIM截图20190726174245" style="zoom:50%;"></p>
+<p><img src="/26/最短路-SPFA/TIM截图20190726174245.png" alt="TIM截图20190726174245" style="zoom:50%;"></p>
 <p>SPFA也是用来求<strong>单源</strong>最短路，它当然也不能在存在可达负环的时候计算最短路，但是他有一个神奇的功能：<strong>判断图中是否存在可达负环</strong>。</p>
 <h2 id="Bellman-Ford"><a href="#Bellman-Ford" class="headerlink" title="Bellman-Ford"></a><strong>Bellman-Ford</strong></h2><p>SPFA是Bellman-Ford的队列优化，在一般情况下比Bellman-Ford快很多。这里介绍Bellman-Ford是希望可以更好地理解SPFA，因为两者本质区别不大。</p>
 <h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>算法总共跑n-1轮就能确定所有点的最短路。总共有n个点，x1, x2, x3, x4…xn，其中x1为源点，第一轮一定可以确定离源点最近的点的最短路，即x2的最短路。依次类推，如果图中不存在负环，则一定能在n-1轮推出所有点的最短路。</p>
 <h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p>下面把敦爷讲课的时候的代码放出来：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>; k&lt;=n<span class="number">-1</span>; k++)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;m; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(dis[v[i]] &gt; dis[u[i]]+w[i])</span><br><span class="line">			dis[v[i]] = dis[u[i]]+w[i]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="SPFA"><a href="#SPFA" class="headerlink" title="SPFA"></a>SPFA</h2><p>观察上面的Bellman-Ford可发现，当dis[u]没有被更新的时候，它依然会用dis[u]去松弛其它边，这样就做了很多冗余的操作，我们用一个队列来优化它，就是当有一个点被更新了，如果这个点没在队列里面，就把它放到队列里面去。这样一个点很久没有被更新过的话，就不会用它去更新其它边。</p>
-<h3 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h3><p>此处建议先看懂我的上一篇博客：<a href="https://zhangzef.com/2019/07/25/%E6%9C%80%E7%9F%AD%E8%B7%AF--Dijkstra/#more" target="_blank" rel="noopener">Dijkstra</a> </p>
+<h3 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h3><p>此处建议先看懂我的上一篇博客：<a href="https://zhangzef.com/2019/07/25/%E6%9C%80%E7%9F%AD%E8%B7%AF--Dijkstra/#more">Dijkstra</a> </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dis[maxn], viscnt[maxn];</span><br><span class="line"><span class="keyword">bool</span> inq[maxn];</span><br><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; G[maxn];<span class="comment">//1.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_eage</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t, <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    G[s].push_back(make_pair(w, t));<span class="comment">//2.</span></span><br><span class="line">    G[t].push_back(make_pair(w, s));<span class="comment">//3.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span><span class="comment">//4.</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">        G[i].clear();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> s)</span><span class="comment">//5.</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)<span class="comment">//6.</span></span><br><span class="line">    &#123;</span><br><span class="line">        dis[i] = (i==s)?<span class="number">0</span>:INF;</span><br><span class="line">        inq[i] = <span class="literal">false</span>;</span><br><span class="line">        viscnt[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">queue</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; q;</span><br><span class="line">    q.push(make_pair(dis[s], s));<span class="comment">//7.</span></span><br><span class="line">    inq[s] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; p = q.front();</span><br><span class="line">        <span class="keyword">int</span> x = p.second;<span class="comment">//8.</span></span><br><span class="line">        q.pop();</span><br><span class="line">        inq[x] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(viscnt[x]++&gt;n)<span class="comment">//9.</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;G[x].size(); i++)<span class="comment">//10.</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> y=G[x][i].second, w=G[x][i].first;</span><br><span class="line">            <span class="keyword">if</span>(dis[x]+w&lt;dis[y])<span class="comment">//11.</span></span><br><span class="line">            &#123;</span><br><span class="line">                dis[y] = dis[x]+w;</span><br><span class="line">                <span class="keyword">if</span>(!inq[y])</span><br><span class="line">                &#123;</span><br><span class="line">                    q.push(make_pair(dis[y], y));</span><br><span class="line">                    inq[y] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注释：</p>
 <ol>
@@ -438,7 +438,7 @@
 </ol>
 <h2 id="如何卡SPFA"><a href="#如何卡SPFA" class="headerlink" title="如何卡SPFA"></a>如何卡SPFA</h2><p>因为SPFA没回更新的时候用的是一条边去更新，被更新过的点入队。</p>
 <p>比如说我们有一条链</p>
-<p><img src="/2019/07/26/最短路-SPFA/TIM截图20190727121644.png" alt="TIM截图20190727121644" style="zoom:50%;"></p>
+<p><img src="/26/最短路-SPFA/TIM截图20190727121644.png" alt="TIM截图20190727121644" style="zoom:50%;"></p>
 <p>当我们用边0-1去更新后面所有边之后，如果边0-1又被更新，则后面的所有边都要被依次再更新一遍。</p>
 <p>这样SPFA的时间复杂度就会变得非常高</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
@@ -777,6 +777,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -822,11 +829,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     

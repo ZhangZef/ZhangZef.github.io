@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="zhangzef">
 <meta property="og:description" content="差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$x_1=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/2019/08/01/差分约束/TIM截图20190801164055-1564649436098.png">
-<meta property="og:updated_time" content="2019-12-02T12:20:50.554Z">
+<meta property="og:image" content="/01/差分约束/TIM截图20190801164055-1564649436098.png">
+<meta property="og:updated_time" content="2019-12-02T12:20:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="差分约束">
 <meta name="twitter:description" content="差分约束系统是求解一组特殊的不等式组的方法。 差分约束举例差分约束是有n个变量和m个不等式组成的。其中每个不等式都是形如：$x_i-x_j \leq b_k(i,j\in[1,n], k\in[1,m])$  或 $x_i-x_j \geq b_k(i,j\in[1,n], k\in[1,m])$ 。 其中x为n个变量，b为m个不等式右边的值，用b的值来约束x的差称为差分约束。求一组解：$x_1=">
-<meta name="twitter:image" content="/2019/08/01/差分约束/TIM截图20190801164055-1564649436098.png">
+<meta name="twitter:image" content="/01/差分约束/TIM截图20190801164055-1564649436098.png">
 
 
 
@@ -102,7 +102,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -332,7 +332,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:20:50+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:20:52+08:00">
                 2019-12-02
               </time>
             
@@ -421,14 +421,14 @@
 </ol>
 <p>因为要满足所有等式的关系，所以取其中最大的3.$x_1-x_5 \leq 8$  因为8一定小于9和10嘛，如果$x_1-x_5$小于等于8了，那他们一定小于等于9和10。</p>
 <h2 id="最短路问题"><a href="#最短路问题" class="headerlink" title="最短路问题"></a>最短路问题</h2><p>观察可发现 $x_i-x_j \leq b_k$ 可转换为：$x_i \leq b_k+x_j$ 。与求最短路公式中的dis[j]&lt;dis[i]+w[i, j]非常相似，那差分约束问题是不是也可以转化成最短路问题来求解呢？肯定是可以的！先来看个例子：</p>
-<p><img src="/2019/08/01/差分约束/TIM截图20190801164055-1564649436098.png" alt="TIM截图20190801164055" style="zoom:50%;"></p>
+<p><img src="/01/差分约束/TIM截图20190801164055-1564649436098.png" alt="TIM截图20190801164055" style="zoom:50%;"></p>
 <p>仔细观察图中可发现总共有三条路径：</p>
 <ol>
 <li>5 -&gt; 1                      长度为10</li>
 <li>5 -&gt; 3 -&gt; 1               长度为9</li>
 <li>5 -&gt; 2 -&gt; 3 -&gt; 1        长度为8</li>
 </ol>
-<p>很容易发现从5到1的最短路径是8。那为什么求差分约束问题能和最短路问题联系到一起呢？此处要先了解最短路知识，不懂的可以看一看我前面写的博客：1.<a href="https://zhangzef.com/2019/07/25/%E6%9C%80%E7%9F%AD%E8%B7%AF--Dijkstra/" target="_blank" rel="noopener">dijkstra</a>    2.<a href="https://zhangzef.com/2019/07/26/%E6%9C%80%E7%9F%AD%E8%B7%AF-SPFA/" target="_blank" rel="noopener">SPFA</a>    3.<a href="https://zhangzef.com/2019/07/30/%E6%9C%80%E7%9F%AD%E8%B7%AF-Floyd/" target="_blank" rel="noopener">Floyd</a></p>
+<p>很容易发现从5到1的最短路径是8。那为什么求差分约束问题能和最短路问题联系到一起呢？此处要先了解最短路知识，不懂的可以看一看我前面写的博客：1.<a href="https://zhangzef.com/2019/07/25/%E6%9C%80%E7%9F%AD%E8%B7%AF--Dijkstra/">dijkstra</a>    2.<a href="https://zhangzef.com/2019/07/26/%E6%9C%80%E7%9F%AD%E8%B7%AF-SPFA/">SPFA</a>    3.<a href="https://zhangzef.com/2019/07/30/%E6%9C%80%E7%9F%AD%E8%B7%AF-Floyd/">Floyd</a></p>
 <h2 id="差分约束和最短路问题"><a href="#差分约束和最短路问题" class="headerlink" title="差分约束和最短路问题"></a>差分约束和最短路问题</h2><p>对于每个不等式$x_i-x_j \leq b_k$，我们都从结点j向结点i连一条长度为$b_k$的有向边。此时再看上面给出的那些不等式所转化成的图，是否和给出的图一样呢，最后求解的答案也一样。那么我们将差分约束问题转化成最短路问题，由最短路知识可知，当图中存在可达到的负环时，最短路一定无解。所以可以用SPFA来判断该差分约束问题是否有解。</p>
 <p>这时候就有一个问题了，在最短路中有些点是不可达的，当遇到不可达的负环用SPFA一定判断不出来，但此时差分约束却是无解的。怎么办呢？有两种方法，其实本质都是一样的：</p>
 <ol>
@@ -802,6 +802,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -847,11 +854,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     

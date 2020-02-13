@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="zhangzef">
 <meta property="og:description" content="tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁 想开始打一打cf，刷题刷的太少了，太吃亏了。 1216A. Prefixes题意给一个字符串，长度为偶数，只包含小写字母a和b，你可以变换其中任意一个字母，把a换成b或者把b换成a。要求最后结果中的字符串任意偶数前缀a和b的数量相同。 题解只需要保证第i个字母和第i+1个字母不相同就行了，i每次递增2。 代码12345">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/2019/09/21/Codeforces-Round-587-Div-3-比赛-补题/TIM截图20190922180010.png">
-<meta property="og:updated_time" content="2019-12-02T12:21:26.035Z">
+<meta property="og:image" content="/21/Codeforces-Round-587-Div-3-比赛-补题/TIM截图20190922180010.png">
+<meta property="og:updated_time" content="2019-12-02T12:21:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces Round #587 (Div. 3) 比赛&amp;补题">
 <meta name="twitter:description" content="tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁 想开始打一打cf，刷题刷的太少了，太吃亏了。 1216A. Prefixes题意给一个字符串，长度为偶数，只包含小写字母a和b，你可以变换其中任意一个字母，把a换成b或者把b换成a。要求最后结果中的字符串任意偶数前缀a和b的数量相同。 题解只需要保证第i个字母和第i+1个字母不相同就行了，i每次递增2。 代码12345">
-<meta name="twitter:image" content="/2019/09/21/Codeforces-Round-587-Div-3-比赛-补题/TIM截图20190922180010.png">
+<meta name="twitter:image" content="/21/Codeforces-Round-587-Div-3-比赛-补题/TIM截图20190922180010.png">
 
 
 
@@ -102,7 +102,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -332,7 +332,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:21:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:21:28+08:00">
                 2019-12-02
               </time>
             
@@ -424,7 +424,7 @@
 <h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>用最大的数依次减去其他所有ai，求他们所有的最大公因数，然后再用前面算出来的最大数和其他数的差除以最大公因数，则可算出有多少人来偷剑了，最大公因数即为每个人偷了多少剑。</p>
 <h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s, ss;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x&gt;y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    sort(a, a+n, cmp);</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x = a[<span class="number">0</span>]-a[i];</span><br><span class="line">        <span class="keyword">if</span>(x)</span><br><span class="line">        &#123;</span><br><span class="line">            s.push(x);</span><br><span class="line">            ss.push(x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(s.size()&gt;<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x = s.top();</span><br><span class="line">        s.pop();</span><br><span class="line">        y = s.top();</span><br><span class="line">        s.pop();</span><br><span class="line"></span><br><span class="line">        s.push(__gcd(x, y));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ll ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!ss.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        x = ss.top();</span><br><span class="line">        ss.pop();</span><br><span class="line">        ans+=(x/s.top());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld %d\n"</span>, ans, s.top());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="1216E1-Numerical-Sequence-easy-version"><a href="#1216E1-Numerical-Sequence-easy-version" class="headerlink" title="1216E1. Numerical Sequence (easy version)"></a>1216E1. Numerical Sequence (easy version)</h2><h3 id="题意-4"><a href="#题意-4" class="headerlink" title="题意"></a>题意</h3><p>11212312341234512345612345671234567812345678912345678910……，给你一个这样的无限循环数列，1、12、123、1234、12345……这样循环，询问q次，每次询问在这个数列中第k位是什么数字。注意：11算两位数字，而不是一个数字。k最大为1e9，q不大于100。</p>
-<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p><img src="/2019/09/21/Codeforces-Round-587-Div-3-比赛-补题/TIM截图20190922180010.png" alt="TIM截图20190922180010" style="zoom:50%;"></p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p><img src="/21/Codeforces-Round-587-Div-3-比赛-补题/TIM截图20190922180010.png" alt="TIM截图20190922180010" style="zoom:50%;"></p>
 <p>由程序算出当k为1e9时总共也才21837个数，所以我们只用预处理出前1e5个数的排列，预处理时记录下每个数的最后一位排到哪里了，最后直接查表就行了。</p>
 <p>计算程序：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ll k=<span class="number">0</span>, i=<span class="number">1</span>, x;</span><br><span class="line">    <span class="keyword">while</span>(k&lt;=<span class="number">1000000000</span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(ll j=<span class="number">1</span>; j&lt;=i; j++)&#123;</span><br><span class="line">            x = j;</span><br><span class="line">            <span class="keyword">while</span>(x)&#123;k++;x/=<span class="number">10</span>;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
@@ -758,6 +758,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -803,11 +810,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     

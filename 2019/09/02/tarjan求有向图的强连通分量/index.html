@@ -87,21 +87,21 @@
 <meta property="og:site_name" content="zhangzef">
 <meta property="og:description" content="tarjan到底是念“塔进”还是“塔扬”。好像大多数人都念“塔进”，但是英语好像是念“塔扬”。胡扯结束。。。 这个tarjan算法求的是有向图中的强连通分量，并将他们合并。 强连通分量（如果会可以直接看tarjan部分）那什么是强连通分量呢？强连通嘛，就是图中任意两点能相互到达。那强连通分量就是一个图中的强连通子图。 环是最简单的强连通分量：  那你如果从1出发，只要转一圈就能经过所有点。 强连通">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909204020.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909204729.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909205034.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909205034.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918114703.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918114957.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918115433.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120132.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120345.png">
-<meta property="og:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120518.png">
-<meta property="og:updated_time" content="2019-12-02T12:22:39.694Z">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190909204020.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190909204729.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190909205034.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190909205034.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190918114703.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190918114957.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190918115433.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190918120132.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190918120345.png">
+<meta property="og:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190918120518.png">
+<meta property="og:updated_time" content="2019-12-02T12:22:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tarjan求有向图的强连通分量">
 <meta name="twitter:description" content="tarjan到底是念“塔进”还是“塔扬”。好像大多数人都念“塔进”，但是英语好像是念“塔扬”。胡扯结束。。。 这个tarjan算法求的是有向图中的强连通分量，并将他们合并。 强连通分量（如果会可以直接看tarjan部分）那什么是强连通分量呢？强连通嘛，就是图中任意两点能相互到达。那强连通分量就是一个图中的强连通子图。 环是最简单的强连通分量：  那你如果从1出发，只要转一圈就能经过所有点。 强连通">
-<meta name="twitter:image" content="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909204020.png">
+<meta name="twitter:image" content="/02/tarjan求有向图的强连通分量/TIM截图20190909204020.png">
 
 
 
@@ -111,7 +111,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -341,7 +341,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:22:39+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:22:40+08:00">
                 2019-12-02
               </time>
             
@@ -422,17 +422,17 @@
 <p>这个tarjan算法求的是有向图中的强连通分量，并将他们合并。</p>
 <h2 id="强连通分量"><a href="#强连通分量" class="headerlink" title="强连通分量"></a>强连通分量</h2><p><strong>（如果会可以直接看tarjan部分）</strong>那什么是强连通分量呢？强连通嘛，就是<strong>图中任意两点能相互到达</strong>。那强连通分量就是一个图中的强连通子图。</p>
 <p>环是最简单的强连通分量：</p>
-<p><img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909204020.png" alt="TIM截图20190909204020" style="zoom:50%;"></p>
+<p><img src="/02/tarjan求有向图的强连通分量/TIM截图20190909204020.png" alt="TIM截图20190909204020" style="zoom:50%;"></p>
 <p>那你如果从1出发，只要转一圈就能经过所有点。</p>
 <p>强连通分量不等于环，还有一些复杂的强连通分量，例如完全图：</p>
-<p><img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909204729.png" alt="TIM截图20190909204729" style="zoom:50%;"></p>
+<p><img src="/02/tarjan求有向图的强连通分量/TIM截图20190909204729.png" alt="TIM截图20190909204729" style="zoom:50%;"></p>
 <p>很明显能看出从图中一点出发，可到达其他任意一个点。</p>
 <h2 id="tarjan算法"><a href="#tarjan算法" class="headerlink" title="tarjan算法"></a>tarjan算法</h2><p>先上时间复杂度：O(N+M)    （其中N和M分别为点数和边数）</p>
 <p>tarjan算法是通过对图的dfs来找出其中的强连通分量，并分类。<strong>（需掌握dfs的思想并且能熟练运用）</strong></p>
 <h3 id="dfn数组和low数组讲解"><a href="#dfn数组和low数组讲解" class="headerlink" title="dfn数组和low数组讲解"></a>dfn数组和low数组讲解</h3><p>这里给出tarjan算法中两个重要数组的定义：</p>
 <p>​    dfn[u]：表示当前结点i在dfs算法中第几个被访问的的点。</p>
 <p>​    low[u]：表示当前结点i能回溯到的最小dfs序结点，<strong>dfs序即dfn[u]的值</strong>。</p>
-<p><img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909205034.png" alt="TIM截图20190909205034" style="zoom:50%;"></p>
+<p><img src="/02/tarjan求有向图的强连通分量/TIM截图20190909205034.png" alt="TIM截图20190909205034" style="zoom:50%;"></p>
 <p>（6-&gt;1的箭头画反了，应该时1-&gt;6）</p>
 <p>当从结点1开始dfs时，假设优先向下访问：dfn[1] = 1;    dfn[6] = 2;因为第一个访问的时结点1，所以它的dfs序是1，第二个访问的是结点6，所以它的dfs序时2。访问完结点6发现没有路了，则开始访问结点1的下一条出边。</p>
 <p>开始访问结点2，刚刚访问的结点6是第二个访问的结点，所以结点2是第三个访问的结点，即它的dfs序为3：dfn[2] = 3;    dfn[5] = 4;    dfn[4] = 5;    dfn[3] = 6;我们顺着结点2依次访问下去，发现只有一条路，畅通无阻。</p>
@@ -456,15 +456,15 @@
 <li>上面讲过，当dfn[u]==low[u]时，该节点为强连通分量根结点</li>
 <li>将栈顶元素出栈，直到栈顶元素为u时，u出栈，则此次出栈的一系列元素为一个强连通分量</li>
 </ol>
-<p><img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190909205034.png" alt="TIM截图20190909205034" style="zoom:50%;"></p>
+<p><img src="/02/tarjan求有向图的强连通分量/TIM截图20190909205034.png" alt="TIM截图20190909205034" style="zoom:50%;"></p>
 <p>（6-&gt;1的箭头画反了，应该时1-&gt;6）</p>
 <ol>
-<li>从结点1开始：dfn[1] = low[1] = 1; 结点1进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918114703.png" alt="TIM截图20190918114703" style="zoom: 50%;"></li>
-<li>1-&gt;6：dfn[6] = low[6] = 2; 结点6进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918114957.png" alt="TIM截图20190918114957" style="zoom:50%;">结点6没有出边，无法dfs，发现dfn[6]==low[6]，栈顶元素出栈，栈顶元素正好时结点6，无需继续出栈，则结点6自己为一个单独的强联通分量。</li>
-<li>1-&gt;2：dfn[2] = low[2] = 3；结点2进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918115433.png" alt="TIM截图20190918115433" style="zoom: 50%;">结点2有出边且为访问，开始dfs。</li>
-<li>2-&gt;5：dfn[5] = low[5] = 4；结点5进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120132.png" alt="TIM截图20190918120132" style="zoom: 50%;">结点5有出边且未访问，继续dfs</li>
-<li>5-&gt;4：dfn[4] = low[4] = 5；结点4进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120345.png" alt="TIM截图20190918120345" style="zoom:50%;">结点4有未访问的出边，继续dfs</li>
-<li>4-&gt;3：dfn[3] = low[3] = 6；结点3进栈<img src="/2019/09/02/tarjan求有向图的强连通分量/TIM截图20190918120518.png" alt="TIM截图20190918120518" style="zoom: 50%;">结点3有出边，但结点2已经访问过了，且结点2在栈里面，所以3可以回溯到结点2，可知dfn[2]=3, low[3]=6;  所以low[3] = dfn[2] = 3;</li>
+<li>从结点1开始：dfn[1] = low[1] = 1; 结点1进栈<img src="/02/tarjan求有向图的强连通分量/TIM截图20190918114703.png" alt="TIM截图20190918114703" style="zoom: 50%;"></li>
+<li>1-&gt;6：dfn[6] = low[6] = 2; 结点6进栈<img src="/02/tarjan求有向图的强连通分量/TIM截图20190918114957.png" alt="TIM截图20190918114957" style="zoom:50%;">结点6没有出边，无法dfs，发现dfn[6]==low[6]，栈顶元素出栈，栈顶元素正好时结点6，无需继续出栈，则结点6自己为一个单独的强联通分量。</li>
+<li>1-&gt;2：dfn[2] = low[2] = 3；结点2进栈<img src="/02/tarjan求有向图的强连通分量/TIM截图20190918115433.png" alt="TIM截图20190918115433" style="zoom: 50%;">结点2有出边且为访问，开始dfs。</li>
+<li>2-&gt;5：dfn[5] = low[5] = 4；结点5进栈<img src="/02/tarjan求有向图的强连通分量/TIM截图20190918120132.png" alt="TIM截图20190918120132" style="zoom: 50%;">结点5有出边且未访问，继续dfs</li>
+<li>5-&gt;4：dfn[4] = low[4] = 5；结点4进栈<img src="/02/tarjan求有向图的强连通分量/TIM截图20190918120345.png" alt="TIM截图20190918120345" style="zoom:50%;">结点4有未访问的出边，继续dfs</li>
+<li>4-&gt;3：dfn[3] = low[3] = 6；结点3进栈<img src="/02/tarjan求有向图的强连通分量/TIM截图20190918120518.png" alt="TIM截图20190918120518" style="zoom: 50%;">结点3有出边，但结点2已经访问过了，且结点2在栈里面，所以3可以回溯到结点2，可知dfn[2]=3, low[3]=6;  所以low[3] = dfn[2] = 3;</li>
 <li>此时dfn[3]!=low[3]，所以不出栈。</li>
 <li>当dfs回溯到5-&gt;4的时候，发现(low[4]=5) &gt; (low[3]=3)，所以low[4] = 3;    依此类推low[5]=3;且直到dfs回溯到结点2的时候才会进行出栈操作，因为2时强连通分量的根节点。</li>
 <li>不难看出，依次出栈的时3、4、5、2，这四个结点为一个强连通分量</li>
@@ -831,6 +831,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -876,11 +883,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     

@@ -87,16 +87,16 @@
 <meta property="og:site_name" content="zhangzef">
 <meta property="og:description" content="Spring中的JdbcTemplateJdbcTemplate概述它是spring框架中提供的一个对象，是对原始Jdbc API对象的简单封装。spring框架为我们提供了很多的操作模板类。  操作关系型数据的：  JdbcTemplate  HibernateTemplate   操作nosql数据库的：  RedisTemplate   操作消息队列的：  JmsTemplate     环">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/持久层总图.jpg">
-<meta property="og:image" content="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/20160324011156424.jpg">
-<meta property="og:image" content="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573310968216.png">
-<meta property="og:image" content="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573372057304.png">
-<meta property="og:image" content="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573372064223.png">
-<meta property="og:updated_time" content="2019-12-02T12:22:15.269Z">
+<meta property="og:image" content="/08/Spring--四、Spring中的JdbcTemplate和事务控制/持久层总图.jpg">
+<meta property="og:image" content="/08/Spring--四、Spring中的JdbcTemplate和事务控制/20160324011156424.jpg">
+<meta property="og:image" content="/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573310968216.png">
+<meta property="og:image" content="/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573372057304.png">
+<meta property="og:image" content="/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573372064223.png">
+<meta property="og:updated_time" content="2019-12-02T12:22:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring--四、Spring中的JdbcTemplate和事务控制">
 <meta name="twitter:description" content="Spring中的JdbcTemplateJdbcTemplate概述它是spring框架中提供的一个对象，是对原始Jdbc API对象的简单封装。spring框架为我们提供了很多的操作模板类。  操作关系型数据的：  JdbcTemplate  HibernateTemplate   操作nosql数据库的：  RedisTemplate   操作消息队列的：  JmsTemplate     环">
-<meta name="twitter:image" content="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/持久层总图.jpg">
+<meta name="twitter:image" content="/08/Spring--四、Spring中的JdbcTemplate和事务控制/持久层总图.jpg">
 
 
 
@@ -106,7 +106,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -336,7 +336,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:22:15+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:22:16+08:00">
                 2019-12-02
               </time>
             
@@ -429,7 +429,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/持久层总图.jpg" alt="持久层总图" style="zoom:50%;"></p>
+<p><img src="/08/Spring--四、Spring中的JdbcTemplate和事务控制/持久层总图.jpg" alt="持久层总图" style="zoom:50%;"></p>
 <h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>需要导入的jar包（版本可自行选择）：</p>
 <ul>
 <li>spring-jdbc-5.1.9.RELEASE.jar（JDBC）</li>
@@ -463,7 +463,7 @@
 </ul>
 <p>举一个经典的例子就是银行转账，银行转账分为几步：转账开始，账户一扣钱，账户二加钱，转账结束。但是当账户一扣过钱之后系统出现了某种异常转账行为不能继续进行。如果没有事务控制这次转账将会被强行结束，而事务控制则会保持其一致性，开启回滚事务，让所有信息恢复到转账开始前的状态。</p>
 <p>Spring的事务控制都是基于AOP的，分为两种，一种是<strong>声明式事务控制</strong>（即用配置的方式来实现），一种是<strong>编程式事务控制</strong>（即用编程的方式来实现）。</p>
-<h3 id="Spring事务控制API介绍"><a href="#Spring事务控制API介绍" class="headerlink" title="Spring事务控制API介绍"></a>Spring事务控制API介绍</h3><p><img src="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/20160324011156424.jpg" alt="20160324011156424" style="zoom: 67%;"></p>
+<h3 id="Spring事务控制API介绍"><a href="#Spring事务控制API介绍" class="headerlink" title="Spring事务控制API介绍"></a>Spring事务控制API介绍</h3><p><img src="/08/Spring--四、Spring中的JdbcTemplate和事务控制/20160324011156424.jpg" alt="20160324011156424" style="zoom: 67%;"></p>
 <h4 id="PlatformTransactionManager"><a href="#PlatformTransactionManager" class="headerlink" title="PlatformTransactionManager"></a>PlatformTransactionManager</h4><p>事务管理器</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">TransactionStatus <span class="title">getTransaction</span><span class="params">()</span></span>;<span class="comment">//获取事务的状态信息</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">commit</span><span class="params">()</span></span>;<span class="comment">//提交事务</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rollback</span><span class="params">()</span></span>;<span class="comment">//回滚事务</span></span><br></pre></td></tr></table></figure>
 <h4 id="TransactionDefinition"><a href="#TransactionDefinition" class="headerlink" title="TransactionDefinition"></a>TransactionDefinition</h4><p>事务的定义信息对象</p>
@@ -472,7 +472,7 @@
 <li>读写型事务：增、删、改</li>
 <li>只读型事务：查询</li>
 </ul>
-<h5 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h5><p><img src="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573310968216.png" alt="1573310968216" style="zoom: 50%;"></p>
+<h5 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h5><p><img src="/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573310968216.png" alt="1573310968216" style="zoom: 50%;"></p>
 <h5 id="事务的传播行为"><a href="#事务的传播行为" class="headerlink" title="事务的传播行为"></a>事务的传播行为</h5><ul>
 <li><strong>REQUIRED:如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。一般的选择（默认值）</strong> </li>
 <li><strong>SUPPORTS:支持当前事务，如果当前没有事务，就以非事务方式执行（没有事务）</strong> </li>
@@ -539,9 +539,9 @@
 <h4 id="测试代码-1"><a href="#测试代码-1" class="headerlink" title="测试代码"></a>测试代码</h4><p>同上</p>
 <h2 id="Spring5的部分新特性"><a href="#Spring5的部分新特性" class="headerlink" title="Spring5的部分新特性"></a>Spring5的部分新特性</h2><h3 id="JDK升级"><a href="#JDK升级" class="headerlink" title="JDK升级"></a>JDK升级</h3><p>spring5.0在2017年9月发布了它的GA（通用）版本。该版本是基于jdk8编写的，所以jdk8以下版本将无法使用。同时，可以兼容jdk9版本。 tomcat版本要求8.5及以上。</p>
 <p>jdk1.8版本（就是JDK8）运行时间如下：</p>
-<p><img src="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573372057304.png" alt="1573372057304"></p>
+<p><img src="/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573372057304.png" alt="1573372057304"></p>
 <p>当切换到jdk1.7版本之后，运行时间如下：</p>
-<p><img src="/2019/11/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573372064223.png" alt="1573372064223"></p>
+<p><img src="/08/Spring--四、Spring中的JdbcTemplate和事务控制/1573372064223.png" alt="1573372064223"></p>
 <p>在框架中创建对象通常都是用<strong>反射</strong>来创建对象的。</p>
 <h3 id="核心容器的更新"><a href="#核心容器的更新" class="headerlink" title="核心容器的更新"></a>核心容器的更新</h3><p>Spring Framework 5.0 现在支持候选组件索引作为类路径扫描的替代方案。该功能已经在类路径扫描器中添加，以简化添加候选组件标识的步骤。 </p>
 <p>应用程序构建任务可以定义当前项目自己的 META-INF/spring.components 文件。在编译时，源模型是自包含的，JPA 实体和 Spring 组件是已被标记的。 </p>
@@ -878,6 +878,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -923,11 +930,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
