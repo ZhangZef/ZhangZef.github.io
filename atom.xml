@@ -40,9 +40,9 @@
     
       <category term="ACM" scheme="zhangzef.com/tags/ACM/"/>
     
-      <category term="最短路" scheme="zhangzef.com/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
-    
       <category term="蓝桥杯" scheme="zhangzef.com/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
+    
+      <category term="最短路" scheme="zhangzef.com/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/"/>
     
       <category term="dijkstra" scheme="zhangzef.com/tags/dijkstra/"/>
     
@@ -491,9 +491,9 @@
     
       <category term="ACM" scheme="zhangzef.com/tags/ACM/"/>
     
-      <category term="蓝桥杯" scheme="zhangzef.com/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
-    
       <category term="搜索" scheme="zhangzef.com/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+      <category term="蓝桥杯" scheme="zhangzef.com/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
     
       <category term="bfs记录最短路径" scheme="zhangzef.com/tags/bfs%E8%AE%B0%E5%BD%95%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/"/>
     
