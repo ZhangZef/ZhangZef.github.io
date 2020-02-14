@@ -87,14 +87,14 @@
 <meta property="og:site_name" content="zhangzef">
 <meta property="og:description" content="并查集是一种树型数据结构，用于查找不相交的子集，并将他们合并在一起，简称并查集。并查集分为拆分、查找和合并三个操作。 并查集查找 pre数组记录所有结点的前驱结点，根节点的前驱结点是它自己 find函数先找到x的根节点  12345678int pre[1000];//1.int find(int x)//2.&amp;#123;     int r=x;    while ( pre[r] != r )">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/22/并查集/TIM截图20190722191109.png">
-<meta property="og:image" content="/22/并查集/TIM截图20190722182225.png">
-<meta property="og:image" content="/22/并查集/TIM截图20190722182240.png">
-<meta property="og:updated_time" content="2019-12-02T12:20:42.000Z">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184937.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184936.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184935.png">
+<meta property="og:updated_time" content="2020-02-14T10:53:47.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并查集">
 <meta name="twitter:description" content="并查集是一种树型数据结构，用于查找不相交的子集，并将他们合并在一起，简称并查集。并查集分为拆分、查找和合并三个操作。 并查集查找 pre数组记录所有结点的前驱结点，根节点的前驱结点是它自己 find函数先找到x的根节点  12345678int pre[1000];//1.int find(int x)//2.&amp;#123;     int r=x;    while ( pre[r] != r )">
-<meta name="twitter:image" content="/22/并查集/TIM截图20190722191109.png">
+<meta name="twitter:image" content="http://image.zhangzef.com/20200214184937.png">
 
 
 
@@ -353,8 +353,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:20:42+08:00">
-                2019-12-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-14T18:53:47+08:00">
+                2020-02-14
               </time>
             
           </span>
@@ -471,7 +471,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/22/并查集/TIM截图20190722191109.png" alt="TIM截图20190722191109" style="zoom:50%;"></p>
+<p><img src="http://image.zhangzef.com/20200214184937.png" alt="img" style="zoom:50%;"></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span><span class="comment">//1.</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy)</span><br><span class="line">        pre[fx ]=fy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注释：</p>
 <ol>
@@ -479,7 +479,7 @@
 </ol>
 <h2 id="并查集的优化"><a href="#并查集的优化" class="headerlink" title="并查集的优化"></a>并查集的优化</h2><h3 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h3><p>路径压缩是在寻找根结点的过程中，将子集中所有的点的前驱设置为根结点。</p>
 <p>为什么要进行路径压缩呢？因为在并查集合并过程中，他有可能变成一个<strong>单链表</strong>，这样每次寻找根结点要遍历子集中所有的结点。进行路径压缩之后，每次寻找根结点只需访问他的父结点就可找到根结点。</p>
-<p><img src="/22/并查集/TIM截图20190722182225.png" alt="TIM截图20190722182225"></p>
+<p><img src="http://image.zhangzef.com/20200214184936.png" alt="img" style="zoom:50%;"></p>
 <p>优化后的<strong><u>find</u></strong>函数：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> pre[<span class="number">1000</span> ];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span>                            </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">int</span> r=x;</span><br><span class="line">    <span class="keyword">while</span> ( pre[r] != r )                   </span><br><span class="line">          r=pre[r];</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">int</span> i=x , j ;</span><br><span class="line">    <span class="keyword">while</span>( i != r )<span class="comment">//1.</span></span><br><span class="line">    &#123;</span><br><span class="line">         j = pre[ i ];<span class="comment">//2.</span></span><br><span class="line">         pre[ i ]= r ;<span class="comment">//3.</span></span><br><span class="line">         i=j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注释：</p>
@@ -490,7 +490,7 @@
 </ol>
 <h3 id="按秩-Rank-合并"><a href="#按秩-Rank-合并" class="headerlink" title="按秩(Rank)合并"></a>按秩(Rank)合并</h3><p>按秩合并就是在合并过程中将元素所在深度小的集合合并到元素所在深度大的集合</p>
 <p>为什么要按秩合并呢？因为如果将元素深度大的集合合并到小的集合，那么合并后的集合深度则等于较大的深度加一。如果将深度小的集合合并到深度大的集合，则合并后的集合深度不变。</p>
-<p><img src="/22/并查集/TIM截图20190722182240.png" alt="TIM截图20190722182240"></p>
+<p><img src="http://image.zhangzef.com/20200214184935.png" alt="img" style="zoom:50%;"></p>
 <p>优化后的<strong><u>join</u></strong>函数：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fx=find(x),fy=find(y);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(rank[fx]&gt;rank[fy])<span class="comment">//1.</span></span><br><span class="line">        pre[fy] = pre[fx];<span class="comment">//2.</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        pre[fx] = fy;</span><br><span class="line">        <span class="keyword">if</span>(rank[fx]==rank[fy])<span class="comment">//3.</span></span><br><span class="line">            rank[fy]++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注释：</p>
@@ -736,7 +736,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -875,7 +875,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">56.1k</span>
+    <span title="Site words total count">55.9k</span>
   
 </div>
 

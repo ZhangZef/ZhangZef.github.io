@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="zhangzef">
 <meta property="og:description" content="Dijkstra是单源最短路算法，用于求正权图源点到每个顶点的最短路。Dijkstra用到了一些BFS的思想 算法步骤 初始化dis数组和vis数组。 dis[i]表示源点到第i个点的距离，初始化为INF，表示无穷大。（INF为自己定义） vis[i]数组表示第i个点的最短路是否用于处理过未求出最短路的点。（当用优先队列的时候则不用vis数组）   找出当前最短dis[i]，并且vis[i]为fa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/25/最短路--Dijkstra/TIM截图20190725160913.png">
-<meta property="og:updated_time" content="2020-02-12T04:58:44.456Z">
+<meta property="og:image" content="http://image.zhangzef.com/20200214185148.png">
+<meta property="og:updated_time" content="2020-02-14T10:54:21.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最短路--Dijkstra">
 <meta name="twitter:description" content="Dijkstra是单源最短路算法，用于求正权图源点到每个顶点的最短路。Dijkstra用到了一些BFS的思想 算法步骤 初始化dis数组和vis数组。 dis[i]表示源点到第i个点的距离，初始化为INF，表示无穷大。（INF为自己定义） vis[i]数组表示第i个点的最短路是否用于处理过未求出最短路的点。（当用优先队列的时候则不用vis数组）   找出当前最短dis[i]，并且vis[i]为fa">
-<meta name="twitter:image" content="/25/最短路--Dijkstra/TIM截图20190725160913.png">
+<meta name="twitter:image" content="http://image.zhangzef.com/20200214185148.png">
 
 
 
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-12T12:58:44+08:00">
-                2020-02-12
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-14T18:54:21+08:00">
+                2020-02-14
               </time>
             
           </span>
@@ -460,7 +460,7 @@
 </ol>
 </li>
 </ol>
-<p><img src="/25/最短路--Dijkstra/TIM截图20190725160913.png" alt="TIM截图20190725160913" style="zoom:50%;"></p>
+<p><img src="http://image.zhangzef.com/20200214185148.png" alt="img" style="zoom:50%;"></p>
 <h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="邻接矩阵版"><a href="#邻接矩阵版" class="headerlink" title="邻接矩阵版"></a>邻接矩阵版</h3><p>时间复杂度为O(n*n)    n为顶点数</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> s)</span><span class="comment">//1.</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)<span class="comment">//2.</span></span><br><span class="line">    &#123;</span><br><span class="line">        dis[i] = w[s][i];</span><br><span class="line">        vis[i] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dis[s] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)<span class="comment">//3.</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mn = INF, x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n; j++)<span class="comment">//4.</span></span><br><span class="line">            <span class="keyword">if</span>(!vis[j] &amp;&amp; dis[j]&lt;mn)</span><br><span class="line">            &#123;</span><br><span class="line">                mn = dis[j];</span><br><span class="line">                x=j;</span><br><span class="line">            &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(mn==INF)<span class="comment">//5.</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">        vis[x] = <span class="literal">true</span>;<span class="comment">//6.</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n; j++)</span><br><span class="line">            dis[j] = min(dis[j], dis[x]+w[x][j]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注释：</p>
@@ -724,7 +724,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -863,7 +863,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">56.1k</span>
+    <span title="Site words total count">55.9k</span>
   
 </div>
 

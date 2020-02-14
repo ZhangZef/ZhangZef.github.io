@@ -87,16 +87,16 @@
 <meta property="og:site_name" content="zhangzef">
 <meta property="og:description" content="视频：Spring5教程IDEA版-4天-2018黑马 教学资源    提取码：cwbz Spring的概述（了解）spring是什么Spring是分层的Java SE/EE应用 full-stack轻量级开源框架，以IoC（Inverse Of Control：反转控制）和AOP（Aspect Oriented Programming：面向切面编程）为内核，提供了展现层Spring MVC和持久">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570021394756.png">
-<meta property="og:image" content="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570085897052.png">
-<meta property="og:image" content="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570086617087.png">
-<meta property="og:image" content="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570088592204.png">
-<meta property="og:image" content="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/TIM截图20191003153640.png">
-<meta property="og:updated_time" content="2019-12-02T12:22:22.000Z">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184451.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184452.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184454.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184449.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184450.png">
+<meta property="og:updated_time" content="2020-02-14T10:55:29.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring--一、Spring概述及Spring中基于XML的IOC配置">
 <meta name="twitter:description" content="视频：Spring5教程IDEA版-4天-2018黑马 教学资源    提取码：cwbz Spring的概述（了解）spring是什么Spring是分层的Java SE/EE应用 full-stack轻量级开源框架，以IoC（Inverse Of Control：反转控制）和AOP（Aspect Oriented Programming：面向切面编程）为内核，提供了展现层Spring MVC和持久">
-<meta name="twitter:image" content="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570021394756.png">
+<meta name="twitter:image" content="http://image.zhangzef.com/20200214184451.png">
 
 
 
@@ -355,8 +355,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-02T20:22:22+08:00">
-                2019-12-02
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-14T18:55:29+08:00">
+                2020-02-14
               </time>
             
           </span>
@@ -482,7 +482,7 @@
 <p>  <strong>Java源码是经典学习范例</strong></p>
 <p>  Spring的源代码设计精妙、结构清晰、匠心独用，处处体现着大师对Java设计模式灵活运用以及对Java技术的高深造诣。它的源代码无意是Java技术的最佳实践的范例。</p>
 </blockquote>
-<h3 id="Spring的体系结构"><a href="#Spring的体系结构" class="headerlink" title="Spring的体系结构"></a>Spring的体系结构</h3><p><img src="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570021394756.png" alt="1570021394756" style="zoom:50%;"></p>
+<h3 id="Spring的体系结构"><a href="#Spring的体系结构" class="headerlink" title="Spring的体系结构"></a>Spring的体系结构</h3><p><img src="http://image.zhangzef.com/20200214184451.png" alt="img" style="zoom: 67%;"></p>
 <p>Spring的两大核心为：AOP和IOC</p>
 <p>AOP部分为：AOP、Aspects、Instrumentation、Messaging</p>
 <p>IOC（核心容器）部分为Core Container部分</p>
@@ -499,8 +499,8 @@
 <p>那么，这个读取配置文件，创建和获取三层对象的类就是工厂。</p>
 <p>建议了解单例多例对象来提高工厂模式解耦效率。</p>
 <h3 id="控制翻转-Inversion-Of-Control（IOC）"><a href="#控制翻转-Inversion-Of-Control（IOC）" class="headerlink" title="控制翻转-Inversion Of Control（IOC）"></a>控制翻转-Inversion Of Control（IOC）</h3><p>控制反转（IOC）即把创建对象的权利交给框架，是框架的重要特征，它包括依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）</p>
-<p>原来我们创建对象是用new来<strong>主动</strong>创建的，即我们的项目对资源的使用是直接关联的，如图：<img src="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570085897052.png" alt="1570085897052" style="zoom:50%;"></p>
-<p>现在，我们引入框架的工厂来帮我们创建生产对象，他负责给我们从指定容器中获取指定对象的类，这时候这个对象获取过来是不是我能用的，我们的应用本身已经无法得知了，工厂能得到哪个对象是根据配置文件中的全限定类名（key=value）获得的，我们的应用本身没有自主控制权。而原来的直接new的方法则应用本身是有自主控制权的。所以这种工厂模式降低了我们程序间的依赖关系，如图：<img src="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570086617087.png" alt="1570086617087" style="zoom:50%;"></p>
+<p>原来我们创建对象是用new来<strong>主动</strong>创建的，即我们的项目对资源的使用是直接关联的，如图：<img src="http://image.zhangzef.com/20200214184452.png" alt="img" style="zoom:50%;"></p>
+<p>现在，我们引入框架的工厂来帮我们创建生产对象，他负责给我们从指定容器中获取指定对象的类，这时候这个对象获取过来是不是我能用的，我们的应用本身已经无法得知了，工厂能得到哪个对象是根据配置文件中的全限定类名（key=value）获得的，我们的应用本身没有自主控制权。而原来的直接new的方法则应用本身是有自主控制权的。所以这种工厂模式降低了我们程序间的依赖关系，如图：<img src="http://image.zhangzef.com/20200214184454.png" alt="img" style="zoom:50%;"></p>
 <p>即IOC用来削减计算机程序间的耦合。</p>
 <h2 id="使用Spring的IOC解决程序耦合"><a href="#使用Spring的IOC解决程序耦合" class="headerlink" title="使用Spring的IOC解决程序耦合"></a>使用Spring的IOC解决程序耦合</h2><h3 id="Spring的开发包"><a href="#Spring的开发包" class="headerlink" title="Spring的开发包"></a>Spring的开发包</h3><p>官网：<a href="http://spring.io/" target="_blank" rel="noopener">http://spring.io/</a></p>
 <p>Spring的目录结构：</p>
@@ -509,8 +509,8 @@
 <li>libs：jar包和源码</li>
 <li>schema：约束</li>
 </ul>
-<h3 id="Spring基于XML的IOC细节"><a href="#Spring基于XML的IOC细节" class="headerlink" title="Spring基于XML的IOC细节"></a>Spring基于XML的IOC细节</h3><h4 id="Spring中工厂的类结构图"><a href="#Spring中工厂的类结构图" class="headerlink" title="Spring中工厂的类结构图"></a>Spring中工厂的类结构图</h4><p><img src="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/1570088592204.png" alt="1570088592204" style="zoom:50%;"></p>
-<p><img src="/02/Spring--一、Spring概述及Spring中基于XML的IOC配置/TIM截图20191003153640.png" alt="TIM截图20191003153640" style="zoom:50%;"></p>
+<h3 id="Spring基于XML的IOC细节"><a href="#Spring基于XML的IOC细节" class="headerlink" title="Spring基于XML的IOC细节"></a>Spring基于XML的IOC细节</h3><h4 id="Spring中工厂的类结构图"><a href="#Spring中工厂的类结构图" class="headerlink" title="Spring中工厂的类结构图"></a>Spring中工厂的类结构图</h4><p><img src="http://image.zhangzef.com/20200214184449.png" alt="img" style="zoom: 67%;"></p>
+<p><img src="http://image.zhangzef.com/20200214184450.png" alt="img" style="zoom:67%;"></p>
 <h5 id="BeanFactory和ApplicationContext的区别"><a href="#BeanFactory和ApplicationContext的区别" class="headerlink" title="BeanFactory和ApplicationContext的区别"></a>BeanFactory和ApplicationContext的区别</h5><p>BeanFactory 才是Spring 容器中的顶层接口。ApplicationContext 是它的子接口。</p>
 <p>BeanFactory 和ApplicationContext 的区别：创建对象的时间点不一样。</p>
 <ul>
@@ -699,8 +699,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/02/Spring-boot/" rel="next" title="Spring boot">
-                <i class="fa fa-chevron-left"></i> Spring boot
+              <a href="/2019/09/23/记-20190923/" rel="next" title="记--20190923">
+                <i class="fa fa-chevron-left"></i> 记--20190923
               </a>
             
           </div>
@@ -831,7 +831,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -970,7 +970,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">56.1k</span>
+    <span title="Site words total count">55.9k</span>
   
 </div>
 
