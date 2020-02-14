@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ACM,搜索,蓝桥杯,bfs记录最短路径,bfs,dfs,双起点bfs,回溯,">
+  <meta name="keywords" content="ACM,蓝桥杯,搜索,bfs记录最短路径,bfs,dfs,双起点bfs,回溯,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="tips：大家评论的时候写一下邮箱和昵称呀，头像是根据昵称和邮箱随机生成的😁 kuangbin专题合集 ACM正确入门方式——数学lover ——————————分割线—————————— 2020-01-27更新快要考研了，在acm里面也没什么成就，唉下学期还要参加蓝桥杯，就趁寒假在家复（yu）习考研课程的间隙练一练题吧，蓝桥杯报的Java组，水一个国奖算了，大学四年最后两个愿望了，蓝桥杯拿个">
-<meta name="keywords" content="ACM,搜索,蓝桥杯,bfs记录最短路径,bfs,dfs,双起点bfs,回溯">
+<meta name="keywords" content="ACM,蓝桥杯,搜索,bfs记录最短路径,bfs,dfs,双起点bfs,回溯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kuangbin专题一简单搜索">
 <meta property="og:url" content="zhangzef.com/2019/09/19/kuangbin专题一简单搜索/index.html">
@@ -100,7 +100,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -410,6 +410,25 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8.9k words
+                </span>
+              
+
+              
+
+              
+            </div>
+          
 
           
 
@@ -572,9 +591,9 @@
           
             <a href="/tags/ACM/" rel="tag"><i class="fa fa-tag"></i> ACM</a>
           
-            <a href="/tags/搜索/" rel="tag"><i class="fa fa-tag"></i> 搜索</a>
-          
             <a href="/tags/蓝桥杯/" rel="tag"><i class="fa fa-tag"></i> 蓝桥杯</a>
+          
+            <a href="/tags/搜索/" rel="tag"><i class="fa fa-tag"></i> 搜索</a>
           
             <a href="/tags/bfs记录最短路径/" rel="tag"><i class="fa fa-tag"></i> bfs记录最短路径</a>
           
@@ -849,6 +868,8 @@
         <div class="back-to-top">
           <i class="fa fa-arrow-up"></i>
           
+            <span id="scrollpercent"><span>0</span>%</span>
+          
         </div>
       
 
@@ -894,6 +915,26 @@
 </p>
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客总量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 
@@ -1055,7 +1096,7 @@
         notify: false,
         appId: 'CXr7noV7CvVCPfY9qhTguCw9-gzGzoHsz',
         appKey: 'aLRh20M7hnQRlaQ45YH29R0I',
-        placeholder: '请留下邮箱，这样才能收到回复',
+        placeholder: '留下邮箱才能收到回复',
         avatar:'retro',
         guest_info:guest,
         pageSize:'10' || 10,
@@ -1528,7 +1569,7 @@
     
       pbOptions = {};
       
-          pbOptions.iconStyle = "box";
+          pbOptions.iconStyle = "default";
       
           pbOptions.boxForm = "horizontal";
       
