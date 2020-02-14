@@ -253,8 +253,8 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-        <tag>最短路</tag>
         <tag>图论</tag>
+        <tag>最短路</tag>
         <tag>Floyd</tag>
       </tags>
   </entry>
@@ -267,8 +267,8 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-        <tag>最短路</tag>
         <tag>图论</tag>
+        <tag>最短路</tag>
         <tag>SPFA</tag>
       </tags>
   </entry>
@@ -281,9 +281,9 @@
       </categories>
       <tags>
         <tag>ACM</tag>
+        <tag>图论</tag>
         <tag>最短路</tag>
         <tag>dijkstra</tag>
-        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
