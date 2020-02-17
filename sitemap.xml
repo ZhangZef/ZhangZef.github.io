@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>zhangzef.com/about/index.html</loc>
+    
+    <lastmod>2020-02-17T07:01:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>zhangzef.com/2020/02/05/kuangbin%E4%B8%93%E9%A2%98%E5%9B%9B-%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%BB%83%E4%B9%A0/</loc>
     
     <lastmod>2020-02-16T15:22:52.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>zhangzef.com/2020/02/15/Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A1%B5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F/</loc>
     
     <lastmod>2020-02-15T16:36:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>zhangzef.com/about/index.html</loc>
-    
-    <lastmod>2020-02-15T15:32:33.000Z</lastmod>
     
   </url>
   
