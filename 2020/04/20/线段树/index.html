@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32_GZ.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16_GZ.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ACM,线段树,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言本篇博客按照灯神的线段树进行讲解（这个思路太清晰易懂了！！！）这只是最基本的线段树，线段树还有一些进阶的用法，待后续补充。 先例相对基础，比较适合对线段树没有了解的人来入门。如果对线段树有一定了解可以直接跳过先例。 先例 对于一个数组arr当我们想要求数组中某个区间（L, R）的和，时间复杂度为O(n)，我们把这种操作叫做query。当我们想要更新数组中某个位置的元素值，时间复杂度为O(1)，">
+<meta name="keywords" content="ACM,线段树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线段树入门">
+<meta property="og:url" content="https://zhangzef.com/2020/04/20/线段树/index.html">
+<meta property="og:site_name" content="zhangzef">
+<meta property="og:description" content="前言本篇博客按照灯神的线段树进行讲解（这个思路太清晰易懂了！！！）这只是最基本的线段树，线段树还有一些进阶的用法，待后续补充。 先例相对基础，比较适合对线段树没有了解的人来入门。如果对线段树有一定了解可以直接跳过先例。 先例 对于一个数组arr当我们想要求数组中某个区间（L, R）的和，时间复杂度为O(n)，我们把这种操作叫做query。当我们想要更新数组中某个位置的元素值，时间复杂度为O(1)，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://image.zhangzef.com/20200421232051.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200421232752.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200427204328.png">
+<meta property="og:image" content="http://image.zhangzef.com/img/319290DB6B0AAC4F709D96229DA1C3E6.png">
+<meta property="og:updated_time" content="2020-04-20T14:56:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线段树入门">
+<meta name="twitter:description" content="前言本篇博客按照灯神的线段树进行讲解（这个思路太清晰易懂了！！！）这只是最基本的线段树，线段树还有一些进阶的用法，待后续补充。 先例相对基础，比较适合对线段树没有了解的人来入门。如果对线段树有一定了解可以直接跳过先例。 先例 对于一个数组arr当我们想要求数组中某个区间（L, R）的和，时间复杂度为O(n)，我们把这种操作叫做query。当我们想要更新数组中某个位置的元素值，时间复杂度为O(1)，">
+<meta name="twitter:image" content="http://image.zhangzef.com/20200421232051.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #519594; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #519594, 0 0 5px     #519594; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #519594;    /*上边框颜色*/
+        border-left-color: #519594;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+  <link rel="canonical" href="https://zhangzef.com/2020/04/20/线段树/">
+
+
+
+
+
+  <title>线段树入门 | zhangzef</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangzef</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzef.com/2020/04/20/线段树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张泽">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pika.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangzef">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线段树入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T22:56:53+08:00">
+                2020-04-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-20T22:56:53+08:00">
+                2020-04-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/20/线段树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/20/线段树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/04/20/线段树/" class="leancloud_visitors" data-flag-title="线段树入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.6k words
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇博客按照<a href="https://www.bilibili.com/video/av47331849/" target="_blank" rel="noopener">灯神的线段树</a>进行讲解（这个思路太清晰易懂了！！！）这只是最基本的线段树，线段树还有一些进阶的用法，待后续补充。</p>
+<p>先例相对基础，比较适合对线段树没有了解的人来入门。如果对线段树有一定了解可以直接跳过先例。</p>
+<h2 id="先例"><a href="#先例" class="headerlink" title="先例"></a>先例</h2><p><img src="http://image.zhangzef.com/20200421232051.png" alt></p>
+<p>对于一个数组arr<br>当我们想要求数组中某个区间（L, R）的和，时间复杂度为O(n)，我们把这种操作叫做<strong>query</strong>。<br>当我们想要更新数组中某个位置的元素值，时间复杂度为O(1)，我们把这种操作叫做<strong>update</strong>。</p>
+<p>但是当我们的query的操作过多，这种方法就会变得很慢。这时我们就可以用前缀和来将query的时间复杂度降为O(1)。</p>
+<p><img src="http://image.zhangzef.com/20200421232752.png" alt="img"></p>
+<blockquote>
+<p>前缀和就是数组的每一位都是这一位和之前所有位之和。即Sum[2] = arr[2]+arr[1]+arr[0]。</p>
+</blockquote>
+<p>当我们要用前缀和数组来进行query(L, R)时，我们只需要用Sum[R]-Sum[L]。<br>可以看出query的时间复杂度为O(1)<br>但是此时update的时间复杂度又变成了O(n)（因为当我们修改数组某一个位置的值得时候，这个位置之后的所有Sum数组都要修改）</p>
+<p>我们发现当我们把其中一个操作时间复杂度变成O(1)之后，另一个操作时间复杂度又会升到O(n)。而我们有没有一个办法将两种操作的时间复杂度平均一下呢？（废话，肯定有啊，不然我写这篇文章干嘛）当然是线段树了！它可以将query和update的时间复杂度都变成O(logn)</p>
+<h2 id="线段树讲解"><a href="#线段树讲解" class="headerlink" title="线段树讲解"></a>线段树讲解</h2><p>那么线段树长什么样子呢？他比较像对前缀和数组的一种改版。</p>
+<p>举个栗子：</p>
+<p><img src="http://image.zhangzef.com/20200427204328.png" alt></p>
+<h3 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h3><p>我们要对一个长度为6的数组arr构建线段树，数组如图所示，建树的步骤：</p>
+<blockquote>
+<ol>
+<li>数组的根节点为数组所有元素的总和，即数组0号元素——5号元素之和：36</li>
+<li>则其左孩子和右孩子将数组劈成两半<ul>
+<li>左孩子为数组0号元素——2号元素之和：9</li>
+<li>右孩子为数组3号元素——5号元素之和：27</li>
+</ul>
+</li>
+<li>依次类推，直到所有元素不可再分割为止，即可得到如图所示的线段树。</li>
+</ol>
+</blockquote>
+<h3 id="query和update"><a href="#query和update" class="headerlink" title="query和update"></a>query和update</h3><p>现在我们再来试着看一看query操作和update操作：</p>
+<blockquote>
+<ol>
+<li>query：当我们要查询(L,R)的和，最坏的情况也就是从树的根结点一直查询到叶子结点，我们都知道这种操作的时间复杂度为O(logn)。例如查询（0,1）的和：<ul>
+<li>从根结点出发，发现1&lt;3，则往根结点的左孩子找</li>
+<li>来到根结点的左孩子，发现1&lt;2，则继续往其左孩子找</li>
+<li>来到此处，我们发现这个区间正是我们要找的区间，返回结果</li>
+</ul>
+</li>
+<li>update：当我们要更新某个结点的值的时候，就要先从根结点一直查询到叶子结点，之后再逐步向上更新，返回到根结点，这种操作的时间复杂度当然也是O(logn)。例如更新数组0号元素的值：<ul>
+<li>从根结点出发，发现0&lt;3，前往左结点</li>
+<li>来到[0-2]结点处，发现0&lt;2，前往左结点</li>
+<li>来到[0-1]结点处，发现0&lt;1，前往左结点</li>
+<li>来到0号元素的结点，更新结点值，返回父节点</li>
+<li>来到[0-1]结点处，更新结点值，返回父节点</li>
+<li>来到[0-2]结点处，更新结点值，返回父节点</li>
+<li>来到根结点处，更新结点值</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="线段树的存储"><a href="#线段树的存储" class="headerlink" title="线段树的存储"></a>线段树的存储</h3><p>我们已经明白了线段树的基本原理，在上手实现线段树代码之前，我们要考虑怎么来存储线段树。</p>
+<p>我们发现当线段树建好之后除了最后一层之外其余所有层都被填满了，这种结构很像完全二叉树，所以我们可以用数组来存储这颗树。（本来想用流程图画，结果感觉太麻烦了，还不如Notability来的方便）</p>
+<p><img src="http://image.zhangzef.com/img/319290DB6B0AAC4F709D96229DA1C3E6.png" alt="319290DB6B0AAC4F709D96229DA1C3E6"></p>
+<p>如图，我们对树上的每个结点依次进行编号（从1开始），在叶子结点那一层空出来的地方我们用空结点给他补上（数组中可以设置一个值当做空值，例如-1）。这样当一个结点的编号为i的时候，其左孩子就是2×i，其右孩子就是2×i+1，其父结点就是i÷2</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>现在我们了解了线段树的大体思路之后，线段树的代码就很清晰易懂了。</p>
+<h3 id="建树-1"><a href="#建树-1" class="headerlink" title="建树"></a>建树</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build_tree</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> tree[], <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start == end)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[node] = arr[start];</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">2</span> * node + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> right = <span class="number">2</span> * node + <span class="number">2</span>;</span><br><span class="line">		build_tree(arr, tree, left, start, mid);</span><br><span class="line">		build_tree(arr, tree, right, mid + <span class="number">1</span>, end);</span><br><span class="line">		tree[node] = tree[left] + tree[right];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参数变量意义"><a href="#参数变量意义" class="headerlink" title="参数变量意义"></a>参数变量意义</h4><p>先来讲一下每个参数的意义：</p>
+<ul>
+<li>arr：要将这个数组建成一颗线段树，这个数组就是原数组。</li>
+<li>tree：这个数组就是建成树之后的数组，就是线段树本树了。</li>
+<li>node：就是当前递归层的根结点。例如我从根结点开始递归，那node就是根结点0了，根结点的下一层就是它的左右孩子了，我先从左孩子开始递归，那么这一层的node就是根结点的左孩子1了，其他的以此类推。</li>
+<li>start：就是当前结点代表的区间的开始位置，例如当前结点代表的是0-5的和，那start就是0，end就是5了。当走到叶子结点的时候start==end。</li>
+<li>end：同上。</li>
+</ul>
+<p>再来讲一下函数中每个变量的意义：</p>
+<ul>
+<li>mid：我们建树的时候每个结点都是它两个子结点的和，那他的子结点就是把当前结点的区间劈成了两半，mid就是中间劈开的那个位置了。例如根结点代表的是0-5的和，那mid就是2了。这样根结点的左孩子就是0-2的和，右孩子就是3-5的和了。</li>
+<li>left：就是当前结点的左孩子在tree数组中的位置了，学过数据结构就很容易明白了（或者仔细看一看上面线段树的存储那一点）。</li>
+<li>right：同上。</li>
+</ul>
+<h4 id="讲解"><a href="#讲解" class="headerlink" title="讲解"></a>讲解</h4><p>明白了参数和变量的意义，我们开始对代码的讲解。</p>
+<p>建树是从根结点开始建立，递归地求出左子树和右子树的值。递归的出口就是叶子结点（即start==end时），这时将arr的值赋给tree。</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update_tree</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> tree[], <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> index, <span class="keyword">int</span> value)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start==end)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[node] = value;</span><br><span class="line">		arr[index] = value;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">2</span> * node + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> right = <span class="number">2</span> * node + <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (index &lt;= mid)</span><br><span class="line">		&#123;</span><br><span class="line">			update_tree(arr, tree, left, start, mid, index, value);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			update_tree(arr, tree, right, mid + <span class="number">1</span>, end, index, value);</span><br><span class="line">		&#125;</span><br><span class="line">		tree[node] = tree[left] + tree[right];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参数变量意义-1"><a href="#参数变量意义-1" class="headerlink" title="参数变量意义"></a>参数变量意义</h4><p>重复参数或变量就略过了。</p>
+<p>每个参数的意义：</p>
+<ul>
+<li>index：即要更新的下标，这个下标是在arr数组中的下标。</li>
+<li>value：要更新的值。</li>
+</ul>
+<h4 id="讲解-1"><a href="#讲解-1" class="headerlink" title="讲解"></a>讲解</h4><p>更新也是从根结点开始，递归地找到index代表的叶子结点，当在左子树就向左递归，在右子树就向右递归。递归的出口就是求到叶子结点时（即start==end时），将tree和arr的值修改。返回的过程中更新结点值。</p>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query_tree</span><span class="params">(<span class="keyword">int</span> tree[], <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (L &gt; end || R &lt; start)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (L &lt;= start &amp;&amp; end &lt;= R)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> tree[node];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> left = <span class="number">2</span> * node + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> right = <span class="number">2</span> * node + <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sum_left = query_tree(arr, tree, left, start, mid, L, R);</span><br><span class="line">	<span class="keyword">int</span> sum_right = query_tree(arr, tree, right, mid + <span class="number">1</span>, end, L, R);</span><br><span class="line">	<span class="keyword">return</span> sum_left + sum_right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参数变量意义-2"><a href="#参数变量意义-2" class="headerlink" title="参数变量意义"></a>参数变量意义</h4><p>先来讲一下每个参数的意义：</p>
+<ul>
+<li>L：查询区间的左边界</li>
+<li>R：查询区间的右边界</li>
+<li>return（返回值）：即查询到的值</li>
+</ul>
+<h4 id="讲解-2"><a href="#讲解-2" class="headerlink" title="讲解"></a>讲解</h4><p>如果L和R分别在左子树和右子树，则需要递归去寻找左右子树中在L-R内的值。这个递归有两个出口，一个是当前区间不在L-R内，则返回0；两一个是当前区间在L-R内，则返回当前结点的值；如果当前区间部分在L-R内则需继续递归。返回的过程中要将左右子树的值和在一起。</p>
+<h2 id="Java模板"><a href="#Java模板" class="headerlink" title="Java模板"></a>Java模板</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> []arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100010</span>];</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> []tree = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">400010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> []tree, <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start==end) &#123;</span><br><span class="line">		tree[node] = arr[start];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> mid = (start+end)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> left = node*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> right = node*<span class="number">2</span>+<span class="number">2</span>;</span><br><span class="line">	build(arr, tree, left, start, mid);</span><br><span class="line">	build(arr, tree, right, mid+<span class="number">1</span>, end);</span><br><span class="line">	tree[node] = tree[left] + tree[right];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> []arr, <span class="keyword">int</span> []tree, <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> index, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start==end) &#123;</span><br><span class="line">		arr[index] = value;</span><br><span class="line">		tree[node] = arr[index];</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> mid = (start+end)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> left = node*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> right = node*<span class="number">2</span>+<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span> (index&lt;=mid) &#123;</span><br><span class="line">		update(arr, tree, left, start, mid, index, value);</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		update(arr, tree, right, mid+<span class="number">1</span>, end, index, value);</span><br><span class="line">	&#125;</span><br><span class="line">	tree[node] = tree[left] + tree[right];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> []tree, <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start&gt;R || end&lt;L) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (L&lt;=start &amp;&amp; R&gt;=end) &#123;</span><br><span class="line">		<span class="keyword">return</span> tree[node];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> mid = (start+end)/<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> left = node*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> right = node*<span class="number">2</span>+<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> sum_left = query(tree, left, start, mid, L, R);</span><br><span class="line">	<span class="keyword">int</span> sum_right = query(tree, right, mid+<span class="number">1</span>, end, L, R);</span><br><span class="line">	<span class="keyword">return</span> sum_left+sum_right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-模板"><a href="#C-模板" class="headerlink" title="C++模板"></a>C++模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> tree[], <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start == end)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[node] = arr[start];</span><br><span class="line">         <span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">2</span> * node + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> right = <span class="number">2</span> * node + <span class="number">2</span>;</span><br><span class="line">		build_tree(arr, tree, left, start, mid);</span><br><span class="line">		build_tree(arr, tree, right, mid + <span class="number">1</span>, end);</span><br><span class="line">		tree[node] = tree[left] + tree[right];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> tree[], <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> index, <span class="keyword">int</span> value)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (start==end)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[node] = value;</span><br><span class="line">		arr[index] = value;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">2</span> * node + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> right = <span class="number">2</span> * node + <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (index &lt;= mid)</span><br><span class="line">		&#123;</span><br><span class="line">			update_tree(arr, tree, left, start, mid, index, value);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			update_tree(arr, tree, right, mid + <span class="number">1</span>, end, index, value);</span><br><span class="line">		&#125;</span><br><span class="line">		tree[node] = tree[left] + tree[right];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> tree[], <span class="keyword">int</span> node, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (L &gt; end || R &lt; start)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (L &lt;= start &amp;&amp; end &lt;= R)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> tree[node];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> mid = (start + end) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">int</span> left = <span class="number">2</span> * node + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> right = <span class="number">2</span> * node + <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> sum_left = query_tree(arr, tree, left, start, mid, L, R);</span><br><span class="line">	<span class="keyword">int</span> sum_right = query_tree(arr, tree, right, mid + <span class="number">1</span>, end, L, R);</span><br><span class="line">	<span class="keyword">return</span> sum_left + sum_right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChat.jpg" alt="张泽 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/Alipay.jpg" alt="张泽 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    张泽
+  </li>
+  <li class="post-copyright-link">
+	<strong>本文链接：</strong>
+	<a href="https://zhangzef.com/ 2020/04/20/线段树/" title="线段树入门">https://zhangzef.com/2020/04/20/线段树/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ACM/" rel="tag"><i class="fa fa-tag"></i> ACM</a>
+          
+            <a href="/tags/线段树/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/15/Hexo博客主页自定义排序/" rel="next" title="Hexo博客主页自定义排序">
+                <i class="fa fa-chevron-left"></i> Hexo博客主页自定义排序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pika.jpg" alt="张泽">
+            
+              <p class="site-author-name" itemprop="name">张泽</p>
+              <p class="site-description motion-element" itemprop="description">ֻ只有经过地狱般的磨难，才能有创造天堂的力量</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ZhangZef" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:814499375@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+		  
+		  <!-- 音乐播放器 -->
+		  <div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=5242686&auto=0&height=32"></iframe>
+		  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xugen-ma.github.io/special-eureka/" title="xugen-ma" target="_blank">xugen-ma</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pyai.top/" title="慢羊羊" target="_blank">慢羊羊</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coderlzyoung.github.io/" title="儿子" target="_blank">儿子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#先例"><span class="nav-number">2.</span> <span class="nav-text">先例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树讲解"><span class="nav-number">3.</span> <span class="nav-text">线段树讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建树"><span class="nav-number">3.1.</span> <span class="nav-text">建树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#query和update"><span class="nav-number">3.2.</span> <span class="nav-text">query和update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树的存储"><span class="nav-number">3.3.</span> <span class="nav-text">线段树的存储</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建树-1"><span class="nav-number">4.1.</span> <span class="nav-text">建树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码-1"><span class="nav-number">4.1.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数变量意义"><span class="nav-number">4.1.2.</span> <span class="nav-text">参数变量意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#讲解"><span class="nav-number">4.1.3.</span> <span class="nav-text">讲解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">4.2.</span> <span class="nav-text">更新</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数变量意义-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">参数变量意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#讲解-1"><span class="nav-number">4.2.3.</span> <span class="nav-text">讲解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询"><span class="nav-number">4.3.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参数变量意义-2"><span class="nav-number">4.3.1.</span> <span class="nav-text">参数变量意义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#讲解-2"><span class="nav-number">4.3.2.</span> <span class="nav-text">讲解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java模板"><span class="nav-number">5.</span> <span class="nav-text">Java模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-模板"><span class="nav-number">6.</span> <span class="nav-text">C++模板</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张泽</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">61.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<p style="display: inline;">Hosted by
+  <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" style="border:0">
+	<img src="/images/upyun_logo.min.svg" style="width: 60px; display: inline; vertical-align: middle;">
+  </a>
+  <span class="post-meta-divider">|</span>
+  <a href="http://www.beian.miit.gov.cn/" style="border:0" target="_blank">豫ICP备20003291号</a>
+</p>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客总量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'CXr7noV7CvVCPfY9qhTguCw9-gzGzoHsz',
+        appKey: 'aLRh20M7hnQRlaQ45YH29R0I',
+        placeholder: '留下邮箱才能收到回复',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("CXr7noV7CvVCPfY9qhTguCw9-gzGzoHsz", "aLRh20M7hnQRlaQ45YH29R0I");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
