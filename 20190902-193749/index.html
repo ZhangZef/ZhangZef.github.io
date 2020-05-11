@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_32x32_GZ.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_16x16_GZ.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ACM,图论,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="tarjan到底是念“塔进”还是“塔扬”。好像大多数人都念“塔进”，但是英语好像是念“塔扬”。胡扯结束。。。 这个tarjan算法求的是有向图中的强连通分量，并将他们合并。 强连通分量（如果会可以直接看tarjan部分）那什么是强连通分量呢？强连通嘛，就是图中任意两点能相互到达。那强连通分量就是一个图中的强连通子图。 环是最简单的强连通分量：  那你如果从1出发，只要转一圈就能经过所有点。 强连通">
+<meta name="keywords" content="ACM,图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tarjan求有向图的强连通分量">
+<meta property="og:url" content="https://zhangzef.com/20190902-193749/index.html">
+<meta property="og:site_name" content="zhangzef">
+<meta property="og:description" content="tarjan到底是念“塔进”还是“塔扬”。好像大多数人都念“塔进”，但是英语好像是念“塔扬”。胡扯结束。。。 这个tarjan算法求的是有向图中的强连通分量，并将他们合并。 强连通分量（如果会可以直接看tarjan部分）那什么是强连通分量呢？强连通嘛，就是图中任意两点能相互到达。那强连通分量就是一个图中的强连通子图。 环是最简单的强连通分量：  那你如果从1出发，只要转一圈就能经过所有点。 强连通">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184723.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184724.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184716.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184716.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184717.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184720.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184718.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184719.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184721.png">
+<meta property="og:image" content="http://image.zhangzef.com/20200214184722.png">
+<meta property="og:updated_time" content="2020-02-15T15:06:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tarjan求有向图的强连通分量">
+<meta name="twitter:description" content="tarjan到底是念“塔进”还是“塔扬”。好像大多数人都念“塔进”，但是英语好像是念“塔扬”。胡扯结束。。。 这个tarjan算法求的是有向图中的强连通分量，并将他们合并。 强连通分量（如果会可以直接看tarjan部分）那什么是强连通分量呢？强连通嘛，就是图中任意两点能相互到达。那强连通分量就是一个图中的强连通子图。 环是最简单的强连通分量：  那你如果从1出发，只要转一圈就能经过所有点。 强连通">
+<meta name="twitter:image" content="http://image.zhangzef.com/20200214184723.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #519594; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #519594, 0 0 5px     #519594; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #519594;    /*上边框颜色*/
+        border-left-color: #519594;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+  <link rel="canonical" href="https://zhangzef.com/20190902-193749/">
+
+
+
+
+
+  <title>tarjan求有向图的强连通分量 | zhangzef</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangzef</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzef.com/20190902-193749/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张泽">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pika.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangzef">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">tarjan求有向图的强连通分量</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T19:37:49+08:00">
+                2019-09-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-15T23:06:55+08:00">
+                2020-02-15
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/20190902-193749/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/20190902-193749/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/20190902-193749/" class="leancloud_visitors" data-flag-title="tarjan求有向图的强连通分量">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.3k words
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>tarjan到底是念“塔进”还是“塔扬”。好像大多数人都念“塔进”，但是英语好像是念“塔扬”。胡扯结束。。。</p>
+<p>这个tarjan算法求的是有向图中的强连通分量，并将他们合并。</p>
+<h2 id="强连通分量"><a href="#强连通分量" class="headerlink" title="强连通分量"></a>强连通分量</h2><p><strong>（如果会可以直接看tarjan部分）</strong>那什么是强连通分量呢？强连通嘛，就是<strong>图中任意两点能相互到达</strong>。那强连通分量就是一个图中的强连通子图。</p>
+<p>环是最简单的强连通分量：</p>
+<p><img src="http://image.zhangzef.com/20200214184723.png" alt="img" style="zoom:50%;"></p>
+<p>那你如果从1出发，只要转一圈就能经过所有点。</p>
+<p>强连通分量不等于环，还有一些复杂的强连通分量，例如完全图：</p>
+<p><img src="http://image.zhangzef.com/20200214184724.png" alt="img" style="zoom:50%;"></p>
+<p>很明显能看出从图中一点出发，可到达其他任意一个点。</p>
+<h2 id="tarjan算法"><a href="#tarjan算法" class="headerlink" title="tarjan算法"></a>tarjan算法</h2><p>先上时间复杂度：O(N+M)    （其中N和M分别为点数和边数）</p>
+<p>tarjan算法是通过对图的dfs来找出其中的强连通分量，并分类。<strong>（需掌握dfs的思想并且能熟练运用）</strong></p>
+<h3 id="dfn数组和low数组讲解"><a href="#dfn数组和low数组讲解" class="headerlink" title="dfn数组和low数组讲解"></a>dfn数组和low数组讲解</h3><p>这里给出tarjan算法中两个重要数组的定义：</p>
+<p>​    dfn[u]：表示当前结点i在dfs算法中第几个被访问的的点。</p>
+<p>​    low[u]：表示当前结点i能回溯到的最小dfs序结点，<strong>dfs序即dfn[u]的值</strong>。</p>
+<p><img src="http://image.zhangzef.com/20200214184716.png" alt="img" style="zoom:50%;"></p>
+<p>（6-&gt;1的箭头画反了，应该时1-&gt;6）</p>
+<p>当从结点1开始dfs时，假设优先向下访问：dfn[1] = 1;    dfn[6] = 2;因为第一个访问的时结点1，所以它的dfs序是1，第二个访问的是结点6，所以它的dfs序时2。访问完结点6发现没有路了，则开始访问结点1的下一条出边。</p>
+<p>开始访问结点2，刚刚访问的结点6是第二个访问的结点，所以结点2是第三个访问的结点，即它的dfs序为3：dfn[2] = 3;    dfn[5] = 4;    dfn[4] = 5;    dfn[3] = 6;我们顺着结点2依次访问下去，发现只有一条路，畅通无阻。</p>
+<p>当访问到结点三的时候我们发现<strong>结点3有一条通向结点2的路</strong>，则此时我们称<strong>结点3回溯到结点2</strong>。我们还发现dfn[2]&lt;dfn[3]，即结点2在dfs中比结点3先被访问。此时我们在dfs回溯的过程中令：low[3] = dfn[2];    low[4] = dfn[2];    low[5] = dfn[2];即令回溯路上的所有点的low数组都赋值为结点2的dfs序。</p>
+<p>由此我们经历了一遍tarjan的简化步骤，我们能发现low数组的取值为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">low[u] = min(</span><br><span class="line">    dfn[u],<span class="comment">//1.</span></span><br><span class="line">    dfn[v],<span class="comment">//2.</span></span><br><span class="line">    low[v]<span class="comment">//3.</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>low数组初始化时为当前结点的dfs序，即low[u] = dfn[u];</li>
+<li>这里的v是边（u, v）中的v，和上图中边（3, 2）类似。当发现能回溯到的结点dfs序小于自身dfs序时更新low的值</li>
+<li>这里的（u, v）和上图中的（4, 3）类似。dfs回溯过程中时发现前面结点的low值小于自身的low值时，更新自身low值</li>
+</ol>
+<p>从图中可看出2， 5， 4， 3四个结点为一个环，环是最简单的强连通分量，所以2， 5， 4， 3为一个强连通分量。而单独一个结点我们也将他看成一个强连通分量，因此图中有三个强连通分量：（1）（6）（2，4，5，3）</p>
+<p>从中我们观察出1， 6， 2的dfn值和low值相同，所以当dfn[u]==low[u]时，它就是一个强连通分量在dfs树中的起始节点</p>
+<h3 id="tarjan算法伪代码讲解"><a href="#tarjan算法伪代码讲解" class="headerlink" title="tarjan算法伪代码讲解"></a>tarjan算法伪代码讲解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">tarjan(u)</span><br><span class="line">&#123;</span><br><span class="line">    DFN[u]=Low[u]=++Index<span class="comment">//1.</span></span><br><span class="line">    Stack.push(u)<span class="comment">//2.</span></span><br><span class="line">    <span class="keyword">for</span> each (u, v) in E<span class="comment">//3.</span></span><br><span class="line">        <span class="keyword">if</span> (v is <span class="keyword">not</span> visted)<span class="comment">//4.</span></span><br><span class="line">            tarjan(v)<span class="comment">//dfs</span></span><br><span class="line">            Low[u] = min(Low[u], Low[v])</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (v in S)<span class="comment">//5.</span></span><br><span class="line">            Low[u] = min(Low[u], DFN[v])</span><br><span class="line">    <span class="keyword">if</span> (DFN[u] == Low[u])<span class="comment">//6.</span></span><br><span class="line">        repeat</span><br><span class="line">            v = S.pop<span class="comment">//7.</span></span><br><span class="line">            print v</span><br><span class="line">        until (u== v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>为结点u初始化dfn和low的值为dfs时的访问顺序，index为全局变量</li>
+<li>将结点u压入栈中</li>
+<li>遍历结点u的每一条边</li>
+<li>如果没访问过</li>
+<li>如果v在栈中</li>
+<li>上面讲过，当dfn[u]==low[u]时，该节点为强连通分量根结点</li>
+<li>将栈顶元素出栈，直到栈顶元素为u时，u出栈，则此次出栈的一系列元素为一个强连通分量</li>
+</ol>
+<p><img src="http://image.zhangzef.com/20200214184716.png" alt="img" style="zoom:50%;"></p>
+<p>（6-&gt;1的箭头画反了，应该时1-&gt;6）</p>
+<ol>
+<li>从结点1开始：dfn[1] = low[1] = 1; 结点1进栈<img src="http://image.zhangzef.com/20200214184717.png" alt="img" style="zoom:50%;"></li>
+<li>1-&gt;6：dfn[6] = low[6] = 2; 结点6进栈<img src="http://image.zhangzef.com/20200214184720.png" alt="img" style="zoom:50%;">结点6没有出边，无法dfs，发现dfn[6]==low[6]，栈顶元素出栈，栈顶元素正好时结点6，无需继续出栈，则结点6自己为一个单独的强联通分量。</li>
+<li>1-&gt;2：dfn[2] = low[2] = 3；结点2进栈<img src="http://image.zhangzef.com/20200214184718.png" alt="img" style="zoom:50%;">结点2有出边且为访问，开始dfs。</li>
+<li>2-&gt;5：dfn[5] = low[5] = 4；结点5进栈<img src="http://image.zhangzef.com/20200214184719.png" alt="img" style="zoom:50%;">结点5有出边且未访问，继续dfs</li>
+<li>5-&gt;4：dfn[4] = low[4] = 5；结点4进栈<img src="http://image.zhangzef.com/20200214184721.png" alt="img" style="zoom:50%;">结点4有未访问的出边，继续dfs</li>
+<li>4-&gt;3：dfn[3] = low[3] = 6；结点3进栈<img src="http://image.zhangzef.com/20200214184722.png" alt="img" style="zoom:50%;">结点3有出边，但结点2已经访问过了，且结点2在栈里面，所以3可以回溯到结点2，可知dfn[2]=3, low[3]=6;  所以low[3] = dfn[2] = 3;</li>
+<li>此时dfn[3]!=low[3]，所以不出栈。</li>
+<li>当dfs回溯到5-&gt;4的时候，发现(low[4]=5) &gt; (low[3]=3)，所以low[4] = 3;    依此类推low[5]=3;且直到dfs回溯到结点2的时候才会进行出栈操作，因为2时强连通分量的根节点。</li>
+<li>不难看出，依次出栈的时3、4、5、2，这四个结点为一个强连通分量</li>
+<li>最后dfs回溯到最开始的入口，结点1出栈</li>
+<li>由此的强连通分量有3个，分别是：（1）、（6）、（3，4，5，2）</li>
+</ol>
+<h2 id="tarjan算法模板"><a href="#tarjan算法模板" class="headerlink" title="tarjan算法模板"></a>tarjan算法模板</h2><h3 id="链式前向星模板"><a href="#链式前向星模板" class="headerlink" title="链式前向星模板"></a>链式前向星模板</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">     <span class="keyword">int</span> net;</span><br><span class="line">     <span class="keyword">int</span> to;</span><br><span class="line">     <span class="keyword">int</span> w;</span><br><span class="line">&#125;edge[maxn];</span><br><span class="line"><span class="keyword">int</span> head[maxn], cnt=<span class="number">0</span>;<span class="comment">//1.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_dege</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[cnt].to = v;</span><br><span class="line">    edge[cnt].net = head[u];</span><br><span class="line">    edge[cnt].w = w;</span><br><span class="line">    head[u] = cnt++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dfn[maxn], low[maxn], belong[maxn];<span class="comment">//2.</span></span><br><span class="line"><span class="keyword">int</span> index=<span class="number">0</span>, Bcnt;<span class="comment">//3.</span></span><br><span class="line"><span class="keyword">bool</span> instack[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dfn[u] = low[u] = ++index;</span><br><span class="line">    s.push(u);instack[u] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[u]; i!=<span class="number">-1</span>; i=edge[i].net)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])</span><br><span class="line">        &#123;</span><br><span class="line">            tarjan(v);</span><br><span class="line">            low[u] = min(low[v], low[u]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(instack[v] &amp;&amp; dfn[v]&lt;low[u])</span><br><span class="line">            low[u] = dfn[v];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(dfn[u]==low[u])</span><br><span class="line">    &#123;</span><br><span class="line">        Bcnt++;<span class="keyword">int</span> v;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            v = s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            belong[v] = Bcnt;</span><br><span class="line">            instack[v] = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">while</span>(v!=u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Bcnt = index = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dfn, <span class="number">0</span>, <span class="keyword">sizeof</span> dfn);</span><br><span class="line">    <span class="keyword">while</span>(!s.empty())s.pop();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)<span class="comment">//4.</span></span><br><span class="line">        <span class="keyword">if</span>(!dfn[i])<span class="comment">//5.</span></span><br><span class="line">            tarjan(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>head[u]记得初始化，初始化为-1。</li>
+<li>belong数组值相同的结点属于同一个强连通分量。</li>
+<li>Bcnt用于划分强连通分量</li>
+<li>要从每个结点都进行一次tarjan，否则有些不可达结点就无法划分强联通分量，n为结点数</li>
+<li>dfn数组初始化为0，当dfn[u]的值不为0的时候则说明被访问过了</li>
+</ol>
+<h3 id="邻接矩阵模板"><a href="#邻接矩阵模板" class="headerlink" title="邻接矩阵模板"></a>邻接矩阵模板</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> mp[maxn][maxn];<span class="comment">//1.</span></span><br><span class="line"><span class="keyword">int</span> dfn[maxn], low[maxn], belong[maxn];</span><br><span class="line"><span class="keyword">int</span> index=<span class="number">0</span>, Bcnt;</span><br><span class="line"><span class="keyword">bool</span> instack[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dfn[u] = low[u] = ++index;</span><br><span class="line">    s.push(u);instack[u] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v=<span class="number">0</span>; v&lt;n; v++)<span class="comment">//2.</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(mp[u][v]==<span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])</span><br><span class="line">        &#123;</span><br><span class="line">            tarjan(v);</span><br><span class="line">            low[u] = min(low[v], low[u]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(instack[v] &amp;&amp; dfn[v]&lt;low[u])</span><br><span class="line">            low[u] = dfn[v];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(dfn[u]==low[u])</span><br><span class="line">    &#123;</span><br><span class="line">        Bcnt++;</span><br><span class="line">        <span class="keyword">int</span> v;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            v = s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            belong[v] = Bcnt;</span><br><span class="line">            instack[v] = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">while</span>(v!=u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Bcnt = index = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dfn, <span class="number">0</span>, <span class="keyword">sizeof</span> dfn);</span><br><span class="line">    <span class="keyword">while</span>(!s.empty())s.pop();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">        <span class="keyword">if</span>(!dfn[i])</span><br><span class="line">            tarjan(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>邻接矩阵，当值为-1时表示不连通</li>
+<li>n为结点数</li>
+</ol>
+<h3 id="邻接表模板"><a href="#邻接表模板" class="headerlink" title="邻接表模板"></a>邻接表模板</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; G[maxn];<span class="comment">//1.</span></span><br><span class="line"><span class="keyword">int</span> dfn[maxn], low[maxn], belong[maxn];</span><br><span class="line"><span class="keyword">int</span> index=<span class="number">0</span>, Bcnt;</span><br><span class="line"><span class="keyword">bool</span> instack[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_eage</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    G[u].push_back(make_pair(w, v));</span><br><span class="line">    <span class="comment">//G[v].push_back(make_pair(w, u));</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dfn[u] = low[u] = ++index;</span><br><span class="line">    s.push(u);instack[u] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;G[u].size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v = G[u][i].second;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])</span><br><span class="line">        &#123;</span><br><span class="line">            tarjan(v);</span><br><span class="line">            low[u] = min(low[v], low[u]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(instack[v] &amp;&amp; dfn[v]&lt;low[u])</span><br><span class="line">            low[u] = dfn[v];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(dfn[u]==low[u])</span><br><span class="line">    &#123;</span><br><span class="line">        Bcnt++;</span><br><span class="line">        <span class="keyword">int</span> v;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            v = s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            belong[v] = Bcnt;</span><br><span class="line">            instack[v] = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">while</span>(v!=u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)<span class="comment">//2.</span></span><br><span class="line">        G[i].clear();</span><br><span class="line">    Bcnt = index = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dfn, <span class="number">0</span>, <span class="keyword">sizeof</span> dfn);</span><br><span class="line">    <span class="keyword">while</span>(!s.empty())s.pop();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">        <span class="keyword">if</span>(!dfn[i])</span><br><span class="line">            tarjan(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>用vector和pair实现邻接表，pair的first为路径权重，pair的second为另一端结点</li>
+<li>初始化邻接表</li>
+</ol>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="HDU1269"><a href="#HDU1269" class="headerlink" title="HDU1269"></a><a href="https://vjudge.net/problem/HDU-1269" target="_blank" rel="noopener">HDU1269</a></h3><p>题意：给你一个图，让你判断这个图是不是一整个强连通分量</p>
+<p>题解：没什么可说的，tarjan模板题。需要注意的是有的能给的图只有点没有边，所以结束条件需要时m和n同时为0时才行。代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, net;</span><br><span class="line">&#125;edge[maxn];</span><br><span class="line"><span class="keyword">int</span> head[maxn], cnt=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> dfn[maxn], low[maxn], index, Bcnt, n, m, belong[maxn];</span><br><span class="line"><span class="keyword">bool</span> instack[maxn];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[cnt].to = v;</span><br><span class="line">    edge[cnt].net = head[u];</span><br><span class="line">    head[u] = cnt++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cnt = index = Bcnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dfn, <span class="number">0</span>, <span class="keyword">sizeof</span> dfn);</span><br><span class="line">    <span class="built_in">memset</span>(low, <span class="number">0</span>, <span class="keyword">sizeof</span> low);</span><br><span class="line">    <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span> head);</span><br><span class="line">    <span class="built_in">memset</span>(instack, <span class="number">0</span>, <span class="keyword">sizeof</span> instack);</span><br><span class="line">    <span class="built_in">memset</span>(belong, <span class="number">0</span>, <span class="keyword">sizeof</span> belong);</span><br><span class="line">    <span class="keyword">while</span>(!s.empty())s.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dfn[u] = low[u] = ++index;</span><br><span class="line">    instack[u] = <span class="literal">true</span>;</span><br><span class="line">    s.push(u);</span><br><span class="line">    <span class="keyword">int</span> v;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u]; i!=<span class="number">-1</span>; i=edge[i].net)</span><br><span class="line">    &#123;</span><br><span class="line">        v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])</span><br><span class="line">        &#123;</span><br><span class="line">            tarjan(v);</span><br><span class="line">            <span class="keyword">if</span>(low[v]&lt;low[u])   low[u] = low[v];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(instack[v] &amp;&amp; dfn[v]&lt;low[u])</span><br><span class="line">            low[u] = dfn[v];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(dfn[u]==low[u])</span><br><span class="line">    &#123;</span><br><span class="line">        Bcnt++;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            v = s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            belong[v] = Bcnt;</span><br><span class="line">            instack[v] = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">while</span>(u!=v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt;n &gt;&gt;m &amp;&amp; n+m)</span><br><span class="line">    &#123;</span><br><span class="line">        init();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> u, v;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt;u &gt;&gt;v;</span><br><span class="line">            addedge(u, v);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            <span class="keyword">if</span>(!dfn[i])</span><br><span class="line">                tarjan(i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> flag = belong[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">bool</span> f = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            <span class="keyword">if</span>(belong[i]!=flag)</span><br><span class="line">                f = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!f) <span class="built_in">cout</span> &lt;&lt;<span class="string">"No"</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt;<span class="string">"Yes"</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HDU1827"><a href="#HDU1827" class="headerlink" title="HDU1827"></a><a href="https://vjudge.net/problem/HDU-1827" target="_blank" rel="noopener">HDU1827</a></h3><p>题意：给你一些人的联系方式，但是这种联系方式时有向的，即x可以联系y不代表y可以联系到x，其实就是有向图。也给出你联系每个人的花费，如果可以让别人帮忙联系，就可以不需要花费话费。求最少需要联系多少人和花费多少话费。</p>
+<p>题解：这道题没有那么直接，但是也能看出和强连通分量有关。这道题要求的是<strong>没有入边的强连通分量的个数</strong>，并且求出这些没有入边的强联通分量中花费最小的人。为什么是没有入边的强连通分量而不是强连通分量，因为有如入边的强联通分量可以被其他人通知到，就不需要你再亲自通知了。（一开始我理解成强连通分量的个数了(&gt;_&lt;) ）这题要用scnaf和printf，不能用cin和cout，数据量大，会超时。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1</span>&lt;&lt;<span class="number">30</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, net;</span><br><span class="line">&#125; edge[maxn];</span><br><span class="line"><span class="keyword">int</span> head[maxn], cnt=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> dfn[maxn], low[maxn], index, Bcnt, n, m, belong[maxn], fee[maxn], cost[maxn], ans;</span><br><span class="line"><span class="keyword">bool</span> instack[maxn], in[maxn];<span class="comment">//1.</span></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    edge[cnt].to = v;</span><br><span class="line">    edge[cnt].net = head[u];</span><br><span class="line">    head[u] = cnt++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cnt = index = ans = Bcnt = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dfn, <span class="number">0</span>, <span class="keyword">sizeof</span> dfn);</span><br><span class="line">    <span class="built_in">memset</span>(low, <span class="number">0</span>, <span class="keyword">sizeof</span> low);</span><br><span class="line">    <span class="built_in">memset</span>(head, <span class="number">-1</span>, <span class="keyword">sizeof</span> head);</span><br><span class="line">    <span class="built_in">memset</span>(instack, <span class="number">0</span>, <span class="keyword">sizeof</span> instack);</span><br><span class="line">    <span class="built_in">memset</span>(belong, <span class="number">0</span>, <span class="keyword">sizeof</span> belong);</span><br><span class="line">    <span class="built_in">memset</span>(in, <span class="number">0</span>, <span class="keyword">sizeof</span> in);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;maxn; i++)</span><br><span class="line">        cost[i]=INF;</span><br><span class="line">    <span class="built_in">memset</span>(fee, <span class="number">0</span>, <span class="keyword">sizeof</span> fee);</span><br><span class="line">    <span class="keyword">while</span>(!s.empty())</span><br><span class="line">        s.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    dfn[u] = low[u] = ++index;</span><br><span class="line">    instack[u] = <span class="literal">true</span>;</span><br><span class="line">    s.push(u);</span><br><span class="line">    <span class="keyword">int</span> v;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = head[u]; i!=<span class="number">-1</span>; i=edge[i].net)</span><br><span class="line">    &#123;</span><br><span class="line">        v = edge[i].to;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])</span><br><span class="line">        &#123;</span><br><span class="line">            tarjan(v);</span><br><span class="line">            <span class="keyword">if</span>(low[v]&lt;low[u])</span><br><span class="line">                low[u] = low[v];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(instack[v] &amp;&amp; dfn[v]&lt;low[u])</span><br><span class="line">            low[u] = dfn[v];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(dfn[u]==low[u])</span><br><span class="line">    &#123;</span><br><span class="line">        Bcnt++;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">            v = s.top();</span><br><span class="line">            s.pop();</span><br><span class="line">            belong[v] = Bcnt;</span><br><span class="line">            instack[v] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(u!=v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) != EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        init();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;fee[i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> u, v;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">            addedge(u, v);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            <span class="keyword">if</span>(!dfn[i])</span><br><span class="line">                tarjan(i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cnt=Bcnt;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)<span class="comment">//2.</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=head[i]; j!=<span class="number">-1</span>; j=edge[j].net)</span><br><span class="line">                <span class="keyword">if</span>(belong[i]!=belong[edge[j].to] &amp;&amp; !in[belong[edge[j].to]])</span><br><span class="line">                &#123;</span><br><span class="line">                    in[belong[edge[j].to]] = <span class="literal">true</span>;</span><br><span class="line">                    cnt--;</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)<span class="comment">//3.</span></span><br><span class="line">            <span class="keyword">if</span>(!in[belong[i]])</span><br><span class="line">                cost[belong[i]] = min(cost[belong[i]], fee[i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=Bcnt; i++)</span><br><span class="line">            <span class="keyword">if</span>(!in[i])</span><br><span class="line">                ans+=cost[i];</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>, cnt, ans);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>in数组表示该强连通分量是否有入边，为true则有，false则没有。</li>
+<li>这个for循环求出有入边的强连通分量，即看看每个点的入边是否和自己在同一个强连通分量中即可。cnt为没有入边的个数。</li>
+<li>求出没有入边的强连通分量中的最小花费，cost[i]代表第i个强连通分量的花费</li>
+</ol>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ol>
+<li><a href="https://www.byvoid.com/zhs/blog/scc-tarjan" target="_blank" rel="noopener">BYVoid有向图强连通分量的tarjan算法</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChat.jpg" alt="张泽 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/Alipay.jpg" alt="张泽 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    张泽
+  </li>
+  <li class="post-copyright-link">
+	<strong>本文链接：</strong>
+	<a href="https://zhangzef.com/ 20190902-193749/" title="tarjan求有向图的强连通分量">https://zhangzef.com/20190902-193749/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ACM/" rel="tag"><i class="fa fa-tag"></i> ACM</a>
+          
+            <a href="/tags/图论/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/20190801-145359/" rel="next" title="差分约束">
+                <i class="fa fa-chevron-left"></i> 差分约束
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20190919-222856/" rel="prev" title="kuangbin专题一简单搜索">
+                kuangbin专题一简单搜索 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pika.jpg" alt="张泽">
+            
+              <p class="site-author-name" itemprop="name">张泽</p>
+              <p class="site-description motion-element" itemprop="description">ֻ只有经过地狱般的磨难，才能有创造天堂的力量</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ZhangZef" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:814499375@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+		  
+		  <!-- 音乐播放器 -->
+		  <div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=5242686&auto=0&height=32"></iframe>
+		  </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xugen-ma.github.io/special-eureka/" title="xugen-ma" target="_blank">xugen-ma</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pyai.top/" title="慢羊羊" target="_blank">慢羊羊</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://coderlzyoung.github.io/" title="儿子" target="_blank">儿子</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强连通分量"><span class="nav-number">1.</span> <span class="nav-text">强连通分量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tarjan算法"><span class="nav-number">2.</span> <span class="nav-text">tarjan算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dfn数组和low数组讲解"><span class="nav-number">2.1.</span> <span class="nav-text">dfn数组和low数组讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tarjan算法伪代码讲解"><span class="nav-number">2.2.</span> <span class="nav-text">tarjan算法伪代码讲解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tarjan算法模板"><span class="nav-number">3.</span> <span class="nav-text">tarjan算法模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链式前向星模板"><span class="nav-number">3.1.</span> <span class="nav-text">链式前向星模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邻接矩阵模板"><span class="nav-number">3.2.</span> <span class="nav-text">邻接矩阵模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邻接表模板"><span class="nav-number">3.3.</span> <span class="nav-text">邻接表模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU1269"><span class="nav-number">4.1.</span> <span class="nav-text">HDU1269</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU1827"><span class="nav-number">4.2.</span> <span class="nav-text">HDU1827</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考："><span class="nav-number">5.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张泽</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">63.2k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+<p style="display: inline;">Hosted by
+  <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" style="border:0">
+	<img src="/images/upyun_logo.min.svg" style="width: 60px; display: inline; vertical-align: middle;">
+  </a>
+  <span class="post-meta-divider">|</span>
+  <a href="http://www.beian.miit.gov.cn/" style="border:0" target="_blank">豫ICP备20003291号</a>
+</p>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>访客总量
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'CXr7noV7CvVCPfY9qhTguCw9-gzGzoHsz',
+        appKey: 'aLRh20M7hnQRlaQ45YH29R0I',
+        placeholder: '留下邮箱才能收到回复',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("CXr7noV7CvVCPfY9qhTguCw9-gzGzoHsz", "aLRh20M7hnQRlaQ45YH29R0I");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
