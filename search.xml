@@ -50,8 +50,8 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-        <tag>最短路</tag>
         <tag>蓝桥杯</tag>
+        <tag>最短路</tag>
         <tag>dijkstra</tag>
       </tags>
   </entry>
@@ -211,8 +211,8 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-        <tag>蓝桥杯</tag>
         <tag>搜索</tag>
+        <tag>蓝桥杯</tag>
         <tag>bfs记录最短路径</tag>
         <tag>bfs</tag>
         <tag>dfs</tag>
